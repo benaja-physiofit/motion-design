@@ -1,31 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <!--
-  lockup — the Physiofit mark + wordmark.
-  0.80s  the mark blooms out of the point of light (scale/blur/rotation), the glyph draws on
-  1.18s  the mark glides left (expo.inOut) and the wordmark slides out from under the tile
-  1.85s  lockup at rest
-  1.98s  one specular pass: across the tile, then through the wordmark (from registry text-shimmer)
-  3.05s  exhale — blur + fade + slight push
-  MARK SLOT: the tile below is a PLACEHOLDER monogram. Replace the contents of
-  #lk-mark-pop with the official Physiofit SVG (assets/brand/) to swap it.
+  lockup — the official Physiofit Wort-Bild-Marke (paths 1:1 from
+  assets/brand/Physiofit_Logo_*.svg, never redrawn).
+  0.80s  the P grows out of the ink point (scale from the head's centre), the foot steps in
+  1.10s  the Bildmarke glides into its lockup slot (expo.inOut)
+  1.48s  PHYSIOFIT rises letter by letter out of a baseline mask
+  2.15s  one satin glint travels across mark and wordmark
+  3.05s  exhale — blur + fade + slight push, back to paper
+  Geometry is in the logo's own SVG units (viewBox crop below); px = units × S.
 -->
-<html lang="de" data-composition-variables="[
-    {&quot;id&quot;:&quot;wordmark&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Wordmark&quot;,&quot;default&quot;:&quot;Physiofit&quot;}
-  ]">
+<html lang="de">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Lockup</title>
   </head>
   <body>
     <template>
       <style>
-        @font-face {
-          font-family: "Geist";
-          src: url("assets/fonts/Geist-SemiBold.woff2") format("woff2");
-          font-weight: 600;
-          font-style: normal;
-          font-display: block;
-        }
         #root {
           position: absolute;
           inset: 0;
@@ -34,113 +25,41 @@
           justify-content: center;
           overflow: hidden;
           pointer-events: none;
-          font-family: "Geist", "Helvetica Neue", sans-serif;
-          --lk-accent: var(--accent, #5ee6c3);
-          --lk-accent-deep: var(--accentDeep, #139c80);
-          --lk-ink: #f2f4f7;
-          --lk-ink-top: #ffffff;
-          --lk-ink-low: #a7aeb9;
-          --lk-a55: color-mix(in srgb, var(--lk-accent) 55%, transparent);
-          --lk-hi: rgba(255, 255, 255, 0.45);
-          --lk-sheen: rgba(255, 255, 255, 0.5);
-          --lk-edge: rgba(255, 255, 255, 0.06);
-          --lk-depth: rgba(0, 0, 0, 0.18);
-          --lk-glyph-shadow: rgba(0, 0, 0, 0.22);
+          --lk-ink: var(--ink, #1e3542);
+          --lk-glint: color-mix(in srgb, var(--lk-ink) 45%, #a9d6e6);
         }
         #lk-lockup {
-          position: relative; /* offsetParent for the mark-offset measurement */
-          display: flex;
-          align-items: center;
-          gap: 40px;
-        }
-        #lk-mark-move,
-        #lk-mark-pop {
-          display: block;
-          width: 128px;
-          height: 128px;
-          flex: 0 0 auto;
-        }
-        #lk-mark-move {
           position: relative;
-          z-index: 2;
+          width: 874px; /* 1680 logo units × 0.52 */
+          height: 140px;
         }
-        #lk-mark-pop {
-          opacity: 0;
-          filter: blur(16px);
-        }
-        #lk-tile {
-          position: relative;
-          width: 128px;
-          height: 128px;
-          border-radius: 33px;
-          overflow: hidden;
-          background: linear-gradient(145deg, var(--lk-accent) 0%, var(--lk-accent-deep) 100%);
-          box-shadow:
-            inset 0 1.5px 0 var(--lk-hi),
-            inset 0 -10px 24px var(--lk-depth),
-            0 18px 50px -12px var(--lk-a55),
-            0 0 0 1px var(--lk-edge);
-        }
-        #lk-tile svg {
+        .lk-layer,
+        .lk-layer svg {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
           overflow: visible;
         }
-        #lk-glyph {
-          fill: none;
-          stroke: var(--lk-ink-top);
-          stroke-width: 13;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          filter: drop-shadow(0 2px 3px var(--lk-glyph-shadow));
+        .lk-ink path {
+          fill: var(--lk-ink);
         }
-        #lk-tile-sheen {
-          position: absolute;
-          top: -20%;
-          bottom: -20%;
-          left: 0;
-          width: 70%;
-          background: linear-gradient(100deg, transparent 0%, var(--lk-sheen) 50%, transparent 100%);
+        #lk-mark-move {
+          z-index: 2;
+        }
+        #lk-mark-pop {
+          opacity: 0;
+          filter: blur(4px);
         }
         #lk-word {
-          position: relative;
           z-index: 1;
-          display: block;
-          /* optical alignment: centre the tile on the cap height, not the line box */
-          margin-top: -6px;
-          padding: 0 4px;
-          /* left edge follows the sliding tile (set by the timeline) */
-          clip-path: inset(-30% -6% -40% 0px);
+          /* letters rise out of this baseline mask (bottom edge just under the glyphs) */
+          clip-path: inset(-20% -2% 25px -2%);
         }
-        #lk-word-inner {
-          position: relative;
-          display: block;
-        }
-        .lk-letters {
-          display: block;
-          white-space: nowrap;
-          font-size: 124px;
-          font-weight: 600;
-          line-height: 1.12;
-          letter-spacing: -0.045em;
-          font-kerning: normal;
-        }
-        #lk-word-base {
-          color: var(--lk-ink);
-          background: linear-gradient(180deg, var(--lk-ink-top) 18%, var(--lk-ink-low) 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-        #lk-word-shine {
-          position: absolute;
-          inset: 0;
-          color: var(--lk-ink-top);
-          text-shadow: 0 0 18px var(--lk-a55);
-          -webkit-mask-image: linear-gradient(100deg, transparent 0%, transparent 44%, #000 50%, transparent 56%, transparent 100%);
-          mask-image: linear-gradient(100deg, transparent 0%, transparent 44%, #000 50%, transparent 56%, transparent 100%);
+        #lk-glint {
+          z-index: 3;
+          -webkit-mask-image: linear-gradient(100deg, transparent 0%, transparent 45.5%, rgba(0, 0, 0, 0.8) 50%, transparent 54.5%, transparent 100%);
+          mask-image: linear-gradient(100deg, transparent 0%, transparent 45.5%, rgba(0, 0, 0, 0.8) 50%, transparent 54.5%, transparent 100%);
           -webkit-mask-size: 300% 100%;
           mask-size: 300% 100%;
           -webkit-mask-repeat: no-repeat;
@@ -148,26 +67,53 @@
           -webkit-mask-position: 100% 0%;
           mask-position: 100% 0%;
         }
+        #lk-glint path {
+          fill: var(--lk-glint);
+        }
       </style>
 
-      <div data-hf-id="hf-fp2x" id="root" data-composition-id="lockup" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-w3a9" id="lk-lockup">
-          <div data-hf-id="hf-x2vi" id="lk-mark-move">
-            <!-- MARK SLOT (placeholder monogram) -->
-            <div data-hf-id="hf-9rlm" id="lk-mark-pop">
-              <div data-hf-id="hf-47hj" id="lk-tile">
-                <svg data-hf-id="hf-llt0" viewBox="0 0 140 140" aria-hidden="true">
-                  <path data-hf-id="hf-wpdh" id="lk-glyph" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M49 103 V37 H70 A21 21 0 0 1 70 79 H49" />
-                </svg>
-                <div data-hf-id="hf-oc2s" id="lk-tile-sheen" data-layout-allow-overflow="true"></div>
-              </div>
+      <div id="root" data-composition-id="lockup" data-width="1920" data-height="1080">
+        <div id="lk-lockup">
+          <!-- Bildmarke -->
+          <div id="lk-mark-move" class="lk-layer">
+            <div id="lk-mark-pop" class="lk-layer">
+              <svg class="lk-ink" viewBox="160 58 1680 270" aria-label="Physiofit">
+                <path id="lk-head" d="m219.8 233.1c24.2-2 57.1-2.2 94.5-2.2h25.2c46 0 83.3-37.4 83.3-83.4s-37.4-83.4-83.4-83.4h-10.2c-44.5 0-84.6 26.5-102.2 67.3l-46.7 108.5c10.5-3.2 23.2-5.4 39.5-6.7z" />
+                <g id="lk-foot"><path d="m177.5 270.9c-8.7 4.8-12.9 14.4-10.5 23.7 3.4 13.3 20.8 27.5 59.2 28 13.1-.2 24.9-8.1 30.1-20.2l18.7-43.6c-53.5.6-81.3 3-97.5 12z" /></g>
+              </svg>
             </div>
           </div>
-          <div data-hf-id="hf-m1uj" id="lk-word">
-            <div data-hf-id="hf-lt8s" id="lk-word-inner">
-              <div data-hf-id="hf-wttq" id="lk-word-base" class="lk-letters">Physiofit</div>
-              <div data-hf-id="hf-8zg5" id="lk-word-shine" class="lk-letters" aria-hidden="true">Physiofit</div>
-            </div>
+
+          <!-- Wortmarke -->
+          <div id="lk-word" class="lk-layer">
+            <svg class="lk-ink" viewBox="160 58 1680 270" aria-hidden="true">
+              <g class="lk-letter"><path d="m556.3 114h-33.4v155.8h33.4v-47.3h36.2c30 0 54.2-24.3 54.2-54.2 0-30-24.3-54.2-54.2-54.2h-36.2zm31.3 79.3h-31.3v-48.7h31.3c13.4 0 24.3 10.9 24.3 24.3 0 13.4-10.9 24.3-24.3 24.3z" /></g>
+              <g class="lk-letter"><path d="m781.6 114v61.2h-63.9v-61.2h-33.4v155.8h33.4v-62.6h63.9v62.6h33.4v-155.8z" /></g>
+              <g class="lk-letter"><path d="m848.4 114 61.2 94.6v61.2h33.4v-61.2l61.2-94.6h-39l-38.9 64-39-64z" /></g>
+              <g class="lk-letter"><path d="m1018 247.2 20.3-24.3c14 11.6 28.7 18.9 46.5 18.9s22.5-5.6 22.5-14.7v-.4c0-8.7-5.3-13.1-31.4-19.8-31.4-8-51.7-16.7-51.7-47.7v-.4c0-28.3 22.7-47 54.6-47s42.1 7.1 57.9 19.8l-17.8 25.8c-13.8-9.6-27.4-15.4-40.5-15.4s-20 6-20 13.6v.4c0 10.2 6.7 13.6 33.6 20.5 31.6 8.2 49.4 19.6 49.4 46.8v.4c0 31-23.6 48.3-57.2 48.3s-47.4-8.2-66.1-24.9z" /></g>
+              <g class="lk-letter"><path d="m1185 114h33.4v155.8h-33.4z" /></g>
+              <g class="lk-letter"><path d="m1349.1 111.3h-5.6c-44.6 0-80.7 36.1-80.7 80.7 0 44.6 36.1 80.7 80.7 80.7h5.6c44.6 0 80.7-36.1 80.7-80.7 0-44.6-36.1-80.7-80.7-80.7zm-2.8 130c-26.1 0-47.3-22.1-47.3-49.4s21.2-49.4 47.3-49.4 47.3 22.1 47.3 49.4-21.2 49.4-47.3 49.4z" /></g>
+              <g class="lk-letter"><path d="m1591.1 144.6v-30.6h-86.2-13.9-19.5v155.8h33.4v-61.2h75.1v-30.6h-75.1v-33.4z" /></g>
+              <g class="lk-letter"><path d="m1630 114h36.2v155.8h-36.2z" /></g>
+              <g class="lk-letter"><path d="m1835.2 114h-130.7v30.6h48.6v125.2h33.4v-125.2h48.7z" /></g>
+            </svg>
+          </div>
+
+          <!-- satin glint: the whole lockup in a lighter tone, revealed through one moving band -->
+          <div id="lk-glint" class="lk-layer" aria-hidden="true">
+            <svg viewBox="160 58 1680 270">
+              <path d="m219.8 233.1c24.2-2 57.1-2.2 94.5-2.2h25.2c46 0 83.3-37.4 83.3-83.4s-37.4-83.4-83.4-83.4h-10.2c-44.5 0-84.6 26.5-102.2 67.3l-46.7 108.5c10.5-3.2 23.2-5.4 39.5-6.7z" />
+              <path d="m177.5 270.9c-8.7 4.8-12.9 14.4-10.5 23.7 3.4 13.3 20.8 27.5 59.2 28 13.1-.2 24.9-8.1 30.1-20.2l18.7-43.6c-53.5.6-81.3 3-97.5 12z" />
+              <path d="m556.3 114h-33.4v155.8h33.4v-47.3h36.2c30 0 54.2-24.3 54.2-54.2 0-30-24.3-54.2-54.2-54.2h-36.2zm31.3 79.3h-31.3v-48.7h31.3c13.4 0 24.3 10.9 24.3 24.3 0 13.4-10.9 24.3-24.3 24.3z" />
+              <path d="m781.6 114v61.2h-63.9v-61.2h-33.4v155.8h33.4v-62.6h63.9v62.6h33.4v-155.8z" />
+              <path d="m848.4 114 61.2 94.6v61.2h33.4v-61.2l61.2-94.6h-39l-38.9 64-39-64z" />
+              <path d="m1018 247.2 20.3-24.3c14 11.6 28.7 18.9 46.5 18.9s22.5-5.6 22.5-14.7v-.4c0-8.7-5.3-13.1-31.4-19.8-31.4-8-51.7-16.7-51.7-47.7v-.4c0-28.3 22.7-47 54.6-47s42.1 7.1 57.9 19.8l-17.8 25.8c-13.8-9.6-27.4-15.4-40.5-15.4s-20 6-20 13.6v.4c0 10.2 6.7 13.6 33.6 20.5 31.6 8.2 49.4 19.6 49.4 46.8v.4c0 31-23.6 48.3-57.2 48.3s-47.4-8.2-66.1-24.9z" />
+              <path d="m1185 114h33.4v155.8h-33.4z" />
+              <path d="m1349.1 111.3h-5.6c-44.6 0-80.7 36.1-80.7 80.7 0 44.6 36.1 80.7 80.7 80.7h5.6c44.6 0 80.7-36.1 80.7-80.7 0-44.6-36.1-80.7-80.7-80.7zm-2.8 130c-26.1 0-47.3-22.1-47.3-49.4s21.2-49.4 47.3-49.4 47.3 22.1 47.3 49.4-21.2 49.4-47.3 49.4z" />
+              <path d="m1591.1 144.6v-30.6h-86.2-13.9-19.5v155.8h33.4v-61.2h75.1v-30.6h-75.1v-33.4z" />
+              <path d="m1630 114h36.2v155.8h-36.2z" />
+              <path d="m1835.2 114h-130.7v30.6h48.6v125.2h33.4v-125.2h48.7z" />
+            </svg>
           </div>
         </div>
       </div>
@@ -176,79 +122,64 @@
         (function () {
           // Shared beats (seconds) — keep in sync with atmosphere.html and the sonic logo.
           var HIT = 0.8;
-          var SLIDE = 1.18;
-          var SETTLE = 1.85;
-          var SWEEP = 2.1;
+          var SLIDE = 1.1;
+          var SETTLE = 1.7;
+          var LETTERS = 1.48;
+          var STAGGER = 0.036;
+          var SWEEP = 2.15;
           var EXIT = 3.05;
 
-          var vars =
-            window.__hyperframes && window.__hyperframes.getVariables
-              ? window.__hyperframes.getVariables()
-              : {};
-          var word = vars.wordmark == null || vars.wordmark === "" ? "Physiofit" : String(vars.wordmark);
+          // Logo geometry in its own SVG units (viewBox 160 58 1680 270).
+          var VB_X = 160;
+          var VB_Y = 58;
+          var VB_W = 1680;
+          var HEAD = { x: 339.5, y: 147.5 }; // centre of the P's round head
+          var CENTRE = { x: 1000, y: 193 }; // optical centre of the whole lockup
 
-          document.getElementById("lk-word-base").textContent = word;
-          document.getElementById("lk-word-shine").textContent = word;
+          var S = document.getElementById("lk-lockup").offsetWidth / VB_W;
+          var headPx = { x: (HEAD.x - VB_X) * S, y: (HEAD.y - VB_Y) * S };
+          // At the hit the head sits on the ink point (frame centre); it then glides to its slot.
+          var dx = (CENTRE.x - HEAD.x) * S;
+          var dy = (CENTRE.y - HEAD.y) * S;
 
-          function build() {
-            var lockup = document.getElementById("lk-lockup");
-            var markMove = document.getElementById("lk-mark-move");
-            // At the hit the mark sits dead centre; it then travels to its lockup slot.
-            var markOffset = lockup.offsetWidth / 2 - (markMove.offsetLeft + markMove.offsetWidth / 2);
-            // The wordmark is clipped where it passes under the tile: the clip edge sits
-            // TUCK px inside the tile's right edge (clear of its rounded corners), in
-            // word-local coordinates. At the start the whole word hides behind that edge.
-            var wordBox = document.getElementById("lk-word");
-            var gap = wordBox.offsetLeft - (markMove.offsetLeft + markMove.offsetWidth);
-            var TUCK = 36;
-            var clipStart = markOffset - gap - TUCK;
-            var clipEnd = -gap - TUCK;
-            var wordStart = clipStart - wordBox.offsetWidth;
+          var tl = gsap.timeline({ paused: true });
 
-            var tl = gsap.timeline({ paused: true });
+          // the P grows out of the ink point; the foot steps in under it
+          gsap.set("#lk-mark-pop", { transformOrigin: headPx.x + "px " + headPx.y + "px" });
+          tl.fromTo("#lk-mark-pop", { scale: 0.16, rotation: -10 }, { scale: 1, rotation: 0, duration: 0.95, ease: "expo.out" }, HIT);
+          tl.to("#lk-mark-pop", { opacity: 1, duration: 0.06, ease: "power1.out" }, HIT);
+          tl.to("#lk-mark-pop", { filter: "blur(0px)", duration: 0.32, ease: "power2.out" }, HIT);
+          tl.fromTo("#lk-foot", { x: -90, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, HIT + 0.12);
 
-            // the mark blooms out of the point of light
-            tl.fromTo("#lk-mark-pop", { scale: 0.55, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.95, ease: "expo.out" }, HIT);
-            tl.to("#lk-mark-pop", { opacity: 1, duration: 0.2, ease: "power2.out" }, HIT);
-            tl.to("#lk-mark-pop", { filter: "blur(0px)", duration: 0.38, ease: "power2.out" }, HIT);
-            tl.fromTo("#lk-glyph", { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.6, ease: "power2.inOut" }, HIT + 0.1);
+          // the Bildmarke glides into its lockup slot
+          tl.fromTo("#lk-mark-move", { x: dx, y: dy }, { x: 0, y: 0, duration: SETTLE - SLIDE, ease: "expo.inOut" }, SLIDE);
 
-            // the mark glides left; the wordmark slides out from under it on the same curve
-            var D = SETTLE - SLIDE;
-            tl.fromTo("#lk-mark-move", { x: markOffset }, { x: 0, duration: D, ease: "expo.inOut" }, SLIDE);
-            tl.fromTo(
-              "#lk-word",
-              { clipPath: "inset(-30% -6% -40% " + clipStart + "px)" },
-              { clipPath: "inset(-30% -6% -40% " + clipEnd + "px)", duration: D, ease: "expo.inOut" },
-              SLIDE,
-            );
-            tl.fromTo("#lk-word-inner", { x: wordStart }, { x: 0, duration: D, ease: "expo.inOut" }, SLIDE);
-            // a breath of motion blur only while the word is travelling fast
-            tl.fromTo("#lk-word-inner", { filter: "blur(0px)" }, { filter: "blur(2.5px)", duration: D * 0.5, ease: "power3.in", immediateRender: false }, SLIDE);
-            tl.to("#lk-word-inner", { filter: "blur(0px)", duration: D * 0.4, ease: "power2.out" }, SLIDE + D * 0.5);
+          // PHYSIOFIT rises out of the baseline mask, left to right
+          tl.fromTo(
+            "#lk-word .lk-letter",
+            { y: 180, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: "expo.out", stagger: STAGGER },
+            LETTERS,
+          );
 
-            // one specular pass: tile first, then through the wordmark
-            tl.fromTo("#lk-tile-sheen", { xPercent: -120 }, { xPercent: 190, duration: 0.45, ease: "power2.inOut" }, SWEEP - 0.12);
-            tl.fromTo(
-              "#lk-word-shine",
-              { maskPosition: "100% 0%", webkitMaskPosition: "100% 0%" },
-              { maskPosition: "0% 0%", webkitMaskPosition: "0% 0%", duration: 0.85, ease: "sine.inOut" },
-              SWEEP,
-            );
+          // one satin glint across mark and wordmark (registry text-shimmer technique)
+          tl.fromTo(
+            "#lk-glint",
+            { maskPosition: "100% 0%", webkitMaskPosition: "100% 0%" },
+            { maskPosition: "0% 0%", webkitMaskPosition: "0% 0%", duration: 0.85, ease: "sine.inOut" },
+            SWEEP,
+          );
 
-            // exhale
-            tl.fromTo(
-              "#lk-lockup",
-              { opacity: 1, scale: 1, filter: "blur(0px)" },
-              { opacity: 0, scale: 1.035, filter: "blur(12px)", duration: 0.6, ease: "power2.in" },
-              EXIT,
-            );
+          // exhale
+          tl.fromTo(
+            "#lk-lockup",
+            { opacity: 1, scale: 1, filter: "blur(0px)" },
+            { opacity: 0, scale: 1.035, filter: "blur(10px)", duration: 0.6, ease: "power2.in" },
+            EXIT,
+          );
 
-            tl.seek(0);
-            window.__timelines["lockup"] = tl;
-          }
-
-          document.fonts.load('600 124px "Geist"').then(build, build);
+          tl.seek(0);
+          window.__timelines["lockup"] = tl;
         })();
       </script>
     </template>

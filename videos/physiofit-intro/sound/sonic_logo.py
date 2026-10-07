@@ -5,11 +5,11 @@ the GSAP timelines in compositions/atmosphere.html and compositions/lockup.html.
 
     0.12–0.795  inhale   reverse-reverb swell of the hit chord + rising air
     0.80        hit      sub drop + felt transient + Dmaj9 bloom pad + glass bell
-    1.18–1.85   slide    air whoosh that follows the mark's velocity and pans left
-    1.41–1.56   letters  soft harp-like gliss, one note per letter as it slides out from
-                         under the tile (times measured: sound/letter-emergence.json)
-    1.85        settle   chime, open fifth (D6 + A6)
-    1.98–2.95   sweep    sparkle grains + high air following the light pass L->R
+    0.95        step     soft felt knock as the P's foot steps in
+    1.10–1.70   slide    air whoosh that follows the mark's velocity and pans left
+    1.51–1.80   letters  soft harp-like gliss, one note per letter as PHYSIOFIT rises L->R
+    1.92        settle   chime, open fifth (D6 + A6)
+    2.15–3.00   glint    sparkle grains + high air following the satin glint L->R
     3.05–3.75   exhale   downward air; tails fade to silence at 4.0
 
 Usage:  python3 sound/sonic_logo.py  (writes assets/audio/physiofit-sonic-logo.wav)
@@ -32,8 +32,13 @@ SEED = 20261007
 
 # beats (s) — keep in sync with the compositions
 HIT = 0.80
-SLIDE, SETTLE = 1.18, 1.85
-SWEEP = 2.10
+STEP = 0.95
+SLIDE, SETTLE = 1.10, 1.70
+LETTERS, LETTER_STAGGER = 1.48, 0.036
+# PHYSIOFIT letter centres on the 1920 canvas (logo units -> px, see lockup.html)
+LETTER_X = [960 + (u - 1000) * 0.52 for u in (584.6, 749.6, 926.3, 1084.6, 1201.7, 1346.3, 1531.3, 1648.1, 1769.8)]
+CHIME = 1.92
+SWEEP = 2.15
 EXIT = 3.05
 
 TARGET_LUFS = -15.0
@@ -244,6 +249,13 @@ def compose():
     felt = svf(noise(m), 3200.0, 0.8, "bp") * env_ar(m, 0.0006, 0.006)
     bus.add(norm(felt), HIT, -21.0, send=0.25)
 
+    # STEP — the P's foot steps in: a soft felt knock (pitched body + muted tick)
+    m = int(0.25 * SR)
+    tt = secs(m)
+    body = np.sin(2 * np.pi * np.cumsum(120.0 + 90.0 * np.exp(-tt / 0.02)) / SR) * env_ar(m, 0.002, 0.045)
+    tick = svf(noise(m), 1300.0, 0.9, "bp") * env_ar(m, 0.0008, 0.008)
+    bus.add(norm(norm(body) + 0.35 * norm(tick)), STEP, -19.0, send=0.3, p=-0.08)
+
     # INHALE — reverse reverb of the hit chord, ending a hair before the hit
     m = int(0.5 * SR)
     seed_chord = chord_pad(m, bright=0.7) * env_ar(m, 0.004, 0.22)
@@ -280,27 +292,24 @@ def compose():
     wh = svf(noise(k), fc, 1.1, "bp") * vel
     bus.add(fade(norm(wh), 0.01, 0.02), SLIDE, -21.0, send=0.25, p=-0.45 * pos)
 
-    # LETTERS — soft harp gliss, D-major pentatonic, rising as each letter slides out from
-    # under the tile (last letter first); each note panned to its letter's resting position
-    with open(os.path.join(HERE, "letter-emergence.json")) as fh:
-        lm = json.load(fh)
-    order = sorted(range(len(lm["emerge_s"])), key=lambda i: lm["emerge_s"][i])
+    # LETTERS — soft harp gliss, D-major pentatonic, one note per letter as PHYSIOFIT
+    # rises out of its mask (expo.out: a letter reads ~30 ms after its tween starts),
+    # each note panned to its letter
     notes = [440.0, 493.88, 587.33, 659.26, 739.99, 880.0, 987.77, 1174.66, 1318.51]
-    for j, i in enumerate(order):
-        f = notes[min(j, len(notes) - 1)]
+    for i, f in enumerate(notes):
         m = int(1.2 * SR)
         x = svf(pluck(f, m, tau=0.34), 5200.0, 0.7)
-        p = float(np.clip((lm["rest_center_x"][i] - 960.0) / 960.0, -0.6, 0.6))
-        bus.add(norm(x), lm["emerge_s"][i], -27.0 + j * 0.3, send=0.7, p=p)
+        p = float(np.clip((LETTER_X[i] - 960.0) / 960.0, -0.6, 0.6))
+        bus.add(norm(x), LETTERS + 0.03 + i * LETTER_STAGGER, -27.0 + i * 0.3, send=0.7, p=p)
 
     # SETTLE — chime, open fifth D6 + A6, gentler than the hit bell
-    m = int((DUR - SETTLE) * SR)
+    m = int((DUR - CHIME) * SR)
     chime = fm_bell(1174.66, m, ratio=2.0, index=1.0, index_tau=0.12, tau=0.95, attack=0.003)
     chime += 0.55 * fm_bell(1760.0, m, ratio=2.0, index=0.8, index_tau=0.1, tau=0.8, attack=0.003)
-    bus.add(norm(chime), SETTLE, -22.0, send=0.7)
+    bus.add(norm(chime), CHIME, -22.0, send=0.7)
 
     # SWEEP — sparkle grains + high air, travelling L -> R with the light
-    start, length = SWEEP - 0.12, 0.97
+    start, length = SWEEP, 0.85
     tones = [1760.0, 2217.46, 2637.02, 2959.96, 3520.0]
     grains = 30
     u = np.sort(rng.beta(2.2, 2.2, grains))
