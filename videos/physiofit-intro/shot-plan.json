@@ -53,37 +53,38 @@
   },
   "sound": {
     "file": "assets/audio/physiofit-sonic-logo.wav",
-    "key": "D (open fifth + ninth)",
+    "key": "D major (Dmaj9)",
+    "character": "calm, premium: round sine-based tones, slow blooms (20–150 ms attacks), no hard transients, no saturation, dark long room",
     "cues": [
       {
         "t": 0.1,
-        "end": 0.72,
-        "what": "close — aperture air shaped by the iris' velocity, low tension tone rising a fourth, faint reverse swell of the bloom chord"
+        "end": 0.76,
+        "what": "close — a soft, dark breath following the iris + a gentle swell grown from the bloom chord's own reverb, flowing through the lock"
       },
       {
         "t": 0.72,
-        "what": "lock — 4 ms aperture click with a tiny metallic ring + short sub thump"
+        "what": "lock — a round felt-mallet D4 (octave whisper) and a slow-blooming Dmaj9 pad with a barely-felt D2 underneath"
       },
       {
-        "t": 0.72,
-        "what": "bloom — glassy open chord D5 · A5 · E6 over a quiet warm D bed"
+        "t": 0.8,
+        "what": "air — two soft glass tones A5 · E6, very quiet"
       },
       {
         "t": 0.9,
-        "what": "foot — soft felt tap"
+        "what": "foot — one soft high note F#5"
       },
       {
         "t": 0.98,
         "end": 1.48,
-        "what": "word — a breath of air travelling L→R with the wipe"
+        "what": "word — a whisper of air with the wipe"
       },
       {
-        "t": 2.2,
+        "t": 2.1,
         "end": 2.5,
-        "what": "tails fade to silence with the picture"
+        "what": "everything settles into silence with the picture"
       }
     ],
-    "loudness_target": "-15 LUFS integrated, ≤ -1 dBTP"
+    "loudness_target": "-16 LUFS integrated (±0.3), ≤ -1.5 dBTP"
   },
-  "brief": "The intro opens on a solid field of Physiofit BlueDark. A circular aperture closes — fast in the middle, soft at both ends — revealing clean paper, and locks exactly as the round head of the P with a precise click and a sub thump while a glassy open chord blooms. The stem grows out of the head, the foot steps in, PHYSIOFIT wipes in from the mark, the frame settles a touch, holds, and fades to paper at 2.5s."
+  "brief": "The intro opens on a solid field of Physiofit BlueDark. A circular aperture closes — fast in the middle, soft at both ends — revealing clean paper, and locks exactly as the round head of the P as a round, soft mallet note and a slow-blooming warm chord rise out of a gentle swell. The stem grows out of the head, the foot steps in, PHYSIOFIT wipes in from the mark, the frame settles a touch, holds, and fades to paper at 2.5s."
 }
