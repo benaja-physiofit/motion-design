@@ -1,16 +1,16 @@
-"""Physiofit sonic logo — synthesized, composed frame-accurately to the intro's beats.
+"""Physiofit sonic logo — "Blende" (iris). Minimal premium sound design, synthesized and
+composed frame-accurately to the intro's beats.
 
-Deterministic: same code + seed -> bit-identical WAV. Every cue time below mirrors
-the GSAP timelines in compositions/atmosphere.html and compositions/lockup.html.
+Deterministic: same code + seed -> bit-identical WAV. Every cue time below mirrors the
+GSAP timeline in compositions/lockup.html.
 
-    0.12–0.795  inhale   reverse-reverb swell of the hit chord + rising air
-    0.80        hit      sub drop + felt transient + Dmaj9 bloom pad + glass bell
-    0.95        step     soft felt knock as the P's foot steps in
-    1.10–1.70   slide    air whoosh that follows the mark's velocity and pans left
-    1.51–1.80   letters  soft harp-like gliss, one note per letter as PHYSIOFIT rises L->R
-    1.92        settle   chime, open fifth (D6 + A6)
-    2.15–3.00   glint    sparkle grains + high air following the satin glint L->R
-    3.05–3.75   exhale   downward air; tails fade to silence at 4.0
+    0.10–0.72  close   aperture air shaped by the iris' own velocity + a low tension tone
+                       rising into the lock + a faint reverse swell of the bloom chord
+    0.72       lock    precise aperture click + short sub thump
+    0.72       bloom   glassy open chord (D5 · A5 · E6) over a quiet warm bed, long air
+    0.90       foot    soft felt tap as the P's foot steps in
+    0.98–1.48  word    a breath of air travelling L->R with the wordmark wipe
+    2.20–2.50  out     tails fade to silence with the picture
 
 Usage:  python3 sound/sonic_logo.py  (writes assets/audio/physiofit-sonic-logo.wav)
 Requires numpy + scipy; ffmpeg for loudness measurement and 24-bit encode.
@@ -26,20 +26,15 @@ from scipy import signal
 from scipy.io import wavfile
 
 SR = 48000
-DUR = 4.0
+DUR = 2.5
 N = int(SR * DUR)
 SEED = 20261007
 
-# beats (s) — keep in sync with the compositions
-HIT = 0.80
-STEP = 0.95
-SLIDE, SETTLE = 1.10, 1.70
-LETTERS, LETTER_STAGGER = 1.48, 0.036
-# PHYSIOFIT letter centres on the 1920 canvas (logo units -> px, see lockup.html)
-LETTER_X = [960 + (u - 1000) * 0.52 for u in (584.6, 749.6, 926.3, 1084.6, 1201.7, 1346.3, 1531.3, 1648.1, 1769.8)]
-CHIME = 1.92
-SWEEP = 2.15
-EXIT = 3.05
+# beats (s) — keep in sync with compositions/lockup.html
+IRIS_START, LOCK = 0.10, 0.72
+FOOT = 0.90
+WIPE_START, WIPE_LEN = 0.98, 0.50
+EXIT = 2.20
 
 TARGET_LUFS = -15.0
 CEILING_DBTP = -1.0
@@ -139,81 +134,68 @@ class Bus:
             self.send[:, i0 : i0 + n] += send * x[:, j0 : j0 + n]
 
 
-# ── sources ──────────────────────────────────────────────────────────────────
-CHORD = [  # Dmaj9, open voicing: D3 A3 E4 F#4 C#5
-    (146.83, 1.00),
-    (220.00, 0.72),
-    (329.63, 0.58),
-    (369.99, 0.52),
-    (554.37, 0.36),
-]
-
-
-def warm_voice(f, n, cents, nharm=14, tilt=1.75):
-    tt = secs(n)
-    fd = f * 2.0 ** (cents / 1200.0)
-    out = np.zeros(n)
-    for k in range(1, nharm + 1):
-        if k * fd > 15000:
-            break
-        out += np.sin(2 * np.pi * k * fd * tt + rng.uniform(0, 2 * np.pi)) / k**tilt
-    return out
-
-
-def chord_pad(n, bright=1.0):
-    """Wide detuned pad; the -6c voices lean left, the +6c voices lean right."""
-    L = np.zeros(n)
-    R = np.zeros(n)
-    for f, a in CHORD:
-        for cents, wl, wr in ((-6.0, 0.85, 0.35), (0.0, 0.6, 0.6), (6.0, 0.35, 0.85)):
-            v = warm_voice(f, n, cents) * a
-            L += v * wl
-            R += v * wr
-    tt = secs(n)
-    cutoff = 950.0 + 4300.0 * bright * np.exp(-tt / 0.32)
-    L = svf(L, cutoff, 0.6)
-    R = svf(R, cutoff, 0.6)
-    return np.stack([L, R])
-
-
-def fm_bell(f, n, ratio=3.5, index=1.8, index_tau=0.22, tau=0.9, attack=0.002):
-    tt = secs(n)
-    idx = index * np.exp(-tt / index_tau)
-    mod = idx * np.sin(2 * np.pi * f * ratio * tt)
-    return np.sin(2 * np.pi * f * tt + mod) * env_ar(n, attack, tau)
-
-
-def pluck(f, n, tau=0.3):
-    tt = secs(n)
-    x = (
-        np.sin(2 * np.pi * f * tt)
-        + 0.22 * np.sin(2 * np.pi * 2 * f * tt)
-        + 0.06 * np.sin(2 * np.pi * 3 * f * tt)
-    )
-    return x * env_ar(n, 0.004, tau)
-
-
 def noise(n):
     return rng.standard_normal(n)
 
 
-def sub_drop(n):
+def power4_inout(u):
+    u = np.clip(u, 0.0, 1.0)
+    return np.where(u < 0.5, 8 * u**4, 1 - 8 * (1 - u) ** 4)
+
+
+def power4_inout_rate(u):
+    """d/du of GSAP's power4.inOut — the iris' speed, peaking (4.0) at u = 0.5."""
+    u = np.clip(u, 0.0, 1.0)
+    return np.where(u < 0.5, 32 * u**3, 32 * (1 - u) ** 3)
+
+
+# ── instruments ──────────────────────────────────────────────────────────────
+def fm_bell(f, n, ratio=2.0, index=0.8, index_tau=0.1, tau=1.2, attack=0.02, spread=4.0):
+    """Glassy FM tone; ratio 2 keeps it harmonic and calm, the index fades to a pure sine.
+    Two voices ±spread cents apart give a slow, living beat instead of a static sine."""
     tt = secs(n)
-    f = 40.0 + 62.0 * np.exp(-tt / 0.07)
-    ph = 2 * np.pi * np.cumsum(f) / SR
-    x = np.sin(ph) * env_ar(n, 0.0015, 0.34)
-    x = np.tanh(1.9 * x) / np.tanh(1.9)  # harmonics so it reads on small speakers
-    return svf(x, 320.0, 0.7)
+    idx = index * np.exp(-tt / index_tau)
+    out = np.zeros(n)
+    for c in (-spread, spread):
+        fc = f * 2.0 ** (c / 1200.0)
+        mod = idx * np.sin(2 * np.pi * fc * ratio * tt)
+        out += np.sin(2 * np.pi * fc * tt + mod + rng.uniform(0, 2 * np.pi))
+    return 0.5 * out * env_ar(n, attack, tau)
 
 
-def make_ir(length=2.8, rt60=2.2, predelay=0.022):
+def warm_bed(n, attack=0.06, tau=1.3):
+    """A quiet, wide Dmaj9 bed (D3 A3 E4 F#4) — warmth under the glass, never a pad you notice."""
+    tt = secs(n)
+    L = np.zeros(n)
+    R = np.zeros(n)
+    for f, a in ((146.83, 1.0), (220.0, 0.7), (329.63, 0.5), (369.99, 0.45)):
+        for cents, wl, wr in ((-5.0, 0.85, 0.35), (5.0, 0.35, 0.85)):
+            fd = f * 2.0 ** (cents / 1200.0)
+            v = np.zeros(n)
+            for k in range(1, 9):
+                v += np.sin(2 * np.pi * k * fd * tt + rng.uniform(0, 2 * np.pi)) / k**2.1
+            L += v * a * wl
+            R += v * a * wr
+    env = env_ar(n, attack, tau)
+    return np.stack([svf(L, 1800.0, 0.6), svf(R, 1800.0, 0.6)]) * env
+
+
+def bloom_chord(n):
+    """D5 · A5 · E6 — an open fifth plus ninth: bright, airy, unresolved-in-a-good-way."""
+    x = fm_bell(587.33, n, index=0.9, tau=1.25, attack=0.022)
+    x += 0.72 * fm_bell(880.0, n, index=0.7, tau=1.05, attack=0.028)
+    x += 0.34 * fm_bell(1318.51, n, index=0.5, index_tau=0.08, tau=0.85, attack=0.034)
+    return x
+
+
+def make_ir(length=2.4, rt60=1.9, predelay=0.02):
     n = int(length * SR)
     tt = secs(n)
     decay = np.exp(-6.9 * tt / rt60)
     chans = []
     for _ in range(2):
         x = noise(n) * decay
-        x = svf(x, 9000.0 * np.exp(-tt / 0.9) + 1400.0, 0.6)  # high end dies first
+        x = svf(x, 9000.0 * np.exp(-tt / 0.8) + 1500.0, 0.6)  # high end dies first
         er = np.zeros(n)
         for d, g in ((0.011, 0.5), (0.019, 0.38), (0.031, 0.3), (0.047, 0.22), (0.063, 0.16)):
             er[int((d + rng.uniform(-0.002, 0.002)) * SR)] = g * rng.choice([-1, 1])
@@ -226,110 +208,88 @@ def make_ir(length=2.8, rt60=2.2, predelay=0.022):
 IR = make_ir()
 
 
+def allpass_chain(x, delays=(241, 389, 557, 113), g=0.55):
+    """Schroeder all-passes: flat magnitude, scrambled phase — decorrelates without changing level."""
+    for d in delays:
+        b = np.zeros(d + 1)
+        a = np.zeros(d + 1)
+        b[0], b[d] = -g, 1.0
+        a[0], a[d] = 1.0, -g
+        x = signal.lfilter(b, a, x)
+    return x
+
+
 def reverb(x):
-    return np.stack([signal.fftconvolve(x[c], IR[c])[: x.shape[1]] for c in range(2)])
+    """One tail, decorrelated per side by all-passes: wide, yet every pitch has the same
+    magnitude left and right (two independent noise IRs would not guarantee that)."""
+    mid = 0.5 * (x[0] + x[1])
+    w = signal.fftconvolve(mid, IR[0])[: x.shape[1]]
+    # each side gets its own all-pass chain, so neither stays phase-locked to the dry signal
+    return np.stack([allpass_chain(w, (173, 449, 311, 97)), allpass_chain(w, (241, 389, 557, 113))])
 
 
 # ── score ────────────────────────────────────────────────────────────────────
 def compose():
     bus = Bus()
+    close = LOCK - IRIS_START
+    k = int(close * SR)
+    u = secs(k) / close
+    speed = power4_inout_rate(u) / 4.0  # 0..1, the iris' own velocity curve
 
-    # HIT — Dmaj9 bloom pad
-    n = int((DUR - HIT) * SR)
-    pad = chord_pad(n) * env_ar(n, 0.006, 1.55)
-    bus.add(norm(pad), HIT, -6.0, send=0.38)
+    # CLOSE — aperture air: brightens and swells with the iris' speed, decorrelated L/R
+    fc = 240.0 + 1700.0 * speed**0.8 + 500.0 * u
+    amp = speed**0.6
+    air = np.stack([svf(noise(k), fc, 0.75, "bp"), svf(noise(k), fc, 0.75, "bp")]) * amp
+    air = np.stack([svf(c, 7000.0, 0.7) for c in air])
+    bus.add(fade(norm(air), 0.02, 0.006), IRIS_START, -19.0, send=0.12)
 
-    # HIT — glass bell (A5 + E6)
-    bell = fm_bell(880.0, n, tau=0.7) + 0.62 * fm_bell(1318.51, n, ratio=3.5, index=1.4, tau=0.6)
-    bus.add(norm(bell), HIT, -17.0, send=0.6)
+    # CLOSE — low tension: D-ish fundamental gliding up a fourth, growing into the lock
+    f = 55.0 * (73.42 / 55.0) ** (u**1.6)
+    tone = np.sin(2 * np.pi * np.cumsum(f) / SR)
+    tone = np.tanh(1.6 * tone) / np.tanh(1.6) * u**2.4
+    bus.add(fade(norm(tone), 0.05, 0.008), IRIS_START, -13.0)
 
-    # HIT — sub drop + felt transient
-    bus.add(norm(sub_drop(int(1.6 * SR))), HIT, -6.5)
-    m = int(0.06 * SR)
-    felt = svf(noise(m), 3200.0, 0.8, "bp") * env_ar(m, 0.0006, 0.006)
-    bus.add(norm(felt), HIT, -21.0, send=0.25)
+    # CLOSE — faint reverse swell of the bloom chord, ending a hair before the lock
+    m = int(0.45 * SR)
+    seed = bloom_chord(m) * env_ar(m, 0.004, 0.18)
+    tail = reverb(np.pad(np.stack([seed, seed]), ((0, 0), (0, int(2.0 * SR)))))
+    energy = np.convolve(np.sum(tail**2, axis=0), np.ones(int(0.01 * SR)), "same")
+    rev = tail[:, int(np.argmax(energy)) :][:, ::-1]
+    sw = int(0.42 * SR)
+    swell = fade(rev[:, -sw:], fin=0.3, fout=0.004)
+    bus.add(norm(swell), LOCK - 0.004 - 0.42, -20.0)
 
-    # STEP — the P's foot steps in: a soft felt knock (pitched body + muted tick)
+    # LOCK — aperture click: a 4 ms filtered tick with a tiny metallic ring
+    m = int(0.08 * SR)
+    tick = svf(noise(m), 3600.0, 1.2, "bp") * env_ar(m, 0.0004, 0.0018)
+    ring = np.sin(2 * np.pi * 2650.0 * secs(m)) * env_ar(m, 0.0005, 0.022)
+    bus.add(norm(norm(tick) + 0.45 * ring), LOCK, -15.0, send=0.18)
+
+    # LOCK — short sub thump
+    m = int(0.9 * SR)
+    tt = secs(m)
+    ff = 44.0 + 34.0 * np.exp(-tt / 0.05)
+    thump = np.sin(2 * np.pi * np.cumsum(ff) / SR) * env_ar(m, 0.0015, 0.22)
+    thump = svf(np.tanh(1.7 * thump) / np.tanh(1.7), 260.0, 0.7)
+    bus.add(norm(thump), LOCK, -7.5)
+
+    # BLOOM — glassy open chord over a quiet warm bed
+    m = int((DUR - LOCK) * SR)
+    bus.add(norm(bloom_chord(m)), LOCK, -11.0, send=0.38)
+    bus.add(norm(warm_bed(m)), LOCK, -15.0, send=0.2)
+
+    # FOOT — soft felt tap
     m = int(0.25 * SR)
     tt = secs(m)
-    body = np.sin(2 * np.pi * np.cumsum(120.0 + 90.0 * np.exp(-tt / 0.02)) / SR) * env_ar(m, 0.002, 0.045)
-    tick = svf(noise(m), 1300.0, 0.9, "bp") * env_ar(m, 0.0008, 0.008)
-    bus.add(norm(norm(body) + 0.35 * norm(tick)), STEP, -19.0, send=0.3, p=-0.08)
+    body = np.sin(2 * np.pi * np.cumsum(115.0 + 85.0 * np.exp(-tt / 0.018)) / SR) * env_ar(m, 0.002, 0.04)
+    felt = svf(noise(m), 1400.0, 0.9, "bp") * env_ar(m, 0.0008, 0.007)
+    bus.add(norm(norm(body) + 0.3 * norm(felt)), FOOT, -23.0, send=0.25, p=-0.2)
 
-    # INHALE — reverse reverb of the hit chord, ending a hair before the hit
-    m = int(0.5 * SR)
-    seed_chord = chord_pad(m, bright=0.7) * env_ar(m, 0.004, 0.22)
-    tail = reverb(np.pad(seed_chord, ((0, 0), (0, int(2.6 * SR)))))
-    energy = np.convolve(np.sum(tail**2, axis=0), np.ones(int(0.01 * SR)), "same")
-    rev = tail[:, int(np.argmax(energy)) :][:, ::-1]  # ends on the reverb's loudest moment
-    rev = np.stack([svf(c, 110.0, 0.7, "hp") for c in rev])
-    swell_len = HIT - 0.005 - 0.12
-    k = int(swell_len * SR)
-    swell = fade(rev[:, -k:], fin=0.32, fout=0.004)
-    bus.add(norm(swell), 0.12, -10.0)
-
-    # INHALE — rising air, decorrelated L/R
-    tt = secs(k)
-    prog = tt / swell_len
-    fc = 420.0 * (7200.0 / 420.0) ** prog
-    amp = prog**2.4
-    air = np.stack([svf(noise(k), fc, 0.9, "bp"), svf(noise(k), fc, 0.9, "bp")]) * amp
-    bus.add(fade(norm(air), fout=0.004), 0.12, -23.0, send=0.15)
-
-    # SLIDE — whoosh shaped by the mark's expo.inOut velocity, panning left with it
-    d = SETTLE - SLIDE
-    k = int(d * SR)
-    p = secs(k) / d
-
-    def expo_inout(u):
-        u = np.clip(u, 0, 1)
-        return np.where(u < 0.5, 2.0 ** (20 * u - 10) / 2, (2 - 2.0 ** (-20 * u + 10)) / 2)
-
-    pos = expo_inout(p)
-    vel = np.gradient(pos)
-    vel = (vel / vel.max()) ** 0.45
-    fc = 380.0 + 2300.0 * vel
-    wh = svf(noise(k), fc, 1.1, "bp") * vel
-    bus.add(fade(norm(wh), 0.01, 0.02), SLIDE, -21.0, send=0.25, p=-0.45 * pos)
-
-    # LETTERS — soft harp gliss, D-major pentatonic, one note per letter as PHYSIOFIT
-    # rises out of its mask (expo.out: a letter reads ~30 ms after its tween starts),
-    # each note panned to its letter
-    notes = [440.0, 493.88, 587.33, 659.26, 739.99, 880.0, 987.77, 1174.66, 1318.51]
-    for i, f in enumerate(notes):
-        m = int(1.2 * SR)
-        x = svf(pluck(f, m, tau=0.34), 5200.0, 0.7)
-        p = float(np.clip((LETTER_X[i] - 960.0) / 960.0, -0.6, 0.6))
-        bus.add(norm(x), LETTERS + 0.03 + i * LETTER_STAGGER, -27.0 + i * 0.3, send=0.7, p=p)
-
-    # SETTLE — chime, open fifth D6 + A6, gentler than the hit bell
-    m = int((DUR - CHIME) * SR)
-    chime = fm_bell(1174.66, m, ratio=2.0, index=1.0, index_tau=0.12, tau=0.95, attack=0.003)
-    chime += 0.55 * fm_bell(1760.0, m, ratio=2.0, index=0.8, index_tau=0.1, tau=0.8, attack=0.003)
-    bus.add(norm(chime), CHIME, -22.0, send=0.7)
-
-    # SWEEP — sparkle grains + high air, travelling L -> R with the light
-    start, length = SWEEP, 0.85
-    tones = [1760.0, 2217.46, 2637.02, 2959.96, 3520.0]
-    grains = 30
-    u = np.sort(rng.beta(2.2, 2.2, grains))
-    for j in range(grains):
-        m = int(0.14 * SR)
-        f = tones[rng.integers(len(tones))]
-        g = np.sin(2 * np.pi * f * secs(m) + rng.uniform(0, 6.28)) * env_ar(m, 0.002, 0.045)
-        bus.add(g, start + u[j] * length, -33.0 + rng.uniform(-3, 2), send=0.8, p=-0.55 + 1.1 * u[j])
-    k = int(length * SR)
-    pp = secs(k) / length
-    sh = svf(noise(k), 5200.0 + 3800.0 * pp, 1.6, "bp") * np.sin(np.pi * pp) ** 2
-    bus.add(norm(sh), start, -33.0, send=0.5, p=-0.5 + pp)
-
-    # EXHALE — downward air
-    k = int(0.75 * SR)
-    pp = secs(k) / 0.75
-    fc = 2600.0 * (240.0 / 2600.0) ** pp
-    env = np.minimum(pp / 0.18, 1.0) ** 1.5 * np.exp(-np.maximum(pp - 0.18, 0) / 0.32)
-    ex = np.stack([svf(noise(k), fc, 0.8), svf(noise(k), fc, 0.8)]) * env
-    bus.add(norm(ex), EXIT, -21.0, send=0.3)
+    # WORD — a breath of air travelling with the wipe
+    k = int(WIPE_LEN * SR)
+    pp = secs(k) / WIPE_LEN
+    breath = svf(noise(k), 2400.0 + 3400.0 * pp, 1.3, "bp") * np.sin(np.pi * np.clip(pp * 1.4, 0, 1)) ** 2
+    bus.add(norm(breath), WIPE_START, -31.0, send=0.4, p=-0.25 + 0.75 * pp)
 
     wet = reverb(bus.send)
     sos = signal.butter(2, [190.0, 9500.0], "bandpass", fs=SR, output="sos")
@@ -342,7 +302,6 @@ def limiter(x, ceiling, lookahead=0.002, release=0.08):
     peak = np.max(np.abs(x), axis=0)
     need = np.minimum(1.0, ceiling / np.maximum(peak, 1e-12))
     w = int(lookahead * SR)
-    # moving minimum over the lookahead window (gain drops before the peak arrives)
     padded = np.concatenate([need, np.ones(w)])
     gmin = np.min(np.lib.stride_tricks.sliding_window_view(padded, w + 1), axis=1)
     a = np.exp(-1.0 / (release * SR))
@@ -371,24 +330,22 @@ def main():
     dry, wet = compose()
     rms = lambda v: np.sqrt(np.mean(v**2))
     print(f"dry rms {20*np.log10(rms(dry)):.1f} dB · wet rms {20*np.log10(rms(wet)):.1f} dB")
-    mix = dry + db(-3.0) * wet
+    mix = dry + db(-6.0) * wet
 
-    # master: rumble HP, gentle glue saturation, de-click edges, tail fade to silence
+    # master: rumble HP, gentle glue, de-click edges, tails fade to silence with the picture
     sos = signal.butter(2, 28.0, "hp", fs=SR, output="sos")
     mix = signal.sosfiltfilt(sos, mix, axis=1)
     mix = norm(mix) * 0.9
-    mix = np.tanh(1.15 * mix) / np.tanh(1.15)
-    mix = fade(mix, fin=0.003)
-    tail0 = int(3.45 * SR)
+    mix = np.tanh(1.1 * mix) / np.tanh(1.1)
+    mix = fade(mix, fin=0.004)
+    tail0 = int((EXIT - 0.05) * SR)
     k = N - tail0
     mix[:, tail0:] *= 0.5 + 0.5 * np.cos(np.pi * np.arange(k) / k)
 
     os.makedirs(os.path.dirname(OUT_WAV), exist_ok=True)
     tmp = OUT_WAV + ".tmp.wav"
-
-    # loudness pass: measure, gain to target, limit to the true-peak ceiling, verify
     gain = 1.0
-    for _ in range(3):
+    for _ in range(4):
         y = limiter(mix * gain, db(CEILING_DBTP - 0.4))
         wavfile.write(tmp, SR, y.T.astype(np.float32))
         lufs, tp = measure(tmp)

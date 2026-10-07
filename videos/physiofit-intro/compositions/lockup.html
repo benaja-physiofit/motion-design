@@ -1,13 +1,16 @@
 <!doctype html>
 <!--
-  lockup — the official Physiofit Wort-Bild-Marke (paths 1:1 from
-  assets/brand/Physiofit_Logo_*.svg, never redrawn).
-  0.80s  the P grows out of the ink point (scale from the head's centre), the foot steps in
-  1.10s  the Bildmarke glides into its lockup slot (expo.inOut)
-  1.48s  PHYSIOFIT rises letter by letter out of a baseline mask
-  2.15s  one satin glint travels across mark and wordmark
-  3.05s  exhale — blur + fade + slight push, back to paper
-  Geometry is in the logo's own SVG units (viewBox crop below); px = units × S.
+  lockup — concept "Blende" (iris). The official Physiofit Wort-Bild-Marke
+  (paths 1:1 from assets/brand/Physiofit_Logo_*.svg, never redrawn).
+  0.00s  the frame is solid BlueDark
+  0.10s  a circular aperture closes onto the P's head (power4.inOut)
+  0.72s  lock: the circle IS the head; a hairline ring echoes out; the stem grows from it
+  0.86s  the foot steps in
+  0.98s  PHYSIOFIT wipes in from the mark
+  0.72–2.0s  the whole frame settles from 102.5% to 100%
+  2.20s  fade to paper
+  Everything lives in one full-frame SVG in the logo's own units, so the aperture
+  lands on the head exactly: logo units -> frame px = 960 + (u - 1000) * 0.52.
 -->
 <html lang="de">
   <head>
@@ -20,163 +23,108 @@
         #root {
           position: absolute;
           inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           overflow: hidden;
           pointer-events: none;
           --lk-ink: var(--ink, #1e3542);
-          --lk-glint: color-mix(in srgb, var(--lk-ink) 45%, #a9d6e6);
         }
-        #lk-lockup {
-          position: relative;
-          width: 874px; /* 1680 logo units × 0.52 */
-          height: 140px;
+        #lk-frame {
+          position: absolute;
+          inset: 0;
         }
-        .lk-layer,
-        .lk-layer svg {
+        #lk-frame svg {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
-          overflow: visible;
         }
-        .lk-ink path {
+        .lk-ink {
           fill: var(--lk-ink);
         }
-        #lk-mark-move {
-          z-index: 2;
-        }
-        #lk-mark-pop {
-          opacity: 0;
-          filter: blur(4px);
-        }
-        #lk-word {
-          z-index: 1;
-          /* letters rise out of this baseline mask (bottom edge just under the glyphs) */
-          clip-path: inset(-20% -2% 25px -2%);
-        }
-        #lk-glint {
-          z-index: 3;
-          -webkit-mask-image: linear-gradient(100deg, transparent 0%, transparent 45.5%, rgba(0, 0, 0, 0.8) 50%, transparent 54.5%, transparent 100%);
-          mask-image: linear-gradient(100deg, transparent 0%, transparent 45.5%, rgba(0, 0, 0, 0.8) 50%, transparent 54.5%, transparent 100%);
-          -webkit-mask-size: 300% 100%;
-          mask-size: 300% 100%;
-          -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-          -webkit-mask-position: 100% 0%;
-          mask-position: 100% 0%;
-        }
-        #lk-glint path {
-          fill: var(--lk-glint);
+        #lk-ring {
+          fill: none;
+          stroke: var(--lk-ink);
+          stroke-width: 1.5;
+          vector-effect: non-scaling-stroke;
         }
       </style>
 
       <div id="root" data-composition-id="lockup" data-width="1920" data-height="1080">
-        <div id="lk-lockup">
-          <!-- Bildmarke -->
-          <div id="lk-mark-move" class="lk-layer">
-            <div id="lk-mark-pop" class="lk-layer">
-              <svg class="lk-ink" viewBox="160 58 1680 270" aria-label="Physiofit">
-                <path id="lk-head" d="m219.8 233.1c24.2-2 57.1-2.2 94.5-2.2h25.2c46 0 83.3-37.4 83.3-83.4s-37.4-83.4-83.4-83.4h-10.2c-44.5 0-84.6 26.5-102.2 67.3l-46.7 108.5c10.5-3.2 23.2-5.4 39.5-6.7z" />
-                <g id="lk-foot"><path d="m177.5 270.9c-8.7 4.8-12.9 14.4-10.5 23.7 3.4 13.3 20.8 27.5 59.2 28 13.1-.2 24.9-8.1 30.1-20.2l18.7-43.6c-53.5.6-81.3 3-97.5 12z" /></g>
-              </svg>
-            </div>
-          </div>
-
-          <!-- Wortmarke -->
-          <div id="lk-word" class="lk-layer">
-            <svg class="lk-ink" viewBox="160 58 1680 270" aria-hidden="true">
-              <g class="lk-letter"><path d="m556.3 114h-33.4v155.8h33.4v-47.3h36.2c30 0 54.2-24.3 54.2-54.2 0-30-24.3-54.2-54.2-54.2h-36.2zm31.3 79.3h-31.3v-48.7h31.3c13.4 0 24.3 10.9 24.3 24.3 0 13.4-10.9 24.3-24.3 24.3z" /></g>
-              <g class="lk-letter"><path d="m781.6 114v61.2h-63.9v-61.2h-33.4v155.8h33.4v-62.6h63.9v62.6h33.4v-155.8z" /></g>
-              <g class="lk-letter"><path d="m848.4 114 61.2 94.6v61.2h33.4v-61.2l61.2-94.6h-39l-38.9 64-39-64z" /></g>
-              <g class="lk-letter"><path d="m1018 247.2 20.3-24.3c14 11.6 28.7 18.9 46.5 18.9s22.5-5.6 22.5-14.7v-.4c0-8.7-5.3-13.1-31.4-19.8-31.4-8-51.7-16.7-51.7-47.7v-.4c0-28.3 22.7-47 54.6-47s42.1 7.1 57.9 19.8l-17.8 25.8c-13.8-9.6-27.4-15.4-40.5-15.4s-20 6-20 13.6v.4c0 10.2 6.7 13.6 33.6 20.5 31.6 8.2 49.4 19.6 49.4 46.8v.4c0 31-23.6 48.3-57.2 48.3s-47.4-8.2-66.1-24.9z" /></g>
-              <g class="lk-letter"><path d="m1185 114h33.4v155.8h-33.4z" /></g>
-              <g class="lk-letter"><path d="m1349.1 111.3h-5.6c-44.6 0-80.7 36.1-80.7 80.7 0 44.6 36.1 80.7 80.7 80.7h5.6c44.6 0 80.7-36.1 80.7-80.7 0-44.6-36.1-80.7-80.7-80.7zm-2.8 130c-26.1 0-47.3-22.1-47.3-49.4s21.2-49.4 47.3-49.4 47.3 22.1 47.3 49.4-21.2 49.4-47.3 49.4z" /></g>
-              <g class="lk-letter"><path d="m1591.1 144.6v-30.6h-86.2-13.9-19.5v155.8h33.4v-61.2h75.1v-30.6h-75.1v-33.4z" /></g>
-              <g class="lk-letter"><path d="m1630 114h36.2v155.8h-36.2z" /></g>
-              <g class="lk-letter"><path d="m1835.2 114h-130.7v30.6h48.6v125.2h33.4v-125.2h48.7z" /></g>
-            </svg>
-          </div>
-
-          <!-- satin glint: the whole lockup in a lighter tone, revealed through one moving band -->
-          <div id="lk-glint" class="lk-layer" aria-hidden="true">
-            <svg viewBox="160 58 1680 270">
-              <path d="m219.8 233.1c24.2-2 57.1-2.2 94.5-2.2h25.2c46 0 83.3-37.4 83.3-83.4s-37.4-83.4-83.4-83.4h-10.2c-44.5 0-84.6 26.5-102.2 67.3l-46.7 108.5c10.5-3.2 23.2-5.4 39.5-6.7z" />
-              <path d="m177.5 270.9c-8.7 4.8-12.9 14.4-10.5 23.7 3.4 13.3 20.8 27.5 59.2 28 13.1-.2 24.9-8.1 30.1-20.2l18.7-43.6c-53.5.6-81.3 3-97.5 12z" />
-              <path d="m556.3 114h-33.4v155.8h33.4v-47.3h36.2c30 0 54.2-24.3 54.2-54.2 0-30-24.3-54.2-54.2-54.2h-36.2zm31.3 79.3h-31.3v-48.7h31.3c13.4 0 24.3 10.9 24.3 24.3 0 13.4-10.9 24.3-24.3 24.3z" />
-              <path d="m781.6 114v61.2h-63.9v-61.2h-33.4v155.8h33.4v-62.6h63.9v62.6h33.4v-155.8z" />
-              <path d="m848.4 114 61.2 94.6v61.2h33.4v-61.2l61.2-94.6h-39l-38.9 64-39-64z" />
-              <path d="m1018 247.2 20.3-24.3c14 11.6 28.7 18.9 46.5 18.9s22.5-5.6 22.5-14.7v-.4c0-8.7-5.3-13.1-31.4-19.8-31.4-8-51.7-16.7-51.7-47.7v-.4c0-28.3 22.7-47 54.6-47s42.1 7.1 57.9 19.8l-17.8 25.8c-13.8-9.6-27.4-15.4-40.5-15.4s-20 6-20 13.6v.4c0 10.2 6.7 13.6 33.6 20.5 31.6 8.2 49.4 19.6 49.4 46.8v.4c0 31-23.6 48.3-57.2 48.3s-47.4-8.2-66.1-24.9z" />
-              <path d="m1185 114h33.4v155.8h-33.4z" />
-              <path d="m1349.1 111.3h-5.6c-44.6 0-80.7 36.1-80.7 80.7 0 44.6 36.1 80.7 80.7 80.7h5.6c44.6 0 80.7-36.1 80.7-80.7 0-44.6-36.1-80.7-80.7-80.7zm-2.8 130c-26.1 0-47.3-22.1-47.3-49.4s21.2-49.4 47.3-49.4 47.3 22.1 47.3 49.4-21.2 49.4-47.3 49.4z" />
-              <path d="m1591.1 144.6v-30.6h-86.2-13.9-19.5v155.8h33.4v-61.2h75.1v-30.6h-75.1v-33.4z" />
-              <path d="m1630 114h36.2v155.8h-36.2z" />
-              <path d="m1835.2 114h-130.7v30.6h48.6v125.2h33.4v-125.2h48.7z" />
-            </svg>
-          </div>
+        <div id="lk-frame">
+          <svg viewBox="0 0 1920 1080" aria-label="Physiofit">
+            <defs>
+              <clipPath id="lk-stem-clip"><circle id="lk-stem-r" cx="339.5" cy="147.5" r="83.4" /></clipPath>
+              <clipPath id="lk-word-clip"><rect id="lk-word-w" x="505" y="95" width="0" height="200" /></clipPath>
+            </defs>
+            <g id="lk-cam" data-layout-allow-overflow="true">
+              <g transform="translate(960 540) scale(0.52) translate(-1000 -193)">
+                <circle id="lk-ring" cx="339.5" cy="147.5" r="83.4" opacity="0" />
+                <!-- the aperture: starts covering the frame, closes onto the head -->
+                <circle id="lk-iris" class="lk-ink" cx="1000" cy="193" r="2300" />
+                <!-- Bildmarke: head + stem (revealed by a growing circle), then the foot -->
+                <g clip-path="url(#lk-stem-clip)">
+                  <path id="lk-head" class="lk-ink" opacity="0" d="m219.8 233.1c24.2-2 57.1-2.2 94.5-2.2h25.2c46 0 83.3-37.4 83.3-83.4s-37.4-83.4-83.4-83.4h-10.2c-44.5 0-84.6 26.5-102.2 67.3l-46.7 108.5c10.5-3.2 23.2-5.4 39.5-6.7z" />
+                </g>
+                <g id="lk-foot" opacity="0">
+                  <path class="lk-ink" d="m177.5 270.9c-8.7 4.8-12.9 14.4-10.5 23.7 3.4 13.3 20.8 27.5 59.2 28 13.1-.2 24.9-8.1 30.1-20.2l18.7-43.6c-53.5.6-81.3 3-97.5 12z" />
+                </g>
+                <!-- Wortmarke -->
+                <g clip-path="url(#lk-word-clip)">
+                  <g id="lk-word">
+                    <path class="lk-ink" d="m556.3 114h-33.4v155.8h33.4v-47.3h36.2c30 0 54.2-24.3 54.2-54.2 0-30-24.3-54.2-54.2-54.2h-36.2zm31.3 79.3h-31.3v-48.7h31.3c13.4 0 24.3 10.9 24.3 24.3 0 13.4-10.9 24.3-24.3 24.3z" />
+                    <path class="lk-ink" d="m781.6 114v61.2h-63.9v-61.2h-33.4v155.8h33.4v-62.6h63.9v62.6h33.4v-155.8z" />
+                    <path class="lk-ink" d="m848.4 114 61.2 94.6v61.2h33.4v-61.2l61.2-94.6h-39l-38.9 64-39-64z" />
+                    <path class="lk-ink" d="m1018 247.2 20.3-24.3c14 11.6 28.7 18.9 46.5 18.9s22.5-5.6 22.5-14.7v-.4c0-8.7-5.3-13.1-31.4-19.8-31.4-8-51.7-16.7-51.7-47.7v-.4c0-28.3 22.7-47 54.6-47s42.1 7.1 57.9 19.8l-17.8 25.8c-13.8-9.6-27.4-15.4-40.5-15.4s-20 6-20 13.6v.4c0 10.2 6.7 13.6 33.6 20.5 31.6 8.2 49.4 19.6 49.4 46.8v.4c0 31-23.6 48.3-57.2 48.3s-47.4-8.2-66.1-24.9z" />
+                    <path class="lk-ink" d="m1185 114h33.4v155.8h-33.4z" />
+                    <path class="lk-ink" d="m1349.1 111.3h-5.6c-44.6 0-80.7 36.1-80.7 80.7 0 44.6 36.1 80.7 80.7 80.7h5.6c44.6 0 80.7-36.1 80.7-80.7 0-44.6-36.1-80.7-80.7-80.7zm-2.8 130c-26.1 0-47.3-22.1-47.3-49.4s21.2-49.4 47.3-49.4 47.3 22.1 47.3 49.4-21.2 49.4-47.3 49.4z" />
+                    <path class="lk-ink" d="m1591.1 144.6v-30.6h-86.2-13.9-19.5v155.8h33.4v-61.2h75.1v-30.6h-75.1v-33.4z" />
+                    <path class="lk-ink" d="m1630 114h36.2v155.8h-36.2z" />
+                    <path class="lk-ink" d="m1835.2 114h-130.7v30.6h48.6v125.2h33.4v-125.2h48.7z" />
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
         </div>
       </div>
 
       <script>
         (function () {
-          // Shared beats (seconds) — keep in sync with atmosphere.html and the sonic logo.
-          var HIT = 0.8;
-          var SLIDE = 1.1;
-          var SETTLE = 1.7;
-          var LETTERS = 1.48;
-          var STAGGER = 0.036;
-          var SWEEP = 2.15;
-          var EXIT = 3.05;
-
-          // Logo geometry in its own SVG units (viewBox 160 58 1680 270).
-          var VB_X = 160;
-          var VB_Y = 58;
-          var VB_W = 1680;
-          var HEAD = { x: 339.5, y: 147.5 }; // centre of the P's round head
-          var CENTRE = { x: 1000, y: 193 }; // optical centre of the whole lockup
-
-          var S = document.getElementById("lk-lockup").offsetWidth / VB_W;
-          var headPx = { x: (HEAD.x - VB_X) * S, y: (HEAD.y - VB_Y) * S };
-          // At the hit the head sits on the ink point (frame centre); it then glides to its slot.
-          var dx = (CENTRE.x - HEAD.x) * S;
-          var dy = (CENTRE.y - HEAD.y) * S;
+          // Shared beats (seconds) — keep in sync with sound/sonic_logo.py.
+          var IRIS = 0.1;
+          var LOCK = 0.72;
+          var FOOT = 0.86;
+          var WIPE = 0.98;
+          var EXIT = 2.2;
+          var HEAD = { x: 339.5, y: 147.5, r: 83.4 }; // the P's round head, logo units
 
           var tl = gsap.timeline({ paused: true });
 
-          // the P grows out of the ink point; the foot steps in under it
-          gsap.set("#lk-mark-pop", { transformOrigin: headPx.x + "px " + headPx.y + "px" });
-          tl.fromTo("#lk-mark-pop", { scale: 0.16, rotation: -10 }, { scale: 1, rotation: 0, duration: 0.95, ease: "expo.out" }, HIT);
-          tl.to("#lk-mark-pop", { opacity: 1, duration: 0.06, ease: "power1.out" }, HIT);
-          tl.to("#lk-mark-pop", { filter: "blur(0px)", duration: 0.32, ease: "power2.out" }, HIT);
-          tl.fromTo("#lk-foot", { x: -90, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, HIT + 0.12);
+          // the frame settles very slightly once the mark has locked
+          tl.fromTo("#lk-cam", { scale: 1.025, svgOrigin: "960 540" }, { scale: 1, svgOrigin: "960 540", duration: 1.28, ease: "power2.out", immediateRender: true }, LOCK);
 
-          // the Bildmarke glides into its lockup slot
-          tl.fromTo("#lk-mark-move", { x: dx, y: dy }, { x: 0, y: 0, duration: SETTLE - SLIDE, ease: "expo.inOut" }, SLIDE);
-
-          // PHYSIOFIT rises out of the baseline mask, left to right
+          // the aperture closes onto the head
           tl.fromTo(
-            "#lk-word .lk-letter",
-            { y: 180, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, ease: "expo.out", stagger: STAGGER },
-            LETTERS,
+            "#lk-iris",
+            { attr: { r: 2300, cx: 1000, cy: 193 } },
+            { attr: { r: HEAD.r, cx: HEAD.x, cy: HEAD.y }, duration: LOCK - IRIS, ease: "power4.inOut" },
+            IRIS,
           );
 
-          // one satin glint across mark and wordmark (registry text-shimmer technique)
-          tl.fromTo(
-            "#lk-glint",
-            { maskPosition: "100% 0%", webkitMaskPosition: "100% 0%" },
-            { maskPosition: "0% 0%", webkitMaskPosition: "0% 0%", duration: 0.85, ease: "sine.inOut" },
-            SWEEP,
-          );
+          // lock: the circle becomes the head; one hairline echo; the stem grows out of the head
+          tl.set("#lk-iris", { opacity: 0 }, LOCK);
+          tl.set("#lk-head", { opacity: 1 }, LOCK);
+          tl.fromTo("#lk-stem-r", { attr: { r: HEAD.r } }, { attr: { r: 280 }, duration: 0.3, ease: "power2.out" }, LOCK);
+          tl.fromTo("#lk-ring", { attr: { r: HEAD.r }, opacity: 0.4 }, { attr: { r: 233 }, opacity: 0, duration: 0.55, ease: "power2.out", immediateRender: false }, LOCK);
 
-          // exhale
-          tl.fromTo(
-            "#lk-lockup",
-            { opacity: 1, scale: 1, filter: "blur(0px)" },
-            { opacity: 0, scale: 1.035, filter: "blur(10px)", duration: 0.6, ease: "power2.in" },
-            EXIT,
-          );
+          // the foot steps in
+          tl.fromTo("#lk-foot", { x: -80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "expo.out", immediateRender: false }, FOOT);
+
+          // PHYSIOFIT wipes in from the mark
+          tl.fromTo("#lk-word-w", { attr: { width: 0 } }, { attr: { width: 1360 }, duration: 0.5, ease: "expo.out" }, WIPE);
+          tl.fromTo("#lk-word", { x: -30 }, { x: 0, duration: 0.5, ease: "expo.out" }, WIPE);
+
+          // fade to paper
+          tl.fromTo("#lk-frame", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, EXIT);
 
           tl.seek(0);
           window.__timelines["lockup"] = tl;

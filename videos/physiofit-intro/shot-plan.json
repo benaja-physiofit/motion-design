@@ -1,30 +1,27 @@
 {
   "category": "logo-reveal",
-  "duration_s": 4.0,
+  "concept": "4 · Blende (chosen from storyboard round 2)",
+  "duration_s": 2.5,
   "fps": 60,
   "canvas": {
     "w": 1920,
     "h": 1080,
     "aspect": "16:9"
   },
-  "style": "Premium minimal SaaS sonic-logo sting in light mode (Notion / Linear light register). Clean paper stage, ink-blue brand mark, one breathing motif, one satin glint. Reusable 4s intro for Physiofit product-launch and Academy videos.",
+  "style": "Premium minimal SaaS sonic-logo sting, light. The frame starts as solid Physiofit BlueDark; a circular aperture closes and locks as the head of the P, the rest of the mark grows out of it, the wordmark wipes in, hold, fade to paper.",
   "palette": {
     "paper": "#FFFFFF",
     "paper_edge": "#EDF1F3",
-    "ink": "#1E3542",
-    "tint": "#CFE3EA",
-    "glint": "ink 45% + #A9D6E6",
-    "note": "ink = official Physiofit BlueDark from the brand SVGs; tint/glint are derived halo tones"
+    "ink": "#1E3542"
   },
   "font": "none — the wordmark is the official vector logotype",
   "beats": [
-    0.8,
-    0.95,
-    1.1,
-    1.48,
-    1.92,
-    2.15,
-    3.05
+    0.1,
+    0.72,
+    0.86,
+    0.98,
+    2.2,
+    2.5
   ],
   "export": "mp4",
   "asset_needs": [
@@ -33,20 +30,19 @@
       "kind": "logo",
       "source": "assets/brand/Physiofit_Logo_BlueDark.svg",
       "treatment": "none",
-      "status": "official Physiofit Wort-Bild-Marke supplied by the user; paths used 1:1 (Bildmarke head + foot, 9 letter paths)"
+      "status": "official Physiofit Wort-Bild-Marke supplied by the user; paths used 1:1"
     }
   ],
   "block": null,
   "customize": {
     "reused": {
-      "text-shimmer": "specular band technique — a lighter-toned copy of the whole lockup revealed through one moving mask band (satin glint)",
-      "grain-overlay": "fractal-noise grain, multiply, very low opacity, finite iteration count — breaks up banding in the light gradients"
+      "grain-overlay": "fractal-noise grain, multiply, very low opacity, finite iteration count"
     },
     "hand_authored": [
-      "inhale/exhale ink motif (point + hairline gather, ripple + ring on the hit)",
-      "the P grows out of the ink point (scale from the head's centre), the foot steps in",
-      "Bildmarke glides to its lockup slot; PHYSIOFIT rises letter by letter out of a baseline mask",
-      "custom synthesized sonic logo, composed frame-accurately to the beats"
+      "full-frame aperture closing onto the P's head (power4.inOut)",
+      "stem grows out of the head via a widening clip circle; hairline ring echo",
+      "foot steps in, wordmark wipes from the mark, 102.5% -> 100% settle",
+      "minimal synthesized sound design composed to the beats"
     ]
   },
   "content": {
@@ -57,47 +53,37 @@
   },
   "sound": {
     "file": "assets/audio/physiofit-sonic-logo.wav",
-    "key": "D major (Dmaj9 colour)",
+    "key": "D (open fifth + ninth)",
     "cues": [
       {
-        "t": 0.12,
-        "end": 0.795,
-        "what": "inhale — reverse-reverb swell of the hit chord + rising air"
+        "t": 0.1,
+        "end": 0.72,
+        "what": "close — aperture air shaped by the iris' velocity, low tension tone rising a fourth, faint reverse swell of the bloom chord"
       },
       {
-        "t": 0.8,
-        "what": "hit — sub drop + felt transient + Dmaj9 bloom pad + glass bell"
+        "t": 0.72,
+        "what": "lock — 4 ms aperture click with a tiny metallic ring + short sub thump"
       },
       {
-        "t": 0.95,
-        "what": "step — soft felt knock as the P's foot steps in"
+        "t": 0.72,
+        "what": "bloom — glassy open chord D5 · A5 · E6 over a quiet warm D bed"
       },
       {
-        "t": 1.1,
-        "end": 1.7,
-        "what": "air whoosh following the mark's velocity (pans left)"
+        "t": 0.9,
+        "what": "foot — soft felt tap"
       },
       {
-        "t": 1.51,
-        "end": 1.8,
-        "what": "soft harp gliss, one note per letter as PHYSIOFIT rises, panned to each letter"
+        "t": 0.98,
+        "end": 1.48,
+        "what": "word — a breath of air travelling L→R with the wipe"
       },
       {
-        "t": 1.92,
-        "what": "settle chime, open fifth (D6 + A6)"
-      },
-      {
-        "t": 2.15,
-        "end": 3.0,
-        "what": "sparkle following the satin glint L→R"
-      },
-      {
-        "t": 3.05,
-        "end": 3.65,
-        "what": "exhale — downward air, tail decays to silence at 4.0"
+        "t": 2.2,
+        "end": 2.5,
+        "what": "tails fade to silence with the picture"
       }
     ],
     "loudness_target": "-15 LUFS integrated, ≤ -1 dBTP"
   },
-  "brief": "Out of clean paper, a single ink point breathes in: a hairline stretches across the centre, then gathers back into the point while the sound swells as a reversed echo of the chord to come. On the downbeat at 0.8s the point becomes the head of the Physiofit P — it grows out of the point with a soft ink ripple and one ring, a warm sub and a Dmaj9 chord with a glass bell — and the foot steps in underneath with a soft felt knock. The Bildmarke glides into its lockup slot, then PHYSIOFIT rises letter by letter out of a baseline mask to a quiet harp gliss. A chime settles the lockup, one satin glint passes across it, then everything exhales — blur, fade, a downward breath — back to paper at 3.7s, leaving a clean reverb tail to 4.0s. Dominant motif: breath — inhale, bloom, exhale."
+  "brief": "The intro opens on a solid field of Physiofit BlueDark. A circular aperture closes — fast in the middle, soft at both ends — revealing clean paper, and locks exactly as the round head of the P with a precise click and a sub thump while a glassy open chord blooms. The stem grows out of the head, the foot steps in, PHYSIOFIT wipes in from the mark, the frame settles a touch, holds, and fades to paper at 2.5s."
 }

@@ -1,11 +1,8 @@
 <!doctype html>
 <!--
-  atmosphere — the light stage and the breath motif of the Physiofit intro.
-  Inhale: an ink point appears, a hairline stretches across the centre, then
-  gathers back into the point. Bloom: at the hit (0.8s) a soft ink ripple and
-  one ring spread while the lockup scene grows the mark out of the point.
-  Exhale: halo and grid fade back to clean paper from 3.05s.
-  Colours come from the host's --ink / --tint variables.
+  atmosphere — the paper the iris opens onto: white at the centre, a cool
+  hint of the brand blue at the edges. Static by design; the lockup carries
+  all of the motion.
 -->
 <html lang="de">
   <head>
@@ -20,139 +17,16 @@
           inset: 0;
           overflow: hidden;
           pointer-events: none;
-          --atm-ink: var(--ink, #1e3542);
-          --atm-tint: var(--tint, #cfe3ea);
           --atm-paper: #ffffff;
           --atm-paper-edge: #edf1f3;
-          --atm-ink-05: color-mix(in srgb, var(--atm-ink) 5%, transparent);
-          --atm-ink-07: color-mix(in srgb, var(--atm-ink) 7%, transparent);
-          --atm-ink-12: color-mix(in srgb, var(--atm-ink) 12%, transparent);
-          --atm-ink-14: color-mix(in srgb, var(--atm-ink) 14%, transparent);
-          --atm-ink-28: color-mix(in srgb, var(--atm-ink) 28%, transparent);
-          --atm-ink-45: color-mix(in srgb, var(--atm-ink) 45%, transparent);
-          background: radial-gradient(ellipse 80% 80% at 50% 50%, var(--atm-paper) 30%, var(--atm-paper-edge) 100%);
-        }
-        #atm-glow {
-          position: absolute;
-          inset: 0;
-          margin: auto;
-          width: 1500px;
-          height: 1000px;
-          background: radial-gradient(ellipse at center, var(--atm-tint) 0%, transparent 62%);
-          opacity: 0;
-        }
-        #atm-grid {
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(var(--atm-ink-12) 1.1px, transparent 1.6px);
-          background-size: 34px 34px;
-          background-position: 7px 13px;
-          -webkit-mask-image: radial-gradient(ellipse 46% 52% at 50% 50%, #000 0%, transparent 100%);
-          mask-image: radial-gradient(ellipse 46% 52% at 50% 50%, #000 0%, transparent 100%);
-          opacity: 0;
-        }
-        #atm-vignette {
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 50%, var(--atm-ink-07) 100%);
-        }
-        .atm-centered {
-          position: absolute;
-          inset: 0;
-          margin: auto;
-        }
-        #atm-bloom {
-          width: 720px;
-          height: 720px;
-          border-radius: 50%;
-          background: radial-gradient(
-            circle,
-            var(--atm-ink-14) 0%,
-            color-mix(in srgb, var(--atm-tint) 70%, transparent) 26%,
-            var(--atm-ink-05) 46%,
-            transparent 66%
-          );
-          opacity: 0;
-        }
-        #atm-ring {
-          width: 168px;
-          height: 168px;
-          border-radius: 50%;
-          border: 1.5px solid var(--atm-ink-28);
-          opacity: 0;
-        }
-        #atm-line {
-          width: 720px;
-          height: 2px;
-          border-radius: 2px;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            var(--atm-ink-14) 22%,
-            var(--atm-ink-45) 50%,
-            var(--atm-ink-14) 78%,
-            transparent 100%
-          );
-          opacity: 0;
-        }
-        #atm-point {
-          width: 14px;
-          height: 14px;
-          border-radius: 50%;
-          background: var(--atm-ink);
-          box-shadow:
-            0 0 0 7px var(--atm-ink-05),
-            0 6px 22px var(--atm-ink-28);
-          opacity: 0;
+          background: radial-gradient(ellipse 80% 80% at 50% 50%, var(--atm-paper) 35%, var(--atm-paper-edge) 100%);
         }
       </style>
 
-      <div id="root" data-composition-id="atmosphere" data-width="1920" data-height="1080">
-        <div id="atm-glow"></div>
-        <div id="atm-grid"></div>
-        <div id="atm-vignette"></div>
-        <div id="atm-bloom" class="atm-centered" data-layout-allow-overflow="true"></div>
-        <div id="atm-ring" class="atm-centered"></div>
-        <div id="atm-line" class="atm-centered"></div>
-        <div id="atm-point" class="atm-centered"></div>
-      </div>
+      <div id="root" data-composition-id="atmosphere" data-width="1920" data-height="1080"></div>
 
       <script>
-        (function () {
-          // Shared beats (seconds) — keep in sync with lockup.html and the sonic logo.
-          var HIT = 0.8;
-          var EXIT = 3.05;
-
-          var tl = gsap.timeline({ paused: true });
-
-          // stage
-          tl.fromTo("#atm-glow", { opacity: 0, scale: 0.7 }, { opacity: 0.6, scale: 0.94, duration: 0.68, ease: "power2.in" }, 0.12);
-          tl.to("#atm-glow", { opacity: 1, duration: 0.14, ease: "power2.out" }, HIT);
-          tl.to("#atm-glow", { opacity: 0.6, duration: 1.1, ease: "sine.out" }, HIT + 0.14);
-          tl.to("#atm-glow", { scale: 1.06, duration: EXIT - HIT, ease: "sine.inOut" }, HIT);
-          tl.to("#atm-glow", { opacity: 0, duration: 0.62, ease: "sine.in" }, EXIT);
-
-          tl.to("#atm-grid", { opacity: 0.7, duration: 1.2, ease: "sine.out" }, 0.2);
-          tl.to("#atm-grid", { opacity: 0, duration: 0.55, ease: "sine.in" }, EXIT);
-
-          // inhale: the ink point appears, the hairline stretches, then both gather
-          tl.fromTo("#atm-point", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.42, ease: "power2.out" }, 0.12);
-          tl.fromTo("#atm-line", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.46, ease: "expo.out" }, 0.16);
-          tl.to("#atm-line", { scaleX: 0, opacity: 0.4, duration: 0.18, ease: "power3.in" }, HIT - 0.18);
-          tl.to("#atm-point", { scale: 1.5, duration: 0.18, ease: "power3.in" }, HIT - 0.18);
-          tl.to("#atm-line", { opacity: 0, duration: 0.01 }, HIT);
-          // the point hands over to the mark, which grows out of it
-          tl.to("#atm-point", { opacity: 0, duration: 0.12, ease: "power1.out" }, HIT + 0.04);
-
-          // bloom: soft ink ripple + one ring
-          tl.fromTo("#atm-bloom", { scale: 0.25 }, { scale: 1.7, duration: 1.0, ease: "expo.out" }, HIT);
-          tl.to("#atm-bloom", { opacity: 1, duration: 0.06, ease: "power1.out" }, HIT);
-          tl.to("#atm-bloom", { opacity: 0, duration: 0.85, ease: "power2.out" }, HIT + 0.06);
-          tl.fromTo("#atm-ring", { scale: 0.8, opacity: 0.9 }, { scale: 2.9, opacity: 0, duration: 1.0, ease: "expo.out", immediateRender: false }, HIT);
-
-          tl.seek(0);
-          window.__timelines["atmosphere"] = tl;
-        })();
+        window.__timelines["atmosphere"] = gsap.timeline({ paused: true });
       </script>
     </template>
   </body>
