@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+  Physiofit intro — 4.0s sonic-logo sting for product-launch and Academy videos.
+  Beats: 0.80 hit · 1.18 slide · 1.85 settle · 2.10 sweep · 3.05 exhale · 3.70 black · 4.00 end
+-->
+<html lang="de" data-composition-variables="[
+    {&quot;id&quot;:&quot;accent&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Accent (light)&quot;,&quot;default&quot;:&quot;#5EE6C3&quot;},
+    {&quot;id&quot;:&quot;accentDeep&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Accent (deep)&quot;,&quot;default&quot;:&quot;#139C80&quot;}
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #07080a;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #07080a;
+      }
+      [data-composition-id="main"] > div[data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-nxch" id="root" data-composition-id="main" data-start="0" data-duration="4" data-fps="60" data-width="1920" data-height="1080">
+      <div data-hf-id="hf-tnz7" id="el-atmosphere" data-composition-id="atmosphere" data-composition-src="compositions/atmosphere.html" data-start="0" data-duration="4" data-track-index="0" data-width="1920" data-height="1080"></div>
+
+      <div data-hf-id="hf-ehoe" id="el-lockup" data-composition-id="lockup" data-composition-src="compositions/lockup.html" data-start="0" data-duration="4" data-track-index="1" data-width="1920" data-height="1080"></div>
+
+      <div data-hf-id="hf-y2bo" id="el-grain" data-composition-id="grain" data-composition-src="compositions/grain.html" data-start="0" data-duration="4" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+      <!-- sonic logo: custom synthesized, composed frame-accurately to the beats above -->
+      <audio data-hf-id="hf-6hqw" id="el-sonic-logo" src="assets/audio/physiofit-sonic-logo.wav" data-start="0" data-duration="4" data-track-index="10" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+  atmosphere — the stage and the light motif of the Physiofit intro.
+  Inhale: a point of light appears, a hairline stretches across the centre,
+  then gathers back into the point. Bloom: at the hit (0.8s) the light flashes
+  out as a soft bloom and one ring while the lockup scene takes over.
+  Exhale: the glow and grid fade to black from 3.05s.
+  Colours come from the host's --accent / --accentDeep variables.
+-->
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <title>Atmosphere</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+          --atm-accent: var(--accent, #5ee6c3);
+          --atm-ink: #ffffff;
+          --atm-a07: color-mix(in srgb, var(--atm-accent) 7%, transparent);
+          --atm-a08: color-mix(in srgb, var(--atm-accent) 8%, transparent);
+          --atm-a16: color-mix(in srgb, var(--atm-accent) 16%, transparent);
+          --atm-a30: color-mix(in srgb, var(--atm-accent) 30%, transparent);
+          --atm-a55: color-mix(in srgb, var(--atm-accent) 55%, transparent);
+          --atm-dot: rgba(255, 255, 255, 0.1);
+          --atm-ring: rgba(255, 255, 255, 0.35);
+          --atm-flash: rgba(255, 255, 255, 0.55);
+          --atm-shade: rgba(0, 0, 0, 0.62);
+        }
+        #atm-glow {
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 1500px;
+          height: 1000px;
+          background: radial-gradient(
+            ellipse at center,
+            var(--atm-a16) 0%,
+            var(--atm-a07) 32%,
+            transparent 66%
+          );
+          opacity: 0;
+        }
+        #atm-grid {
+          position: absolute;
+          inset: 0;
+          background-image: radial-gradient(var(--atm-dot) 1.1px, transparent 1.6px);
+          background-size: 34px 34px;
+          background-position: 7px 13px;
+          -webkit-mask-image: radial-gradient(ellipse 46% 52% at 50% 50%, #000 0%, transparent 100%);
+          mask-image: radial-gradient(ellipse 46% 52% at 50% 50%, #000 0%, transparent 100%);
+          opacity: 0;
+        }
+        #atm-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 45%, var(--atm-shade) 100%);
+        }
+        .atm-centered {
+          position: absolute;
+          inset: 0;
+          margin: auto;
+        }
+        #atm-bloom {
+          width: 720px;
+          height: 720px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            var(--atm-flash) 0%,
+            var(--atm-a30) 22%,
+            var(--atm-a08) 44%,
+            transparent 66%
+          );
+          opacity: 0;
+        }
+        #atm-ring {
+          width: 168px;
+          height: 168px;
+          border-radius: 50%;
+          border: 1.5px solid var(--atm-ring);
+          box-shadow: 0 0 22px var(--atm-a30);
+          opacity: 0;
+        }
+        #atm-line {
+          width: 720px;
+          height: 2px;
+          border-radius: 2px;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            var(--atm-a30) 22%,
+            var(--atm-ink) 50%,
+            var(--atm-a30) 78%,
+            transparent 100%
+          );
+          filter: drop-shadow(0 0 6px var(--atm-a55));
+          opacity: 0;
+        }
+        #atm-point {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: var(--atm-ink);
+          box-shadow:
+            0 0 18px 4px var(--atm-a55),
+            0 0 70px 22px var(--atm-a30);
+          opacity: 0;
+        }
+      </style>
+
+      <div data-hf-id="hf-0hjj" id="root" data-composition-id="atmosphere" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-28az" id="atm-glow"></div>
+        <div data-hf-id="hf-7mco" id="atm-grid"></div>
+        <div data-hf-id="hf-os6e" id="atm-vignette"></div>
+        <div data-hf-id="hf-83x8" id="atm-bloom" class="atm-centered" data-layout-allow-overflow="true"></div>
+        <div data-hf-id="hf-4ajc" id="atm-ring" class="atm-centered"></div>
+        <div data-hf-id="hf-ucjc" id="atm-line" class="atm-centered"></div>
+        <div data-hf-id="hf-5o2s" id="atm-point" class="atm-centered"></div>
+      </div>
+
+      <script>
+        (function () {
+          // Shared beats (seconds) — keep in sync with lockup.html and the sonic logo.
+          var HIT = 0.8;
+          var EXIT = 3.05;
+
+          var tl = gsap.timeline({ paused: true });
+
+          // stage
+          tl.fromTo("#atm-glow", { opacity: 0, scale: 0.7 }, { opacity: 0.55, scale: 0.94, duration: 0.68, ease: "power2.in" }, 0.12);
+          tl.to("#atm-glow", { opacity: 1, duration: 0.14, ease: "power2.out" }, HIT);
+          tl.to("#atm-glow", { opacity: 0.72, duration: 1.1, ease: "sine.out" }, HIT + 0.14);
+          tl.to("#atm-glow", { scale: 1.06, duration: EXIT - HIT, ease: "sine.inOut" }, HIT);
+          tl.to("#atm-glow", { opacity: 0, duration: 0.62, ease: "sine.in" }, EXIT);
+
+          tl.to("#atm-grid", { opacity: 0.6, duration: 1.2, ease: "sine.out" }, 0.2);
+          tl.to("#atm-grid", { opacity: 0, duration: 0.55, ease: "sine.in" }, EXIT);
+
+          // inhale: the point appears, the hairline stretches, then both gather
+          tl.fromTo("#atm-point", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.42, ease: "power2.out" }, 0.12);
+          tl.fromTo("#atm-line", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.46, ease: "expo.out" }, 0.16);
+          tl.to("#atm-line", { scaleX: 0, opacity: 0.4, duration: 0.18, ease: "power3.in" }, HIT - 0.18);
+          tl.to("#atm-point", { scale: 1.9, duration: 0.18, ease: "power3.in" }, HIT - 0.18);
+          tl.to("#atm-line", { opacity: 0, duration: 0.01 }, HIT);
+          tl.to("#atm-point", { opacity: 0, scale: 0.4, duration: 0.2, ease: "power2.out" }, HIT);
+
+          // bloom: flash + one ring
+          tl.fromTo("#atm-bloom", { scale: 0.25 }, { scale: 1.7, duration: 1.0, ease: "expo.out" }, HIT);
+          tl.to("#atm-bloom", { opacity: 0.9, duration: 0.06, ease: "power1.out" }, HIT);
+          tl.to("#atm-bloom", { opacity: 0, duration: 0.85, ease: "power2.out" }, HIT + 0.06);
+          tl.fromTo("#atm-ring", { scale: 0.8, opacity: 0.75 }, { scale: 2.9, opacity: 0, duration: 1.0, ease: "expo.out", immediateRender: false }, HIT);
+
+          tl.seek(0);
+          window.__timelines["atmosphere"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

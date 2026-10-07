@@ -1,0 +1,7 @@
+# HyperFrames tool state / caches
+.hyperframes/
+.media/
+node_modules/
+__pycache__/
+# per-frame proof snapshots (contact sheets are kept)
+snapshots/frame-*.png

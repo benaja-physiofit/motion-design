@@ -1,0 +1,66 @@
+{
+  "category": "logo-reveal",
+  "duration_s": 4.0,
+  "fps": 60,
+  "canvas": { "w": 1920, "h": 1080, "aspect": "16:9" },
+  "style": "Premium minimal SaaS sonic-logo sting (Linear / Notion / Vercel register). Near-black stage, one breathing light motif, metallic wordmark, a single specular pass, nothing decorative that can't name its job. Reusable 4s intro for Physiofit product-launch and Academy videos.",
+  "palette": {
+    "bg": "#07080A",
+    "ink": "#F2F4F7",
+    "ink_low": "#A7AEB9",
+    "accent": "#5EE6C3",
+    "accent_deep": "#139C80",
+    "note": "accent pair is a placeholder health-mint; swap to the official Physiofit brand colours via the composition variables"
+  },
+  "font": "Geist SemiBold (OFL, embedded via @font-face from assets/fonts)",
+  "beats": [0.8, 1.85, 2.1, 3.05],
+  "export": "mp4",
+
+  "asset_needs": [
+    {
+      "role": "hero",
+      "kind": "logo",
+      "source": "assets/brand/physiofit-mark.svg",
+      "treatment": "none",
+      "status": "placeholder — official Physiofit logo could not be resolved (physiofit.app blocked by this environment's egress policy; media-use logo resolve found no provider match). Stand-in monogram tile + typeset wordmark; drop the official SVG into the mark slot to replace."
+    }
+  ],
+
+  "block": null,
+  "customize": {
+    "reused": {
+      "text-shimmer": "specular gradient band technique (one clean sweep, then clean text) — adapted to a masked clone of the wordmark",
+      "grain-overlay": "fractal-noise grain at very low opacity, finite iteration count, to kill gradient banding in the encode"
+    },
+    "hand_authored": [
+      "inhale/exhale light motif (hairline expands, contracts into a point, mark blooms out)",
+      "wordmark slides out from under the tile on the mark's expo.inOut curve (clip edge tracks the tile)",
+      "mark-to-lockup slide",
+      "custom synthesized sonic logo, composed frame-accurately to the beats"
+    ]
+  },
+
+  "content": {
+    "logo": "assets/brand/physiofit-mark.svg",
+    "wordmark": "Physiofit",
+    "tagline": null,
+    "url": null
+  },
+
+  "sound": {
+    "file": "assets/audio/physiofit-sonic-logo.wav",
+    "key": "D major (Dmaj9 colour)",
+    "cues": [
+      { "t": 0.12, "end": 0.795, "what": "inhale — reverse-reverb swell of the hit chord + rising air" },
+      { "t": 0.8, "what": "hit — sub drop + felt transient + Dmaj9 bloom pad + glass bell" },
+      { "t": 1.2, "end": 1.85, "what": "air whoosh following the mark slide (pans left)" },
+      { "t": 1.406, "end": 1.558, "what": "soft harp-like gliss, one note per letter as it slides out from under the tile (measured: sound/letter-emergence.json)" },
+      { "t": 1.85, "what": "settle chime, open fifth (D6 + A6)" },
+      { "t": 2.1, "end": 2.95, "what": "shimmer sparkle following the specular sweep L→R" },
+      { "t": 3.05, "end": 3.65, "what": "exhale — downward air, tail decays to silence at 4.0" }
+    ],
+    "loudness_target": "-15 LUFS integrated, ≤ -1 dBTP"
+  },
+
+  "brief": "Out of black, a single point of light breathes in: a hairline stretches across the centre, then contracts back into the point (inhale, the sound swells as a reversed echo of the chord to come). On the downbeat at 0.8s the Physiofit mark blooms out of that point — blur to sharp, one soft ring, a warm sub and a Dmaj9 chord with a glass bell. The mark glides left with an expo in-out while the metallic wordmark slides out from under it (a quiet harp gliss, one note per letter as it appears). The lockup settles with a soft chime, a single specular light pass travels across mark and wordmark, then everything exhales — blur, fade, a downward breath — into black at 3.7s, leaving a clean reverb tail to 4.0s. Dominant motif: breath — inhale, bloom, exhale — which is both premium-minimal and literally physiotherapy."
+}

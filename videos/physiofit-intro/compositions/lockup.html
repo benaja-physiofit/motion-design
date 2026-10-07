@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--
+  lockup — the Physiofit mark + wordmark.
+  0.80s  the mark blooms out of the point of light (scale/blur/rotation), the glyph draws on
+  1.18s  the mark glides left (expo.inOut) and the wordmark slides out from under the tile
+  1.85s  lockup at rest
+  1.98s  one specular pass: across the tile, then through the wordmark (from registry text-shimmer)
+  3.05s  exhale — blur + fade + slight push
+  MARK SLOT: the tile below is a PLACEHOLDER monogram. Replace the contents of
+  #lk-mark-pop with the official Physiofit SVG (assets/brand/) to swap it.
+-->
+<html lang="de" data-composition-variables="[
+    {&quot;id&quot;:&quot;wordmark&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Wordmark&quot;,&quot;default&quot;:&quot;Physiofit&quot;}
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <title>Lockup</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Geist";
+          src: url("assets/fonts/Geist-SemiBold.woff2") format("woff2");
+          font-weight: 600;
+          font-style: normal;
+          font-display: block;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          pointer-events: none;
+          font-family: "Geist", "Helvetica Neue", sans-serif;
+          --lk-accent: var(--accent, #5ee6c3);
+          --lk-accent-deep: var(--accentDeep, #139c80);
+          --lk-ink: #f2f4f7;
+          --lk-ink-top: #ffffff;
+          --lk-ink-low: #a7aeb9;
+          --lk-a55: color-mix(in srgb, var(--lk-accent) 55%, transparent);
+          --lk-hi: rgba(255, 255, 255, 0.45);
+          --lk-sheen: rgba(255, 255, 255, 0.5);
+          --lk-edge: rgba(255, 255, 255, 0.06);
+          --lk-depth: rgba(0, 0, 0, 0.18);
+          --lk-glyph-shadow: rgba(0, 0, 0, 0.22);
+        }
+        #lk-lockup {
+          position: relative; /* offsetParent for the mark-offset measurement */
+          display: flex;
+          align-items: center;
+          gap: 40px;
+        }
+        #lk-mark-move,
+        #lk-mark-pop {
+          display: block;
+          width: 128px;
+          height: 128px;
+          flex: 0 0 auto;
+        }
+        #lk-mark-move {
+          position: relative;
+          z-index: 2;
+        }
+        #lk-mark-pop {
+          opacity: 0;
+          filter: blur(16px);
+        }
+        #lk-tile {
+          position: relative;
+          width: 128px;
+          height: 128px;
+          border-radius: 33px;
+          overflow: hidden;
+          background: linear-gradient(145deg, var(--lk-accent) 0%, var(--lk-accent-deep) 100%);
+          box-shadow:
+            inset 0 1.5px 0 var(--lk-hi),
+            inset 0 -10px 24px var(--lk-depth),
+            0 18px 50px -12px var(--lk-a55),
+            0 0 0 1px var(--lk-edge);
+        }
+        #lk-tile svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+        }
+        #lk-glyph {
+          fill: none;
+          stroke: var(--lk-ink-top);
+          stroke-width: 13;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          filter: drop-shadow(0 2px 3px var(--lk-glyph-shadow));
+        }
+        #lk-tile-sheen {
+          position: absolute;
+          top: -20%;
+          bottom: -20%;
+          left: 0;
+          width: 70%;
+          background: linear-gradient(100deg, transparent 0%, var(--lk-sheen) 50%, transparent 100%);
+        }
+        #lk-word {
+          position: relative;
+          z-index: 1;
+          display: block;
+          /* optical alignment: centre the tile on the cap height, not the line box */
+          margin-top: -6px;
+          padding: 0 4px;
+          /* left edge follows the sliding tile (set by the timeline) */
+          clip-path: inset(-30% -6% -40% 0px);
+        }
+        #lk-word-inner {
+          position: relative;
+          display: block;
+        }
+        .lk-letters {
+          display: block;
+          white-space: nowrap;
+          font-size: 124px;
+          font-weight: 600;
+          line-height: 1.12;
+          letter-spacing: -0.045em;
+          font-kerning: normal;
+        }
+        #lk-word-base {
+          color: var(--lk-ink);
+          background: linear-gradient(180deg, var(--lk-ink-top) 18%, var(--lk-ink-low) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        #lk-word-shine {
+          position: absolute;
+          inset: 0;
+          color: var(--lk-ink-top);
+          text-shadow: 0 0 18px var(--lk-a55);
+          -webkit-mask-image: linear-gradient(100deg, transparent 0%, transparent 44%, #000 50%, transparent 56%, transparent 100%);
+          mask-image: linear-gradient(100deg, transparent 0%, transparent 44%, #000 50%, transparent 56%, transparent 100%);
+          -webkit-mask-size: 300% 100%;
+          mask-size: 300% 100%;
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-position: 100% 0%;
+          mask-position: 100% 0%;
+        }
+      </style>
+
+      <div data-hf-id="hf-fp2x" id="root" data-composition-id="lockup" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-w3a9" id="lk-lockup">
+          <div data-hf-id="hf-x2vi" id="lk-mark-move">
+            <!-- MARK SLOT (placeholder monogram) -->
+            <div data-hf-id="hf-9rlm" id="lk-mark-pop">
+              <div data-hf-id="hf-47hj" id="lk-tile">
+                <svg data-hf-id="hf-llt0" viewBox="0 0 140 140" aria-hidden="true">
+                  <path data-hf-id="hf-wpdh" id="lk-glyph" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M49 103 V37 H70 A21 21 0 0 1 70 79 H49" />
+                </svg>
+                <div data-hf-id="hf-oc2s" id="lk-tile-sheen" data-layout-allow-overflow="true"></div>
+              </div>
+            </div>
+          </div>
+          <div data-hf-id="hf-m1uj" id="lk-word">
+            <div data-hf-id="hf-lt8s" id="lk-word-inner">
+              <div data-hf-id="hf-wttq" id="lk-word-base" class="lk-letters">Physiofit</div>
+              <div data-hf-id="hf-8zg5" id="lk-word-shine" class="lk-letters" aria-hidden="true">Physiofit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // Shared beats (seconds) — keep in sync with atmosphere.html and the sonic logo.
+          var HIT = 0.8;
+          var SLIDE = 1.18;
+          var SETTLE = 1.85;
+          var SWEEP = 2.1;
+          var EXIT = 3.05;
+
+          var vars =
+            window.__hyperframes && window.__hyperframes.getVariables
+              ? window.__hyperframes.getVariables()
+              : {};
+          var word = vars.wordmark == null || vars.wordmark === "" ? "Physiofit" : String(vars.wordmark);
+
+          document.getElementById("lk-word-base").textContent = word;
+          document.getElementById("lk-word-shine").textContent = word;
+
+          function build() {
+            var lockup = document.getElementById("lk-lockup");
+            var markMove = document.getElementById("lk-mark-move");
+            // At the hit the mark sits dead centre; it then travels to its lockup slot.
+            var markOffset = lockup.offsetWidth / 2 - (markMove.offsetLeft + markMove.offsetWidth / 2);
+            // The wordmark is clipped where it passes under the tile: the clip edge sits
+            // TUCK px inside the tile's right edge (clear of its rounded corners), in
+            // word-local coordinates. At the start the whole word hides behind that edge.
+            var wordBox = document.getElementById("lk-word");
+            var gap = wordBox.offsetLeft - (markMove.offsetLeft + markMove.offsetWidth);
+            var TUCK = 36;
+            var clipStart = markOffset - gap - TUCK;
+            var clipEnd = -gap - TUCK;
+            var wordStart = clipStart - wordBox.offsetWidth;
+
+            var tl = gsap.timeline({ paused: true });
+
+            // the mark blooms out of the point of light
+            tl.fromTo("#lk-mark-pop", { scale: 0.55, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.95, ease: "expo.out" }, HIT);
+            tl.to("#lk-mark-pop", { opacity: 1, duration: 0.2, ease: "power2.out" }, HIT);
+            tl.to("#lk-mark-pop", { filter: "blur(0px)", duration: 0.38, ease: "power2.out" }, HIT);
+            tl.fromTo("#lk-glyph", { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.6, ease: "power2.inOut" }, HIT + 0.1);
+
+            // the mark glides left; the wordmark slides out from under it on the same curve
+            var D = SETTLE - SLIDE;
+            tl.fromTo("#lk-mark-move", { x: markOffset }, { x: 0, duration: D, ease: "expo.inOut" }, SLIDE);
+            tl.fromTo(
+              "#lk-word",
+              { clipPath: "inset(-30% -6% -40% " + clipStart + "px)" },
+              { clipPath: "inset(-30% -6% -40% " + clipEnd + "px)", duration: D, ease: "expo.inOut" },
+              SLIDE,
+            );
+            tl.fromTo("#lk-word-inner", { x: wordStart }, { x: 0, duration: D, ease: "expo.inOut" }, SLIDE);
+            // a breath of motion blur only while the word is travelling fast
+            tl.fromTo("#lk-word-inner", { filter: "blur(0px)" }, { filter: "blur(2.5px)", duration: D * 0.5, ease: "power3.in", immediateRender: false }, SLIDE);
+            tl.to("#lk-word-inner", { filter: "blur(0px)", duration: D * 0.4, ease: "power2.out" }, SLIDE + D * 0.5);
+
+            // one specular pass: tile first, then through the wordmark
+            tl.fromTo("#lk-tile-sheen", { xPercent: -120 }, { xPercent: 190, duration: 0.45, ease: "power2.inOut" }, SWEEP - 0.12);
+            tl.fromTo(
+              "#lk-word-shine",
+              { maskPosition: "100% 0%", webkitMaskPosition: "100% 0%" },
+              { maskPosition: "0% 0%", webkitMaskPosition: "0% 0%", duration: 0.85, ease: "sine.inOut" },
+              SWEEP,
+            );
+
+            // exhale
+            tl.fromTo(
+              "#lk-lockup",
+              { opacity: 1, scale: 1, filter: "blur(0px)" },
+              { opacity: 0, scale: 1.035, filter: "blur(12px)", duration: 0.6, ease: "power2.in" },
+              EXIT,
+            );
+
+            tl.seek(0);
+            window.__timelines["lockup"] = tl;
+          }
+
+          document.fonts.load('600 124px "Geist"').then(build, build);
+        })();
+      </script>
+    </template>
+  </body>
+</html>
