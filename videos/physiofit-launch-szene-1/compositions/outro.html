@@ -11,7 +11,7 @@
           inset: 0;
           overflow: hidden;
           font-family: "Montserrat", sans-serif;
-          color: #fbfcfd;
+          color: #ffffff;
         }
         .outro-ripple {
           position: absolute;
@@ -20,7 +20,7 @@
           width: 600px;
           height: 600px;
           border-radius: 50%;
-          border: 3px solid rgba(251, 252, 253, 0.24);
+          border: 3px solid rgba(255, 255, 255, 0.16);
           opacity: 0;
         }
         .outro-stack {
@@ -42,47 +42,39 @@
         .outro-w {
           display: inline-block;
         }
-        #outro-mark {
-          margin-top: 70px;
+        /* Physiofit logo, stacked as supplied (mark over wordmark, source ratio kept) */
+        #outro-logo {
+          margin-top: 96px;
           display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 26px;
         }
-        .outro-rule {
+        #outro-logomark {
           display: block;
-          width: 90px;
-          height: 4px;
-          border-radius: 2px;
-          background: #fbfcfd;
-        }
-        #outro-ruleL {
-          transform-origin: 100% 50%;
-        }
-        #outro-ruleR {
-          transform-origin: 0% 50%;
+          width: 144px;
+          height: 145px;
         }
         #outro-wordmark {
-          font-size: 56px;
-          font-weight: 700;
-          letter-spacing: 0.04em;
+          display: block;
+          width: 420px;
+          height: 59px;
+          margin-top: 42px;
         }
       </style>
 
-      <div data-hf-id="hf-x7nm" id="root" data-composition-id="outro" data-width="1920" data-height="1080">
-        <div data-hf-id="hf-kazg" class="outro-ripple" id="outro-ripple1" data-layout-allow-overflow></div>
-        <div data-hf-id="hf-syvb" class="outro-ripple" id="outro-ripple2" data-layout-allow-overflow></div>
-        <div data-hf-id="hf-fal6" class="outro-stack">
-          <div data-hf-id="hf-v55u" id="outro-text">
-            <span data-hf-id="hf-qe3x" class="outro-w" id="outro-w1">Alles</span
-            ><span data-hf-id="hf-tx62" class="outro-w" id="outro-w2">in</span
-            ><span data-hf-id="hf-tger" class="outro-w" id="outro-w3">einer</span
-            ><span data-hf-id="hf-8zgc" class="outro-w" id="outro-w4">App.</span>
+      <div id="root" data-composition-id="outro" data-width="1920" data-height="1080">
+        <div class="outro-ripple" id="outro-ripple1" data-layout-allow-overflow></div>
+        <div class="outro-ripple" id="outro-ripple2" data-layout-allow-overflow></div>
+        <div class="outro-stack">
+          <div id="outro-text">
+            <span class="outro-w" id="outro-w1">Alles</span
+            ><span class="outro-w" id="outro-w2">in</span
+            ><span class="outro-w" id="outro-w3">einer</span
+            ><span class="outro-w" id="outro-w4">App.</span>
           </div>
-          <!-- Platzhalter-Wortmarke, bis das echte Physiofit-Logo vorliegt -->
-          <div data-hf-id="hf-xn6o" id="outro-mark">
-            <span data-hf-id="hf-r9pl" class="outro-rule" id="outro-ruleL"></span
-            ><span data-hf-id="hf-a9ay" id="outro-wordmark">Physiofit</span
-            ><span data-hf-id="hf-v4c7" class="outro-rule" id="outro-ruleR"></span>
+          <div id="outro-logo">
+            <img id="outro-logomark" src="../assets/logo/physiofit-mark.svg" alt="Physiofit" />
+            <img id="outro-wordmark" src="../assets/logo/physiofit-wordmark.svg" alt="PHYSIOFIT" />
           </div>
         </div>
       </div>
@@ -108,17 +100,18 @@
           { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" },
           0.95,
         );
-        tl.fromTo("#outro-text", { scale: 1 }, { scale: 1.035, duration: 2.5, ease: "none" }, 0.5);
+        tl.fromTo("#outro-text", { scale: 1 }, { scale: 1.03, duration: 2.5, ease: "none" }, 0.5);
+        // Logo: the mark springs in, the wordmark wipes open from the center
         tl.fromTo(
-          ["#outro-ruleL", "#outro-ruleR"],
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.5, ease: "power3.out" },
-          1.55,
+          "#outro-logomark",
+          { opacity: 0, scale: 0.3, rotation: -14 },
+          { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.7)" },
+          1.35,
         );
         tl.fromTo(
           "#outro-wordmark",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          { clipPath: "inset(0% 50% 0% 50%)", opacity: 0 },
+          { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 0.6, ease: "power3.out" },
           1.6,
         );
         tl.fromTo(
@@ -131,7 +124,7 @@
           "#outro-ripple2",
           { scale: 0.6, opacity: 0.9 },
           { scale: 2.6, opacity: 0, duration: 2.4, ease: "power1.out", immediateRender: false },
-          1.15,
+          1.35,
         );
         window.__timelines["outro"] = tl;
       </script>

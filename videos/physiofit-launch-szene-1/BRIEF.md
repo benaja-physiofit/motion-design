@@ -27,6 +27,8 @@ Referenz: Launch-Video https://www.youtube.com/watch?v=SgmuplXU2iY (in dieser Um
 
 - assets/patient.png — Bild 2: Patient mit verschränkten Armen auf dem Gymnastikball, transparentes PNG mit blauem Kreis (#607F90). Gehört zu „70 %", links.
 - assets/therapeut.png — Bild 1: Therapeut im Physiotherapie-Polo, transparentes PNG mit blauem Kreis. Gehört zu „100 %", rechts.
+- assets/logo/physiofit-logo-original.png — Physiofit-Logo (Bildmarke über Wortmarke, weiß auf Navy #1F3542), von der Nutzerin bzw. dem Nutzer geliefert.
+- assets/logo/physiofit-mark.svg, assets/logo/physiofit-wordmark.svg — daraus vektorisiert (potrace), damit das Logo auch groß scharf bleibt. Steht im Endbild unter „Alles in einer App.".
 
 ## Customizations
 
@@ -35,8 +37,8 @@ Referenz: Launch-Video https://www.youtube.com/watch?v=SgmuplXU2iY (in dieser Um
 
 ## Notes
 
-- physiofit.app ist in dieser Cloud-Umgebung per Netzwerk-Policy blockiert. Logo und exakte Markenfarben
-  fehlen deshalb noch. Bis dahin stammt die Farbe aus den Bildern (#607F90), und am Ende steht ein
-  „Physiofit"-Schriftzug als Platzhalter, der gegen das echte Logo getauscht wird.
+- physiofit.app ist in dieser Cloud-Umgebung per Netzwerk-Policy blockiert. Das Logo kam deshalb als Bild von
+  der Nutzerin bzw. dem Nutzer. Die Markenfarben sind Navy #1F3542 (Logo-Hintergrund, auch für Text und das
+  Endbild) und Blau #607F90 (Kreis aus den Fotos).
 - „Alles in einer App" statt „auf einer App", weil das die übliche Formulierung ist (angenommen, nicht bestätigt).
 - Keine Musik (nicht angefragt).

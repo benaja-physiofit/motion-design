@@ -20,11 +20,22 @@
           border-radius: 50%;
           background: #607f90;
         }
+        #circle-navy {
+          position: absolute;
+          left: 770px;
+          top: 350px;
+          width: 380px;
+          height: 380px;
+          border-radius: 50%;
+          background: #1f3542;
+        }
       </style>
 
       <!-- The brand circle from the photos: holds "DU", then floods the frame -->
       <div data-hf-id="hf-dlvv" id="root" data-composition-id="circle" data-width="1920" data-height="1080">
         <div data-hf-id="hf-qcg6" id="circle-disc" data-layout-allow-overflow></div>
+        <!-- Second wave in Physiofit navy (logo background) lands the end card -->
+        <div id="circle-navy" data-layout-allow-overflow></div>
       </div>
 
       <script>
@@ -55,6 +66,12 @@
           { scale: 1 },
           { scale: 6.6, duration: 0.65, ease: "power3.inOut", immediateRender: false },
           2.5,
+        );
+        tl.fromTo(
+          "#circle-navy",
+          { scale: 0 },
+          { scale: 6.6, duration: 0.62, ease: "power3.inOut" },
+          2.62,
         );
         window.__timelines["circle"] = tl;
       </script>
