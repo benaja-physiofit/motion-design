@@ -38,7 +38,7 @@ Die Features folgen der Reihenfolge der Patient Journey: Aufnahme → Behandlung
 - **Bild (Stock + Motion Design):**
   - Stock: Patient zu Hause auf dem Sofa, der Übungszettel liegt unbeachtet auf dem Tisch. Darüber zählt eine große Zahl auf **70 %** hoch.
   - Harter Schnitt, Stock: Therapeutin in der Praxis schüttelt seufzend den Kopf. Darüber springt die Zahl ohne Hochzählen direkt auf **100 %** – die Pointe.
-- **Sprecher:** „Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen." „Und 100 Prozent der Therapeuten? Würden das gern ändern." – der zweite Satz trocken, mit Augenzwinkern.
+- **Sprecher:** „Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen." „Und 100 Prozent der Therapeuten würden das gern ändern." – der zweite Satz trocken, mit Augenzwinkern.
 - **Einblendung:**
   - „Bis zu **70 %** der Patienten machen ihre Heimübungen nicht wie empfohlen."
     Klein darunter: „Quelle: Essery et al., Disability and Rehabilitation, 2017"
@@ -138,7 +138,7 @@ Die Features folgen der Reihenfolge der Patient Journey: Aufnahme → Behandlung
 
 ## Sprechertext am Stück
 
-> Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen. Und 100 Prozent der Therapeuten? Würden das gern ändern.
+> Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen. Und 100 Prozent der Therapeuten würden das gern ändern.
 >
 > Physiofit ändert das.
 >
