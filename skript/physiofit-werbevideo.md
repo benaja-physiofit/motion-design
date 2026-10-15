@@ -1,14 +1,14 @@
-# Physiofit Werbevideo – Skript (v7)
+# Physiofit Werbevideo – Skript (v8: Product Reel)
 
+- **Ziel:** In aller Kürze zeigen, was Physiofit alles kann – als Ersatz für die 1:1-Demo
 - **Einsatz:** Konferenzen (Messestand, in Schleife) und Website
 - **Zielgruppe:** Physiotherapeut:innen und Praxisinhaber:innen
 - **Ansprache:** du
 - **Format:** 16:9, 1920×1080 (besser 3840×2160 für große Bildschirme am Stand)
-- **Länge:** ca. 1:29 min
+- **Länge:** ca. 1:28 min
 - **Ton:** Sprecher, Musik, dezente Sounds
-- **Bilder:** Stock-Videos (Szenen mit Menschen), Screen-Recordings (App), Motion Design (Texte, Zahlen, Animationen, Endkarte)
-- **Aufbau:** Problem → Lösung → Testimonial → Call to Action
-- **Roter Faden:** Wir begleiten einen Patienten, Thomas, durch das ganze Video – vom Rückenschmerz bis zum Ergebnis.
+- **Bilder:** Screen-Recordings und animierte UI (Schwerpunkt), Stock-Videos nur für den Hook und einzelne Szenen mit Menschen
+- **Aufbau:** Hook (Problem) → Features entlang der Patient Journey → Testimonial → Call to Action
 
 **Begriffe:** *Bild* = was man sieht · *Sprecher* = Stimme aus dem Off · *Einblendung* = Text, der im Bild erscheint · *O-Ton* = jemand spricht selbst im Bild
 
@@ -16,102 +16,117 @@
 
 | # | Szene | Teil | Zeit | Dauer |
 |---|---|---|---|---|
-| 1 | Rückenschmerzen | Problem | 0:00–0:06 | 6 s |
-| 2 | In der Praxis | Problem | 0:06–0:14 | 8 s |
-| 3 | Zu Hause | Problem | 0:14–0:23 | 9 s |
-| 4 | Nächster Termin | Problem | 0:23–0:30 | 7 s |
-| 5 | Die Zahlen | Problem | 0:30–0:40 | 10 s |
-| 6 | Wendepunkt | Lösung | 0:40–0:45 | 5 s |
-| 7 | Programm erstellen | Lösung | 0:45–0:54 | 9 s |
-| 8 | Videos für zu Hause | Lösung | 0:54–1:03 | 9 s |
-| 9 | Ergebnis | Lösung | 1:03–1:10 | 7 s |
-| 10 | Testimonial | Beweis | 1:10–1:20 | 10 s |
-| 11 | Call to Action | CTA | 1:20–1:29 | 9 s |
+| 1 | Hook: Die Zahlen | Problem | 0:00–0:08 | 8 s |
+| 2 | Logo | Übergang | 0:08–0:11 | 3 s |
+| 3 | Digitale Aufnahme & Anamnese | Feature | 0:11–0:21 | 10 s |
+| 4 | Übungsprogramm in 20 Sekunden | Feature | 0:21–0:29 | 8 s |
+| 5 | 2.000+ Übungen, 100 % individuell | Feature | 0:29–0:37 | 8 s |
+| 6 | Dokumentation in unter 1 Minute | Feature | 0:37–0:41 | 4 s |
+| 7 | Training zu Hause mit Erinnerung | Feature | 0:41–0:50 | 9 s |
+| 8 | Trainingskalender | Feature | 0:50–0:57 | 7 s |
+| 9 | Check-in, Fortschritt & Wohlbefinden | Feature | 0:57–1:05 | 8 s |
+| 10 | Im Design deiner Praxis | Feature | 1:05–1:12 | 7 s |
+| 11 | Testimonial | Beweis | 1:12–1:20 | 8 s |
+| 12 | Call to Action | CTA | 1:20–1:28 | 8 s |
+
+Die Features folgen der Reihenfolge der Patient Journey: Aufnahme → Behandlung → Übungsmitgabe → Dokumentation → Training zu Hause → Check-in → Progression. So wirkt das Reel wie eine kompakte Demo.
 
 ---
 
-## Szene 1 – Rückenschmerzen (0:00–0:06)
+## Szene 1 – Hook: Die Zahlen (0:00–0:08)
 
-- **Bild (Stock):** Thomas, Mitte 40, steht vom Schreibtisch auf, fasst sich an den unteren Rücken und verzieht das Gesicht.
-- **Sprecher:** „Das ist Thomas. Seit Wochen plagen ihn Rückenschmerzen."
-- **Einblendung:** Kleines Namensschild neben ihm: „Thomas · Rückenschmerzen"
-- **Musik:** Ruhig, leicht gedrückt.
-
-## Szene 2 – In der Praxis (0:06–0:14)
-
-- **Bild (Stock):** Helle Praxis. Die Therapeutin untersucht Thomas' Rücken, zeigt ihm eine Übung, korrigiert kurz, er macht sauber mit. Zum Schluss gibt sie ihm einen Übungszettel mit.
-- **Sprecher:** „In der Praxis zeigst du ihm die passenden Übungen – und gibst ihm einen Zettel mit nach Hause."
-- **Einblendung:** keine – das Bild spricht für sich.
-- **Musik:** Ein ruhiger Beat kommt dazu.
-
-## Szene 3 – Zu Hause (0:14–0:23)
-
-- **Bild (Stock):** Thomas zu Hause. Der Zettel liegt auf dem Küchentisch, er schaut kurz drauf, wirkt unsicher, legt ihn weg und setzt sich aufs Sofa.
-- **Bild (Motion Design):** Die Strichmännchen auf dem Zettel verschwimmen. Wochentage laufen durch, die Häkchen-Kästchen daneben bleiben leer.
-- **Sprecher:** „Doch zu Hause? Wie ging die Übung nochmal? Die Strichmännchen helfen kaum weiter. Erst wird verschoben – dann vergessen."
-- **Einblendung:** „Mo ☐ · Di ☐ · Mi ☐ · Do ☐ · Fr ☐"
-- **Musik:** Wird gedämpfter.
-- **Sound:** Papierrascheln, leises Ticken beim Durchlaufen der Tage.
-
-## Szene 4 – Nächster Termin (0:23–0:30)
-
-- **Bild (Stock):** Wieder in der Praxis. Thomas hält sich den Rücken und zuckt mit den Schultern. Die Therapeutin erklärt die Übung noch einmal von vorn.
-- **Sprecher:** „Beim nächsten Termin sind die Schmerzen noch da. Und du fängst wieder von vorn an."
-- **Einblendung:** „Jedes Mal von vorn."
-- **Musik:** Gedämpft.
-
-## Szene 5 – Die Zahlen (0:30–0:40)
-
-- **Bild (Motion Design):** Schnitt auf einen ruhigen Hintergrund. Eine große Zahl zählt von 0 auf **70 %** hoch, darunter der Satz. Kurze Pause. Dann springt die zweite Zahl ohne Hochzählen direkt auf **100 %** – das ist die Pointe.
-- **Sprecher:** „Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen." *(kurze Pause)* „Und 100 Prozent der Therapeuten? Würden das gern ändern." – der zweite Satz trocken, mit Augenzwinkern.
+- **Bild (Stock + Motion Design):**
+  - Stock: Patient zu Hause auf dem Sofa, der Übungszettel liegt unbeachtet auf dem Tisch. Darüber zählt eine große Zahl auf **70 %** hoch.
+  - Harter Schnitt, Stock: Therapeutin in der Praxis schüttelt seufzend den Kopf. Darüber springt die Zahl ohne Hochzählen direkt auf **100 %** – die Pointe.
+- **Sprecher:** „Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen." „Und 100 Prozent der Therapeuten? Würden das gern ändern." – der zweite Satz trocken, mit Augenzwinkern.
 - **Einblendung:**
   - „Bis zu **70 %** der Patienten machen ihre Heimübungen nicht wie empfohlen."
     Klein darunter: „Quelle: Essery et al., Disability and Rehabilitation, 2017"
   - „**100 %** der Therapeuten würden das gern ändern.*"
     Klein darunter: „*Nicht wissenschaftlich belegt. Aber ziemlich sicher."
-- **Musik:** Fast Stille, nur ein leiser Puls.
-- **Sound:** Leises Ticken beim Hochzählen, kleiner Akzent („Ding") bei 100 %.
+- **Musik:** Startet direkt mit einem Puls, bei 70 % noch zurückhaltend.
+- **Sound:** Ticken beim Hochzählen, kleiner Akzent („Ding") bei 100 %.
 
-## Szene 6 – Wendepunkt (0:40–0:45)
+## Szene 2 – Logo (0:08–0:11)
 
-- **Bild (Motion Design):** Farbwechsel ins Helle. Der Strichmännchen-Zettel faltet sich zusammen und verwandelt sich in ein Smartphone mit der Physiofit-App.
-- **Sprecher:** „Was wäre, wenn deine Anleitung einfach mit nach Hause geht?"
-- **Einblendung:** keine – die Verwandlung von Zettel zu Smartphone steht im Mittelpunkt.
-- **Musik:** Heller, energiegeladener Teil setzt ein.
-- **Sound:** Whoosh beim Verwandeln.
+- **Bild (Motion Design):** Farbwechsel ins helle Physiofit-Design, das Logo baut sich auf.
+- **Sprecher:** „Physiofit ändert das."
+- **Einblendung:** Logo
+- **Musik:** Der Beat setzt voll ein – ab hier läuft das Reel im Takt.
+- **Sound:** Whoosh zum Logo.
 
-## Szene 7 – Programm erstellen (0:45–0:54)
+## Szene 3 – Digitale Aufnahme & Anamnese (0:11–0:21)
 
-- **Bild (Screen-Recording):** iPad. Die Therapeutin wählt für Thomas Rückenübungen aus, stellt das Programm zusammen und sendet es.
-- **Bild (Stock, optional):** Therapeutin mit iPad neben Thomas auf der Behandlungsliege, im Wechsel mit dem Screen-Recording.
-- **Sprecher:** „Mit wenigen Klicks stellst du direkt in der Behandlung ein Heimübungsprogramm zusammen – individuell für jeden Patienten."
-- **Einblendung:** „1 · Programm erstellen"
-- **Sound:** Dezente Tipp-Geräusche.
+- **Bild:**
+  - Stock oder Foto: Patient scannt am Empfang einen QR-Code.
+  - Screen-Recording (iPhone): Er füllt Aufnahme und Anamnese im Wartezimmer am Smartphone aus.
+  - Screen-Recording (iPad): Die Angaben landen direkt bei der Therapeutin.
+- **Sprecher:** „Aufnahme und Anamnese erledigen deine Patienten per QR-Code direkt im Wartezimmer – ganz ohne Papierkram. Du startest mit allen Infos in die Behandlung."
+- **Einblendung:** „Digitale Aufnahme & Anamnese"
 
-## Szene 8 – Videos für zu Hause (0:54–1:03)
+## Szene 4 – Übungsprogramm in 20 Sekunden (0:21–0:29)
 
-- **Bild (Screen-Recording):** iPhone. Die Patienten-App öffnet sich, Thomas' Programm erscheint, ein Übungsvideo läuft.
-- **Bild (Stock):** Thomas im Wohnzimmer auf einer Matte, das Smartphone vor sich, macht die Rückenübung sauber mit.
-- **Sprecher:** „Thomas hat jede Übung als Video in der App. Er sieht genau, wie es geht – und macht es richtig."
-- **Einblendung:** „2 · Videoanleitung für zu Hause"
+- **Bild (Screen-Recording, iPad):** Name und Telefonnummer eintragen, Programm wählen, „Senden" tippen. Ein Timer läuft mit und stoppt unter 20 Sekunden.
+- **Sprecher:** „Das Heimübungsprogramm gibst du in 20 Sekunden mit: Name und Telefonnummer eintragen, Programm wählen, senden."
+- **Einblendung:** „Übungsprogramm in 20 Sekunden" + mitlaufender Timer
+- **Sound:** Dezente Tipp-Geräusche, „Swoosh" beim Senden.
+- **Hinweis:** Den Timer nur zeigen, wenn die Aufnahme wirklich in Echtzeit unter 20 Sekunden bleibt – dann ist sie der Beweis.
 
-## Szene 9 – Ergebnis (1:03–1:10)
+## Szene 5 – 2.000+ Übungen, 100 % individuell (0:29–0:37)
 
-- **Bild (Stock):** Nächster Termin. Thomas bewegt sich sichtbar freier, er und die Therapeutin lächeln, Abklatschen.
-- **Sprecher:** „Das Ergebnis: Patienten, die dranbleiben. Und mehr Zeit für das, was wirklich zählt – deine Behandlung."
-- **Einblendung:** „3 · Patienten bleiben dran"
+- **Bild (Screen-Recording, iPad):** Durch die Übungsbibliothek scrollen, ein Übungsvideo kurz anspielen, im Programm eine Übung austauschen und eine hinzufügen.
+- **Sprecher:** „Über 2.000 evidenzbasierte Übungen, professionell gefilmt und vertont – und jedes Programm passt du in Sekunden individuell an."
+- **Einblendung:** „**2.000+** Übungen" (zählt hoch) · „100 % individuell"
+
+## Szene 6 – Dokumentation in unter 1 Minute (0:37–0:41)
+
+- **Bild (Screen-Recording, iPad):** Die Behandlung wird dokumentiert und gespeichert.
+- **Sprecher:** „Dokumentiert ist das Ganze in unter einer Minute."
+- **Einblendung:** „Dokumentation in < 1 Minute"
+
+## Szene 7 – Training zu Hause mit Erinnerung (0:41–0:50)
+
+- **Bild:**
+  - Screen-Recording (iPhone): Mitteilung „Zeit für dein Training" erscheint, Übungsvideo startet.
+  - Stock: Patient trainiert im Wohnzimmer auf einer Matte, das Smartphone vor sich.
+  - Animiert: Die Trainingsserie zählt hoch (Flamme mit „7").
+- **Sprecher:** „Zu Hause trainiert dein Patient mit Videoanleitung – zu festen Zeiten, mit automatischer Erinnerung und Motivation."
+- **Einblendung:** „Erinnerung & Motivation"
+- **Sound:** Mitteilungston.
+
+## Szene 8 – Trainingskalender (0:50–0:57)
+
+- **Bild (Screen-Recording oder animiert, iPad):** Der Trainingskalender füllt sich Tag für Tag mit grünen Häkchen.
+- **Sprecher:** „Du siehst jederzeit, ob und wann trainiert wurde. Kein ‚Hast du deine Übungen gemacht?' mehr."
+- **Einblendung:** „Trainingskalender"
+- **Sound:** Leises „Plopp" pro Häkchen, im Takt der Musik.
+
+## Szene 9 – Check-in, Fortschritt & Wohlbefinden (0:57–1:05)
+
+- **Bild:**
+  - Stock oder Foto: Patient scannt beim nächsten Termin am Empfang den QR-Code.
+  - Screen-Recording (iPhone): Wohlbefinden-Abfrage nach der Einheit (Smileys).
+  - Screen-Recording (iPad): Die Verlaufskurve für Fortschritt und Wohlbefinden steigt.
+- **Sprecher:** „Beim nächsten Termin checkt dein Patient per QR-Code ein – und du siehst Fortschritt und Wohlbefinden auf einen Blick."
+- **Einblendung:** „Fortschritt & Wohlbefinden"
+
+## Szene 10 – Im Design deiner Praxis (1:05–1:12)
+
+- **Bild (Motion Design):** Die Patienten-App färbt sich um: Physiofit-Farben werden zu Praxisfarben, das Logo wechselt, Praxisbilder erscheinen.
+- **Sprecher:** „Und auf Wunsch läuft alles im Design deiner Praxis – mit deinem Logo und deinen Farben."
+- **Einblendung:** „Deine eigene Praxis-App"
 - **Musik:** Höhepunkt.
 
-## Szene 10 – Testimonial (1:10–1:20)
+## Szene 11 – Testimonial (1:12–1:20)
 
 - **Bild:** Ausschnitt aus dem Praxisvideo (physiofit.app/praxisbeispiele).
-- **O-Ton:** *[stärkster Satz aus dem Praxisvideo, 8–10 s – folgt, sobald das Video vorliegt]*
+- **O-Ton:** *[stärkster Satz aus dem Praxisvideo, 6–8 s – folgt, sobald das Video vorliegt]*
 - **Einblendung:** Bauchbinde mit Name, Funktion, Praxis, Ort
 - **Musik:** Deutlich leiser unter dem O-Ton.
 
-## Szene 11 – Call to Action (1:20–1:29)
+## Szene 12 – Call to Action (1:20–1:28)
 
-- **Bild (Motion Design):** Das Logo baut sich auf, daneben iPad und Smartphone mit der App.
+- **Bild (Motion Design):** Logo, daneben iPad und Smartphone mit der App.
 - **Sprecher:** „Physiofit. Damit Therapie auch zu Hause wirkt."
   - **Konferenz:** „Komm vorbei – wir zeigen es dir direkt hier am Stand."
   - **Website:** „Vereinbare jetzt deine persönliche Demo."
@@ -123,23 +138,25 @@
 
 ## Sprechertext am Stück
 
-> Das ist Thomas. Seit Wochen plagen ihn Rückenschmerzen.
+> Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen. Und 100 Prozent der Therapeuten? Würden das gern ändern.
 >
-> In der Praxis zeigst du ihm die passenden Übungen – und gibst ihm einen Zettel mit nach Hause.
+> Physiofit ändert das.
 >
-> Doch zu Hause? Wie ging die Übung nochmal? Die Strichmännchen helfen kaum weiter. Erst wird verschoben – dann vergessen.
+> Aufnahme und Anamnese erledigen deine Patienten per QR-Code direkt im Wartezimmer – ganz ohne Papierkram. Du startest mit allen Infos in die Behandlung.
 >
-> Beim nächsten Termin sind die Schmerzen noch da. Und du fängst wieder von vorn an.
+> Das Heimübungsprogramm gibst du in 20 Sekunden mit: Name und Telefonnummer eintragen, Programm wählen, senden.
 >
-> Bis zu 70 Prozent der Patienten machen ihre Heimübungen nicht wie empfohlen. *(Pause)* Und 100 Prozent der Therapeuten? Würden das gern ändern.
+> Über 2.000 evidenzbasierte Übungen, professionell gefilmt und vertont – und jedes Programm passt du in Sekunden individuell an.
 >
-> Was wäre, wenn deine Anleitung einfach mit nach Hause geht?
+> Dokumentiert ist das Ganze in unter einer Minute.
 >
-> Mit wenigen Klicks stellst du direkt in der Behandlung ein Heimübungsprogramm zusammen – individuell für jeden Patienten.
+> Zu Hause trainiert dein Patient mit Videoanleitung – zu festen Zeiten, mit automatischer Erinnerung und Motivation.
 >
-> Thomas hat jede Übung als Video in der App. Er sieht genau, wie es geht – und macht es richtig.
+> Du siehst jederzeit, ob und wann trainiert wurde. Kein „Hast du deine Übungen gemacht?" mehr.
 >
-> Das Ergebnis: Patienten, die dranbleiben. Und mehr Zeit für das, was wirklich zählt – deine Behandlung.
+> Beim nächsten Termin checkt dein Patient per QR-Code ein – und du siehst Fortschritt und Wohlbefinden auf einen Blick.
+>
+> Und auf Wunsch läuft alles im Design deiner Praxis – mit deinem Logo und deinen Farben.
 >
 > *[O-Ton Praxis]*
 >
@@ -148,11 +165,11 @@
 > **Konferenz:** Komm vorbei – wir zeigen es dir direkt hier am Stand.
 > **Website:** Vereinbare jetzt deine persönliche Demo.
 
-Rund 155 Wörter, bei ruhigem Sprechtempo ca. 70 s plus O-Ton und Pausen.
+Rund 170 Wörter. Das ist zügig, passt aber zum Tempo eines Product Reels.
 
 ## Zwei Versionen
 
-Beide Versionen sind bis Szene 10 identisch. Nur Szene 11 unterscheidet sich:
+Beide Versionen sind bis Szene 11 identisch. Nur Szene 12 unterscheidet sich:
 
 | | Konferenz | Website |
 |---|---|---|
@@ -160,43 +177,50 @@ Beide Versionen sind bis Szene 10 identisch. Nur Szene 11 unterscheidet sich:
 | Endkarte | „Live-Demo hier am Stand" + QR-Code | „Demo vereinbaren auf physiofit.app" |
 | Ende | Weicher Übergang zurück zu Szene 1 (Schleife) | Endkarte bleibt stehen |
 
+## Look (erster Entwurf)
+
+Wird verfeinert, sobald die Referenzvideos vorliegen.
+
+- **Jede Feature-Szene folgt derselben Vorlage:** Feature-Titel groß auf der einen Seite, das Gerät mit der App auf der anderen. Das gibt dem Reel einen klaren Rhythmus.
+- **Animierte UI-Elemente** im Stil der Feature-Grafiken auf der Website: Karten mit weichen Schatten, kleine Pills wie „20 Sek", „2000+" oder „+18 %", die ins Bild springen.
+- **Hell und aufgeräumt** wie die Website, mit den Physiofit-Farben als Akzent.
+- **Schnitte und Animationen liegen auf dem Beat** der Musik.
+
 ## Motion-Design-Elemente
 
-- Namensschild „Thomas · Rückenschmerzen" (Szene 1)
-- Übungszettel mit verschwimmenden Strichmännchen und Wochentagen mit leeren Häkchen-Kästchen (Szene 3)
-- Einblendung „Jedes Mal von vorn." (Szene 4)
-- Zahlen-Karten: 70 % zählt hoch, 100 % springt als Pointe, jeweils mit Fußnote (Szene 5)
-- Zettel, der sich in ein Smartphone verwandelt (Szene 6)
-- Schritt-Einblendungen „1 · 2 · 3" (Szene 7–9)
-- Bauchbinde für das Testimonial (Szene 10)
-- Endkarte mit Logo, Geräten, QR-Code bzw. Website-CTA (Szene 11)
+- Zahlen-Karten 70 % (zählt hoch) und 100 % (springt) mit Fußnoten (Szene 1)
+- Logo-Reveal (Szene 2)
+- Feature-Titel als wiederkehrende Vorlage (Szene 3–10)
+- Timer, der unter 20 Sekunden stoppt (Szene 4)
+- Zähler „2.000+" (Szene 5)
+- Trainingsserie mit Flamme (Szene 7)
+- Kalender, der sich mit Häkchen füllt (Szene 8)
+- Verlaufskurve für Fortschritt und Wohlbefinden (Szene 9)
+- App, die sich in Praxisfarben umfärbt (Szene 10)
+- Bauchbinde für das Testimonial (Szene 11)
+- Endkarte mit Logo, Geräten, QR-Code bzw. Website-CTA (Szene 12)
 
 ## Quellen
 
 - **70 %:** Essery R, Geraghty AW, Kirby S, Yardley L. *Predictors of adherence to home-based physical therapies: a systematic review.* Disability and Rehabilitation 2017; 39(6): 519–534. Die Autoren geben an, dass die Nicht-Adhärenz bei selbstständigen Heimübungen bis zu 70 % erreichen kann. Das ist ein Höchstwert, kein Durchschnitt – deshalb „bis zu".
 - **100 %:** Ein Witz, im Video als solcher gekennzeichnet.
+- **Features:** Feature-Übersicht auf physiofit.app und Patient Journey. Punkte, die in der Journey als „für später" markiert sind (Therapeut filmt eigene Übungen, Tests zur Progressionsmessung), sind bewusst nicht im Video.
 
 ## Stock-Videos
 
-**Wichtig:** Thomas führt durch das ganze Video. Er muss in Szene 1–4, 8 und 9 **derselbe Darsteller** sein, sonst bricht die Geschichte. Deshalb gezielt nach Clip-Serien suchen, in denen ein Darsteller Rückenschmerzen hat, zur Physiotherapie geht und zu Hause übt (oft als „more from this series" oder „same model" verlinkt). Gibt es keine passende Serie:
-
-- einen kurzen eigenen Dreh mit einem Darsteller machen, oder
-- Einstellungen wählen, in denen sein Gesicht kaum zu sehen ist (von hinten, Hände, Nahaufnahmen vom Rücken).
+Nur noch für den Hook und einzelne Szenen mit Menschen. Da es keine durchgehende Figur mehr gibt, müssen es nicht dieselben Darsteller sein.
 
 | Szene | Suchbegriffe (englisch, liefern die meisten Treffer) |
 |---|---|
-| 1 | man back pain getting up from desk, man holding lower back pain |
-| 2 | physiotherapist treating back pain patient, physiotherapist showing exercise to patient |
-| 3 | man at home ignoring paper on table, man sitting on couch |
-| 4 | physiotherapist consultation back pain patient, patient shrugging |
-| 7 | physiotherapist with tablet and patient |
-| 8 | man doing back exercise at home with smartphone, home workout living room mat phone |
-| 9 | happy patient with physiotherapist, man stretching pain free |
+| 1 | man on couch ignoring paper, lazy patient at home |
+| 1 | physiotherapist shaking head, frustrated physiotherapist |
+| 3, 9 | patient scanning QR code at reception, clinic reception smartphone |
+| 7 | man doing back exercise at home with smartphone, home workout living room mat phone |
 
-- **Einheitlicher Look:** hell, natürliches Licht, warme Töne. Farben werden später gemeinsam angeglichen.
+- **Einheitlicher Look:** hell, natürliches Licht, warme Töne.
 - **Mindestens 1080p, besser 4K**, 16:9.
 - **Lizenz für kommerzielle Nutzung** (Website und Messe) prüfen. Kostenlos: Pexels, Pixabay. Mehr Auswahl, kostenpflichtig: Adobe Stock, Storyblocks, Artgrid.
-- **Keine fremden Logos** oder andere Apps auf Bildschirmen im Clip.
+- **Alternative:** Die Fotos aus der Patient Journey (Empfang, Behandlung, Training zu Hause), falls sie für Werbung genutzt werden dürfen.
 
 ## Benötigtes Material
 
@@ -204,34 +228,38 @@ Beide Versionen sind bis Szene 10 identisch. Nur Szene 11 unterscheidet sich:
 
 | Szene | Gerät | Inhalt |
 |---|---|---|
-| 7 | iPad | Übungsbibliothek öffnen, 3–4 Rückenübungen auswählen |
-| 7 | iPad | Programm anpassen (falls möglich, z. B. Wiederholungen) und an den Patienten senden |
-| 8 | iPhone | Patienten-App öffnen, Programm erscheint |
-| 8 | iPhone | Übungsvideo antippen und abspielen lassen |
+| 3 | iPhone | QR-Code scannen, Aufnahme und Anamnese ausfüllen |
+| 3 | iPad | Anamnese-Angaben in der Therapeutensicht |
+| 4 | iPad | Name und Telefonnummer eintragen, Programm wählen, senden – **in Echtzeit, am Stück** |
+| 5 | iPad | Übungsbibliothek durchscrollen, Übung austauschen und hinzufügen |
+| 6 | iPad | Dokumentation einer Behandlung |
+| 7 | iPhone | Trainingszeiten einstellen, Mitteilung, Übungsvideo, Trainingsserie |
+| 8 | iPad | Trainingskalender eines Patienten |
+| 9 | iPhone | Check-in per QR-Code, Wohlbefinden-Abfrage nach der Einheit |
+| 9 | iPad | Verlauf von Fortschritt und Wohlbefinden |
+| 10 | iPhone | Patienten-App im Branding einer Praxis (mit deren Erlaubnis) |
 
-### Screenshots (PNG, Originalauflösung)
+### Grafiken
 
-- Startbildschirm der iPad-App (Therapeutensicht)
-- Startbildschirm der Patienten-App (für Szene 6 und die Endkarte)
-- Eine Rückenübung im Detail
+- Feature-Grafiken von der Website als Originaldateien (Figma, SVG oder PNG in hoher Auflösung) – daraus lassen sich die UI-Animationen bauen
+- Startbildschirme von iPad- und Patienten-App (PNG, Originalauflösung)
 
 ### Marke
 
 - Logo als SVG oder transparentes PNG (hell und dunkel)
-- Markenfarben (Hex-Werte) und Schriftart
+- Markenfarben (Hex-Werte) und Schriftarten
 - App-Icon
 
 ### Sonstiges
 
 - Praxisvideo als Originaldatei (Testimonial)
-- 1–2 Übungsvideos für den Rücken in voller Qualität
 - Ziel-URL für den QR-Code (Konferenz)
 
 ### Hinweise zur Aufnahme
 
-- **Nur Demo-Konto mit erfundenen Patientennamen** – keine echten Patientendaten im Bild. Den Demo-Patienten am besten „Thomas" nennen, dann passt es zur Geschichte.
+- **Nur Demo-Konto mit erfundenen Patientennamen** – keine echten Patientendaten im Bild
 - Höchste Auflösung, die eingebaute Bildschirmaufnahme von iPad/iPhone reicht
-- „Nicht stören" an, damit keine Mitteilungen auftauchen
+- „Nicht stören" an, damit keine Mitteilungen auftauchen (außer der Trainings-Erinnerung in Szene 7)
 - Langsam und ruhig tippen, vor und nach jeder Aktion 1–2 s stehen lassen
 - Durchgehend dasselbe Erscheinungsbild (hell oder dunkel)
 
@@ -239,11 +267,13 @@ Beide Versionen sind bis Szene 10 identisch. Nur Szene 11 unterscheidet sich:
 
 - [x] Ansprache: du
 - [x] Website-CTA: „Demo vereinbaren"
-- [x] Szene 7 bleibt bei „mit wenigen Klicks"
-- [x] Bilder für Szenen mit Menschen: Stock-Videos
-- [x] Einstieg mit Patientengeschichte (Thomas, Rückenschmerzen)
-- [x] Zahlen-Szene mit 70 % (belegt) und 100 % (Witz)
+- [x] Product Reel statt Storytelling
+- [x] Hook: 70 % / 100 % mit Stock-Material
+- [ ] „In 20 Sekunden" statt „mit wenigen Klicks" bestätigen (steht so auf der Feature-Seite)
+- [ ] Sind Dokumentation (< 1 Minute) und Check-in per QR-Code schon verfügbar? Beides steht in der Patient Journey, aber nicht auf der Feature-Seite.
+- [ ] Dürfen die Fotos aus der Patient Journey im Video verwendet werden?
 - [ ] Testimonial: Zitat aus dem Praxisvideo auswählen
 - [ ] Sprecher: echte Stimme oder KI-Stimme?
-- [ ] Stock-Clips auswählen (derselbe Darsteller für Thomas)
+- [ ] Referenzvideos für Look & Sound ins Repo legen
+- [ ] Stock-Clips auswählen
 - [ ] Produktmaterial liefern
