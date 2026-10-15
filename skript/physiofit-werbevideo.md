@@ -9,6 +9,8 @@
 - **Bilder:** Stock-Videos (Szenen mit Menschen), Screen-Recordings (App), Motion Design (Texte, Animationen, Endkarte)
 - **Aufbau:** Problem → Lösung → Testimonial → Call to Action
 
+**Begriffe:** *Bild* = was man sieht · *Sprecher* = Stimme aus dem Off · *Einblendung* = Text, der im Bild erscheint · *O-Ton* = jemand spricht selbst im Bild
+
 ## Ablauf
 
 | # | Szene | Teil | Zeit | Dauer |
@@ -38,7 +40,7 @@
 
 - **Bild (Stock):** Helle Praxis. Eine Physiotherapeutin zeigt einem Patienten eine Übung, korrigiert kurz seine Haltung, er macht sauber mit. Sie nickt.
 - **Sprecher:** „In der Praxis sitzt jede Übung. Du zeigst, korrigierst – und dein Patient macht mit."
-- **Einblendung:** –
+- **Einblendung:** keine – das Bild spricht für sich.
 - **Musik:** Ruhiger Beat kommt dazu.
 
 ## Szene 3 – Zu Hause nicht (0:13–0:24)
@@ -61,7 +63,7 @@
 
 - **Bild (Motion Design):** Farbwechsel ins Helle. Der Strichmännchen-Zettel faltet sich zusammen und verwandelt sich in ein Smartphone mit der Physiofit-App.
 - **Sprecher:** „Was wäre, wenn deine Anleitung einfach mit nach Hause geht?"
-- **Einblendung:** –
+- **Einblendung:** keine – die Verwandlung von Zettel zu Smartphone steht im Mittelpunkt.
 - **Musik:** Heller, energiegeladener Teil setzt ein.
 - **Sound:** Whoosh beim Verwandeln.
 
