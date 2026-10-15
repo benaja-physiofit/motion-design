@@ -57,6 +57,44 @@
 
 In Szene 1–2 ruhig und etwas gedrückt, ab Szene 3 heller und mit mehr Energie, unter dem Testimonial leiser gemischt, zum Call to Action wieder voll.
 
+## Benötigtes Material
+
+### Screen-Recordings (je Schritt eine eigene Aufnahme, 5–15 s)
+
+| Szene | Gerät | Inhalt |
+|---|---|---|
+| 3 | iPad | Übungsbibliothek öffnen, 3–4 Übungen auswählen |
+| 3 | iPad | Programm anpassen (falls möglich, z. B. Wiederholungen) und an den Patienten senden |
+| 4 | iPhone | Patienten-App öffnen, Programm erscheint |
+| 4 | iPhone | Übungsvideo antippen und abspielen lassen |
+| 4 | iPhone | Übung als erledigt markieren (falls die Funktion existiert) |
+
+### Screenshots (PNG, Originalauflösung)
+
+- Startbildschirm der iPad-App (Therapeutensicht)
+- Startbildschirm der Patienten-App
+- Eine Übung im Detail
+
+### Marke
+
+- Logo als SVG oder transparentes PNG (hell und dunkel)
+- Markenfarben (Hex-Werte) und Schriftart
+- App-Icon
+
+### Sonstiges
+
+- Praxisvideo als Originaldatei (für Testimonial und evtl. echte Praxisbilder)
+- 1–2 Übungsvideos in voller Qualität
+- Ziel-URL für den QR-Code (Konferenz)
+
+### Hinweise zur Aufnahme
+
+- **Nur Demo-Konto mit erfundenen Patientennamen** – keine echten Patientendaten im Bild
+- Höchste Auflösung, eingebaute Bildschirmaufnahme von iPad/iPhone reicht
+- „Nicht stören" an, damit keine Mitteilungen auftauchen
+- Langsam und ruhig tippen, vor und nach jeder Aktion 1–2 s stehen lassen
+- Durchgehend dasselbe Erscheinungsbild (hell oder dunkel)
+
 ## Offene Entscheidungen
 
 - [ ] Ansprache: „Sie" oder „du"?
