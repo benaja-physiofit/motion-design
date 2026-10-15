@@ -1,7 +1,8 @@
-# Physiofit Werbevideo – Skript (Entwurf v2)
+# Physiofit Werbevideo – Skript (Entwurf v3)
 
 - **Einsatz:** Konferenzen (Messestand, Schleife) und Website
 - **Zielgruppe:** Physiotherapeut:innen und Praxisinhaber:innen
+- **Ansprache:** du
 - **Format:** 16:9, mit Ton (Sprecher + Musik), Einblendungen nur als Schlagworte
 - **Länge:** ca. 70 Sekunden
 - **Aufbau:** Problem → Lösung → Testimonial → Call to Action
@@ -16,20 +17,19 @@
 ## Szene 2 – Problem verschärfen (8–20 s)
 
 - **Bild:** Patient zu Hause mit einem Zettel voller Strichmännchen. Er macht die Übung sichtbar falsch und legt den Zettel weg. Schnitt: Beim nächsten Termin erklärt die Therapeutin dieselbe Übung noch einmal.
-- **Sprecher:** „Doch zu Hause wird die Hälfte vergessen, falsch gemacht – oder gar nicht. Und Sie erklären dieselben Übungen immer wieder von vorn."
+- **Sprecher:** „Doch zu Hause wird die Hälfte vergessen, falsch gemacht – oder gar nicht. Und du erklärst dieselben Übungen immer wieder von vorn."
 - **Einblendung:** „Zu Hause fehlt die Anleitung."
 
 ## Szene 3 – Lösung: Programm erstellen (20–32 s)
 
 - **Bild:** Screen-Recording auf dem iPad: Übungen auswählen, Programm zusammenstellen, an den Patienten senden.
-- **Sprecher:** „Jetzt stellen Sie das Heimübungsprogramm direkt in der Behandlung zusammen – individuell für jeden Patienten, mit wenigen Klicks."
+- **Sprecher:** „Jetzt stellst du das Heimübungsprogramm direkt in der Behandlung zusammen – individuell für jeden Patienten, mit wenigen Klicks."
 - **Einblendung:** „1 · Programm erstellen"
-- **Offen:** „mit wenigen Klicks" durch „in 20 Sekunden" ersetzen, falls Physiofit das selbst so kommuniziert.
 
 ## Szene 4 – Lösung: Videos für zu Hause (32–44 s)
 
 - **Bild:** Auf dem Smartphone des Patienten läuft ein Übungsvideo in der App. Er macht die Übung im Wohnzimmer jetzt richtig.
-- **Sprecher:** „Ihr Patient hat jede Übung als Video in der App – und weiß zu Hause genau, wie sie geht."
+- **Sprecher:** „Dein Patient hat jede Übung als Video in der App – und weiß zu Hause genau, wie sie geht."
 - **Einblendung:** „2 · Videoanleitung für zu Hause"
 
 ## Szene 5 – Ergebnis (44–52 s)
@@ -49,7 +49,7 @@
 - **Bild:** Logo, die App auf iPad und Smartphone.
 - **Sprecher:** „Physiofit. Damit Therapie auch zu Hause wirkt."
 - **Einblendung Konferenz:** „Live-Demo hier am Stand" + QR-Code
-- **Einblendung Website:** „Jetzt testen auf physiofit.app" *(oder „Demo vereinbaren")*
+- **Einblendung Website:** „Demo vereinbaren auf physiofit.app"
 
 ---
 
@@ -97,8 +97,8 @@ In Szene 1–2 ruhig und etwas gedrückt, ab Szene 3 heller und mit mehr Energie
 
 ## Offene Entscheidungen
 
-- [ ] Ansprache: „Sie" oder „du"?
-- [ ] Website-CTA: „Jetzt testen" oder „Demo vereinbaren"?
-- [ ] Darf „in 20 Sekunden" in den Sprechertext?
-- [ ] Testimonial: Zitat aus dem Praxisvideo auswählen
+- [x] Ansprache: du
+- [x] Website-CTA: „Demo vereinbaren"
+- [x] Szene 3 bleibt bei „mit wenigen Klicks"
+- [ ] Testimonial: Zitat aus dem Praxisvideo auswählen (Video kommt nach Freigabe des Skripts)
 - [ ] Produktmaterial (Screen-Recordings, Screenshots) nach Freigabe des Skripts
