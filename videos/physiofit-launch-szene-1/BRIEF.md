@@ -37,8 +37,11 @@ Referenz: Launch-Video https://www.youtube.com/watch?v=SgmuplXU2iY (in dieser Um
 
 ## Notes
 
-- physiofit.app ist in dieser Cloud-Umgebung per Netzwerk-Policy blockiert. Das Logo kam deshalb als Bild von
-  der Nutzerin bzw. dem Nutzer. Die Markenfarben sind Navy #1F3542 (Logo-Hintergrund, auch für Text und das
-  Endbild) und Blau #607F90 (Kreis aus den Fotos).
+- Unternehmensfarben (von der Nutzerin bzw. dem Nutzer): #60f90 (gelesen als #607F90, das Blau der Foto-Kreise),
+  #00B8E1, #102D49, #FAFAFA, #F2FBFD. Verwendung: Hintergrund #F2FBFD · Text und Endbild #102D49 ·
+  Foto-Kreise, „DU"-Kreis, „%" und Hervorhebungen #607F90 · Fortschrittsringe und „App." #00B8E1 ·
+  heller Text auf Dunkel #FAFAFA.
+- physiofit.app ist in dieser Cloud-Umgebung per Netzwerk-Policy blockiert. Logo und Farben kamen deshalb direkt
+  von der Nutzerin bzw. dem Nutzer.
 - „Alles in einer App" statt „auf einer App", weil das die übliche Formulierung ist (angenommen, nicht bestätigt).
 - Keine Musik (nicht angefragt).
