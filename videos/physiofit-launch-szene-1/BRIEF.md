@@ -39,8 +39,8 @@ Referenz: Launch-Video https://www.youtube.com/watch?v=SgmuplXU2iY (in dieser Um
 
 - Unternehmensfarben (von der Nutzerin bzw. dem Nutzer): #60f90 (gelesen als #607F90, das Blau der Foto-Kreise),
   #00B8E1, #102D49, #FAFAFA, #F2FBFD. Verwendung: Hintergrund #F2FBFD · Text und Endbild #102D49 ·
-  Foto-Kreise, „DU"-Kreis, „%" und Hervorhebungen #607F90 · Fortschrittsringe und „App." #00B8E1 ·
-  heller Text auf Dunkel #FAFAFA.
+  Foto-Kreise, „DU"-Kreis, „%" und Hervorhebungen #607F90 · Fortschrittsringe #00B8E1 ·
+  heller Text auf Dunkel #FAFAFA. Im Endbild ist die Schrift nur weiß, ohne Cyan (Wunsch der Nutzerin bzw. des Nutzers).
 - physiofit.app ist in dieser Cloud-Umgebung per Netzwerk-Policy blockiert. Logo und Farben kamen deshalb direkt
   von der Nutzerin bzw. dem Nutzer.
 - „Alles in einer App" statt „auf einer App", weil das die übliche Formulierung ist (angenommen, nicht bestätigt).
