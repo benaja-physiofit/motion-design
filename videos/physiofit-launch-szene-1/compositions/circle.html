@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #circle-disc {
+          position: absolute;
+          left: 770px;
+          top: 350px;
+          width: 380px;
+          height: 380px;
+          border-radius: 50%;
+          background: #607f90;
+        }
+      </style>
+
+      <!-- The brand circle from the photos: holds "DU", then floods the frame -->
+      <div data-hf-id="hf-dlvv" id="root" data-composition-id="circle" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-qcg6" id="circle-disc" data-layout-allow-overflow></div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo(
+          "#circle-disc",
+          { scale: 0 },
+          { scale: 1, duration: 0.65, ease: "back.out(1.6)" },
+          0.22,
+        );
+        // Beat pulse as the voice lands on "du"
+        tl.fromTo(
+          "#circle-disc",
+          { scale: 1 },
+          {
+            scale: 1.08,
+            duration: 0.12,
+            ease: "power2.out",
+            yoyo: true,
+            repeat: 1,
+            immediateRender: false,
+          },
+          1.05,
+        );
+        // Flood: the circle becomes the background for the payoff
+        tl.fromTo(
+          "#circle-disc",
+          { scale: 1 },
+          { scale: 6.6, duration: 0.65, ease: "power3.inOut", immediateRender: false },
+          2.5,
+        );
+        window.__timelines["circle"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

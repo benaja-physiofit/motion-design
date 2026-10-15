@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f1f4f6;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #f1f4f6;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      Physiofit Launch – Szene 1 (13 s, 16:9)
+      0.0–3.9  70 % der Physio-Patienten trainieren nicht zuhause (Bild 2, zentriert)
+      3.9–7.5  100 % der Therapeuten sind damit unzufrieden (Bild 1 rechts, Split)
+      7.5–10.0 Was wäre, wenn DU das ändern könntest? (Brand-Kreis)
+      10.0–13  Alles in einer App. (Kreis flutet das Bild)
+    -->
+    <div data-hf-id="hf-84zm"
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="13"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div data-hf-id="hf-3iyo"
+        id="bg"
+        data-composition-id="bg"
+        data-composition-src="compositions/bg.html"
+        data-start="0"
+        data-duration="13"
+        data-track-index="0"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div data-hf-id="hf-9d6r"
+        id="stats"
+        data-composition-id="stats"
+        data-composition-src="compositions/stats.html"
+        data-start="0"
+        data-duration="8.2"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div data-hf-id="hf-ogs5"
+        id="circle"
+        data-composition-id="circle"
+        data-composition-src="compositions/circle.html"
+        data-start="7.5"
+        data-duration="5.5"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div data-hf-id="hf-btiz"
+        id="question"
+        data-composition-id="question"
+        data-composition-src="compositions/question.html"
+        data-start="7.6"
+        data-duration="3.1"
+        data-track-index="3"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div data-hf-id="hf-6a7k"
+        id="outro"
+        data-composition-id="outro"
+        data-composition-src="compositions/outro.html"
+        data-start="10"
+        data-duration="3"
+        data-track-index="4"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <!-- Deutsche KI-Stimme (Piper "Thorsten", offline erzeugt), Sätze bei 0.6 / 4.25 / 7.9 / 10.5 s -->
+      <audio data-hf-id="hf-b3tq"
+        id="vo"
+        src="assets/narration.wav"
+        data-start="0"
+        data-duration="13"
+        data-track-index="5"
+        data-volume="1"
+      ></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

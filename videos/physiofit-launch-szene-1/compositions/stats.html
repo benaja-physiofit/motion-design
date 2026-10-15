@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Montserrat", sans-serif;
+          color: #1f3340;
+        }
+        .stats-panels {
+          position: absolute;
+          inset: 0;
+          display: flex;
+        }
+        .stats-panel {
+          position: relative;
+          width: 960px;
+          height: 1080px;
+          display: flex;
+          justify-content: center;
+        }
+        .stats-floater {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 96px;
+          width: 100%;
+        }
+        .stats-ringbox {
+          position: relative;
+          width: 524px;
+          height: 524px;
+        }
+        .stats-ringbox svg {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 524px;
+          height: 524px;
+          overflow: visible;
+        }
+        .stats-track {
+          fill: none;
+          stroke: rgba(96, 127, 144, 0.2);
+          stroke-width: 12;
+        }
+        .stats-fill {
+          fill: none;
+          stroke: #607f90;
+          stroke-width: 12;
+          stroke-linecap: round;
+        }
+        .stats-photo {
+          position: absolute;
+          left: 52px;
+          top: 52px;
+          width: 420px;
+          height: 420px;
+          display: block;
+        }
+        .stats-stat {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          width: 640px;
+          margin-top: 22px;
+          line-height: 1;
+        }
+        .stats-num {
+          display: inline-block;
+          font-size: 184px;
+          font-weight: 900;
+          letter-spacing: -0.04em;
+          font-variant-numeric: tabular-nums;
+          transform-origin: 50% 80%;
+          color: #1f3340;
+        }
+        .stats-pct {
+          display: inline-block;
+          font-size: 120px;
+          font-weight: 900;
+          margin-left: 18px;
+          color: #607f90;
+        }
+        .stats-label {
+          margin-top: 26px;
+          text-align: center;
+          font-size: 40px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          line-height: 1.22;
+          text-transform: uppercase;
+          color: #1f3340;
+        }
+        .stats-line {
+          display: block;
+        }
+        .stats-label em {
+          font-style: normal;
+          color: #4f6d7e;
+        }
+        #stats-divider {
+          position: absolute;
+          left: 958px;
+          top: 200px;
+          width: 4px;
+          height: 680px;
+          border-radius: 2px;
+          background: rgba(96, 127, 144, 0.35);
+        }
+      </style>
+
+      <div data-hf-id="hf-sc2m" id="root" data-composition-id="stats" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-4mqb" class="stats-panels">
+          <!-- Bild 2: Patient → 70 % -->
+          <div data-hf-id="hf-i2bu" class="stats-panel" id="stats-panelP">
+            <div data-hf-id="hf-z1e7" class="stats-floater" id="stats-floatP">
+              <div data-hf-id="hf-rqdv" class="stats-ringbox">
+                <svg data-hf-id="hf-nv7b" id="stats-svgP" viewBox="0 0 524 524">
+                  <circle data-hf-id="hf-wxnh" class="stats-track" cx="262" cy="262" r="250"></circle>
+                  <circle data-hf-id="hf-v84i"
+                    class="stats-fill"
+                    id="stats-ringP"
+                    cx="262"
+                    cy="262"
+                    r="250"
+                    transform="rotate(-90 262 262)"
+                  ></circle>
+                </svg>
+                <img data-hf-id="hf-4etf" class="stats-photo" id="stats-photoP" src="../assets/patient.png" alt="Patient" />
+              </div>
+              <div data-hf-id="hf-zygo" class="stats-stat">
+                <span data-hf-id="hf-88kn" class="stats-num" id="stats-numP">0</span
+                ><span data-hf-id="hf-fe5u" class="stats-pct" id="stats-pctP">%</span>
+              </div>
+              <div data-hf-id="hf-l708" class="stats-label">
+                <span data-hf-id="hf-nw7q" class="stats-line" id="stats-lblP1">der Physio-Patienten</span>
+                <span data-hf-id="hf-rcbn" class="stats-line" id="stats-lblP2">trainieren <em data-hf-id="hf-ow83">nicht</em> zuhause</span>
+              </div>
+            </div>
+          </div>
+          <!-- Bild 1: Therapeut → 100 % -->
+          <div data-hf-id="hf-38q6" class="stats-panel" id="stats-panelT">
+            <div data-hf-id="hf-bne3" class="stats-floater" id="stats-floatT">
+              <div data-hf-id="hf-8gj7" class="stats-ringbox">
+                <svg data-hf-id="hf-oigb" id="stats-svgT" viewBox="0 0 524 524">
+                  <circle data-hf-id="hf-ksc1" class="stats-track" cx="262" cy="262" r="250"></circle>
+                  <circle data-hf-id="hf-759y"
+                    class="stats-fill"
+                    id="stats-ringT"
+                    cx="262"
+                    cy="262"
+                    r="250"
+                    transform="rotate(-90 262 262)"
+                  ></circle>
+                </svg>
+                <img data-hf-id="hf-q5jv" class="stats-photo" id="stats-photoT" src="../assets/therapeut.png" alt="Therapeut" />
+              </div>
+              <div data-hf-id="hf-pn9s" class="stats-stat">
+                <span data-hf-id="hf-noxn" class="stats-num" id="stats-numT">0</span
+                ><span data-hf-id="hf-o91i" class="stats-pct" id="stats-pctT">%</span>
+              </div>
+              <div data-hf-id="hf-wh3k" class="stats-label">
+                <span data-hf-id="hf-rkpo" class="stats-line" id="stats-lblT1">der Therapeuten</span>
+                <span data-hf-id="hf-pj5m" class="stats-line" id="stats-lblT2">sind damit <em data-hf-id="hf-i4si">unzufrieden</em></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-hf-id="hf-28fu" id="stats-divider"></div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        const COUNT_DUR = 1.2;
+        const COUNT_EASE = "expo.out";
+
+        // Rings: measured length, fill drawn from 12 o'clock
+        const ringP = document.getElementById("stats-ringP");
+        const ringT = document.getElementById("stats-ringT");
+        const LEN_P = ringP.getTotalLength();
+        const LEN_T = ringT.getTotalLength();
+        ringP.style.strokeDasharray = LEN_P;
+        ringT.style.strokeDasharray = LEN_T;
+
+        const numP = document.getElementById("stats-numP");
+        const numT = document.getElementById("stats-numT");
+        const countP = { v: 0 };
+        const countT = { v: 0 };
+
+        // ---- Beat 1: patient alone, centered (VO line 1 at 0.6s) ----
+        tl.set("#stats-panelP", { x: 480 }, 0);
+        tl.fromTo(
+          "#stats-photoP",
+          { scale: 0.6, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)" },
+          0.1,
+        );
+        tl.fromTo(
+          "#stats-svgP",
+          { opacity: 0, scale: 0.85, rotation: -20, transformOrigin: "50% 50%" },
+          { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "power3.out" },
+          0.2,
+        );
+        tl.fromTo(
+          ringP,
+          { strokeDashoffset: LEN_P },
+          { strokeDashoffset: LEN_P * (1 - 0.7), duration: COUNT_DUR, ease: COUNT_EASE },
+          0.55,
+        );
+        tl.fromTo(
+          countP,
+          { v: 0 },
+          {
+            v: 70,
+            duration: COUNT_DUR,
+            ease: COUNT_EASE,
+            onUpdate: () => {
+              numP.textContent = Math.round(countP.v);
+            },
+          },
+          0.55,
+        );
+        tl.fromTo(
+          numP,
+          { scale: 0.55, opacity: 0 },
+          { scale: 1, opacity: 1, duration: COUNT_DUR, ease: COUNT_EASE },
+          0.55,
+        );
+        tl.fromTo(
+          "#stats-pctP",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" },
+          1.6,
+        );
+        tl.fromTo(
+          "#stats-lblP1",
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          1.6,
+        );
+        tl.fromTo(
+          "#stats-lblP2",
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          2.5,
+        );
+
+        // ---- Beat 2: split — patient slides left, therapist joins right (VO line 2 at 4.25s) ----
+        tl.fromTo(
+          "#stats-panelP",
+          { x: 480 },
+          { x: 0, duration: 0.75, ease: "power3.inOut", immediateRender: false },
+          3.95,
+        );
+        tl.fromTo(
+          "#stats-panelT",
+          { x: 560, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+          4.0,
+        );
+        tl.fromTo(
+          "#stats-divider",
+          { scaleY: 0 },
+          { scaleY: 1, duration: 0.6, ease: "power2.out" },
+          4.45,
+        );
+        tl.fromTo(
+          ringT,
+          { strokeDashoffset: LEN_T },
+          { strokeDashoffset: 0, duration: COUNT_DUR, ease: COUNT_EASE },
+          4.45,
+        );
+        tl.fromTo(
+          countT,
+          { v: 0 },
+          {
+            v: 100,
+            duration: COUNT_DUR,
+            ease: COUNT_EASE,
+            immediateRender: false,
+            onUpdate: () => {
+              numT.textContent = Math.round(countT.v);
+            },
+          },
+          4.45,
+        );
+        tl.fromTo(
+          numT,
+          { scale: 0.55, opacity: 0 },
+          { scale: 1, opacity: 1, duration: COUNT_DUR, ease: COUNT_EASE },
+          4.45,
+        );
+        tl.fromTo(
+          "#stats-pctT",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" },
+          5.5,
+        );
+        tl.fromTo(
+          "#stats-lblT1",
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          5.55,
+        );
+        tl.fromTo(
+          "#stats-lblT2",
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          6.2,
+        );
+        // Opposing float while both stats hold
+        tl.fromTo(
+          "#stats-floatP",
+          { y: 0 },
+          { y: -10, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 },
+          4.8,
+        );
+        tl.fromTo(
+          "#stats-floatT",
+          { y: 0 },
+          { y: 10, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 },
+          4.8,
+        );
+
+        // ---- Exit: panels part outward, the brand circle takes the stage ----
+        tl.fromTo(
+          "#stats-panelP",
+          { x: 0, opacity: 1 },
+          { x: -180, opacity: 0, duration: 0.5, ease: "power2.in", immediateRender: false },
+          7.25,
+        );
+        tl.fromTo(
+          "#stats-panelT",
+          { x: 0, opacity: 1 },
+          { x: 180, opacity: 0, duration: 0.5, ease: "power2.in", immediateRender: false },
+          7.25,
+        );
+        tl.fromTo(
+          "#stats-divider",
+          { scaleY: 1 },
+          { scaleY: 0, duration: 0.35, ease: "power2.in", immediateRender: false },
+          7.25,
+        );
+
+        window.__timelines["stats"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

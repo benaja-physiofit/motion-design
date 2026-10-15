@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "preferences": {
+    "destination": {
+      "value": "youtube",
+      "confirmed_in": [
+        "physiofit-launch-szene-1"
+      ],
+      "updated_at": "2026-10-15T13:14:51.137Z"
+    },
+    "aspect": {
+      "value": "1920x1080",
+      "confirmed_in": [
+        "physiofit-launch-szene-1"
+      ],
+      "updated_at": "2026-10-15T13:14:51.191Z"
+    },
+    "language": {
+      "value": "de",
+      "confirmed_in": [
+        "physiofit-launch-szene-1"
+      ],
+      "updated_at": "2026-10-15T13:14:51.245Z"
+    },
+    "storyboard": {
+      "value": "no",
+      "confirmed_in": [
+        "physiofit-launch-szene-1"
+      ],
+      "updated_at": "2026-10-15T13:14:51.302Z"
+    },
+    "voice": {
+      "value": "piper:de_DE-thorsten-high",
+      "confirmed_in": [
+        "physiofit-launch-szene-1"
+      ],
+      "updated_at": "2026-10-15T13:14:51.355Z"
+    }
+  },
+  "sightings": {}
+}

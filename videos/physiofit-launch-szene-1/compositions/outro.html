@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Montserrat", sans-serif;
+          color: #fbfcfd;
+        }
+        .outro-ripple {
+          position: absolute;
+          left: 660px;
+          top: 240px;
+          width: 600px;
+          height: 600px;
+          border-radius: 50%;
+          border: 3px solid rgba(251, 252, 253, 0.24);
+          opacity: 0;
+        }
+        .outro-stack {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        #outro-text {
+          display: flex;
+          gap: 40px;
+          font-size: 150px;
+          font-weight: 900;
+          letter-spacing: -0.04em;
+          line-height: 1;
+        }
+        .outro-w {
+          display: inline-block;
+        }
+        #outro-mark {
+          margin-top: 70px;
+          display: flex;
+          align-items: center;
+          gap: 26px;
+        }
+        .outro-rule {
+          display: block;
+          width: 90px;
+          height: 4px;
+          border-radius: 2px;
+          background: #fbfcfd;
+        }
+        #outro-ruleL {
+          transform-origin: 100% 50%;
+        }
+        #outro-ruleR {
+          transform-origin: 0% 50%;
+        }
+        #outro-wordmark {
+          font-size: 56px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+        }
+      </style>
+
+      <div data-hf-id="hf-x7nm" id="root" data-composition-id="outro" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-kazg" class="outro-ripple" id="outro-ripple1" data-layout-allow-overflow></div>
+        <div data-hf-id="hf-syvb" class="outro-ripple" id="outro-ripple2" data-layout-allow-overflow></div>
+        <div data-hf-id="hf-fal6" class="outro-stack">
+          <div data-hf-id="hf-v55u" id="outro-text">
+            <span data-hf-id="hf-qe3x" class="outro-w" id="outro-w1">Alles</span
+            ><span data-hf-id="hf-tx62" class="outro-w" id="outro-w2">in</span
+            ><span data-hf-id="hf-tger" class="outro-w" id="outro-w3">einer</span
+            ><span data-hf-id="hf-8zgc" class="outro-w" id="outro-w4">App.</span>
+          </div>
+          <!-- Platzhalter-Wortmarke, bis das echte Physiofit-Logo vorliegt -->
+          <div data-hf-id="hf-xn6o" id="outro-mark">
+            <span data-hf-id="hf-r9pl" class="outro-rule" id="outro-ruleL"></span
+            ><span data-hf-id="hf-a9ay" id="outro-wordmark">Physiofit</span
+            ><span data-hf-id="hf-v4c7" class="outro-rule" id="outro-ruleR"></span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // VO line 4 starts at local 0.5s
+        tl.fromTo(
+          "#outro-w1",
+          { opacity: 0, y: 70 },
+          { opacity: 1, y: 0, duration: 0.42, ease: "power3.out" },
+          0.48,
+        );
+        tl.fromTo(
+          ["#outro-w2", "#outro-w3"],
+          { opacity: 0, y: 70 },
+          { opacity: 1, y: 0, duration: 0.42, ease: "power3.out", stagger: 0.1 },
+          0.74,
+        );
+        tl.fromTo(
+          "#outro-w4",
+          { opacity: 0, scale: 0.4 },
+          { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" },
+          0.95,
+        );
+        tl.fromTo("#outro-text", { scale: 1 }, { scale: 1.035, duration: 2.5, ease: "none" }, 0.5);
+        tl.fromTo(
+          ["#outro-ruleL", "#outro-ruleR"],
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.5, ease: "power3.out" },
+          1.55,
+        );
+        tl.fromTo(
+          "#outro-wordmark",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          1.6,
+        );
+        tl.fromTo(
+          "#outro-ripple1",
+          { scale: 0.6, opacity: 0.9 },
+          { scale: 2.6, opacity: 0, duration: 2.4, ease: "power1.out", immediateRender: false },
+          0.55,
+        );
+        tl.fromTo(
+          "#outro-ripple2",
+          { scale: 0.6, opacity: 0.9 },
+          { scale: 2.6, opacity: 0, duration: 2.4, ease: "power1.out", immediateRender: false },
+          1.15,
+        );
+        window.__timelines["outro"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

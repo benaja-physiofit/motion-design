@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          font-family: "Montserrat", sans-serif;
+        }
+        .question-stack {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .question-line {
+          display: flex;
+          gap: 30px;
+          font-size: 100px;
+          font-weight: 700;
+          letter-spacing: -0.03em;
+          line-height: 1;
+          color: #1f3340;
+        }
+        .question-w {
+          display: inline-block;
+        }
+        #question-top {
+          margin-bottom: 60px;
+        }
+        #question-bottom {
+          margin-top: 60px;
+        }
+        .question-slot {
+          width: 380px;
+          height: 380px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #question-du {
+          display: block;
+          font-size: 190px;
+          font-weight: 900;
+          letter-spacing: -0.04em;
+          line-height: 1;
+          color: #fbfcfd;
+        }
+      </style>
+
+      <!-- "DU" sits in the circle where the patient and therapist stood -->
+      <div data-hf-id="hf-p0wv" id="root" data-composition-id="question" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-c78f" class="question-stack">
+          <div data-hf-id="hf-aevz" class="question-line" id="question-top">
+            <span data-hf-id="hf-m13l" class="question-w" id="question-w1">Was</span
+            ><span data-hf-id="hf-qw5n" class="question-w" id="question-w2">wäre,</span
+            ><span data-hf-id="hf-ssjq" class="question-w" id="question-w3">wenn</span>
+          </div>
+          <div data-hf-id="hf-7pgl" class="question-slot"><span data-hf-id="hf-hdjl" id="question-du">DU</span></div>
+          <div data-hf-id="hf-7mcr" class="question-line" id="question-bottom">
+            <span data-hf-id="hf-45cz" class="question-w" id="question-w4">das</span
+            ><span data-hf-id="hf-lizx" class="question-w" id="question-w5">ändern</span
+            ><span data-hf-id="hf-h3uj" class="question-w" id="question-w6">könntest?</span>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // VO line 3 starts at local 0.3s
+        tl.fromTo(
+          ["#question-w1", "#question-w2", "#question-w3"],
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.16 },
+          0.3,
+        );
+        tl.fromTo(
+          "#question-du",
+          { scale: 1.9, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" },
+          0.9,
+        );
+        tl.fromTo(
+          ["#question-w4", "#question-w5", "#question-w6"],
+          { opacity: 0, y: -50 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.14 },
+          1.2,
+        );
+        // Clear the stage before the circle floods
+        tl.fromTo(
+          "#question-top",
+          { opacity: 1, y: 0 },
+          { opacity: 0, y: -40, duration: 0.35, ease: "power2.in" },
+          2.35,
+        );
+        tl.fromTo(
+          "#question-bottom",
+          { opacity: 1, y: 0 },
+          { opacity: 0, y: 40, duration: 0.35, ease: "power2.in" },
+          2.35,
+        );
+        tl.fromTo(
+          "#question-du",
+          { opacity: 1, scale: 1 },
+          { opacity: 0, scale: 0.7, duration: 0.3, ease: "power2.in", immediateRender: false },
+          2.35,
+        );
+        window.__timelines["question"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
