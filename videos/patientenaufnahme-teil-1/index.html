@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de" data-composition-variables="[
+    {&quot;id&quot;:&quot;ink&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Navy (Text, Balken)&quot;,&quot;default&quot;:&quot;#1E3542&quot;},
+    {&quot;id&quot;:&quot;teal&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Petrol (Icons, Linien)&quot;,&quot;default&quot;:&quot;#217C93&quot;},
+    {&quot;id&quot;:&quot;accent&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Cyan-Akzent&quot;,&quot;default&quot;:&quot;#00BAE7&quot;},
+    {&quot;id&quot;:&quot;ground&quot;,&quot;type&quot;:&quot;color&quot;,&quot;label&quot;:&quot;Vollbild-Grund&quot;,&quot;default&quot;:&quot;#F0F4F6&quot;}
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      /* --ink, --teal, --accent, --ground come from the composition variables above. */
+      :root {
+        --icon-bg: #ddf2f9;
+        --skeleton: #edf1f3;
+        --skeleton-bar: #cdd6dc;
+        --muted: #5e7380;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      #footage {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1920px;
+        height: 1080px;
+        object-fit: cover;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-d546" id="root" data-composition-id="main" data-start="0" data-duration="20.4" data-width="1920" data-height="1080">
+      <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:{&quot;src&quot;:&quot;assets/luts/friendly-saas-explainer-patientenaufnahme2.cube&quot;,&quot;intensity&quot;:1},&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-9jzl" id="footage" class="clip" src="assets/footage/patientenaufnahme2-teil1.mp4" data-start="0" data-duration="20.4" data-track-index="0" data-has-audio="true" data-volume="1" playsinline></video>
+
+      <div data-hf-id="hf-wuov" id="aufnahme" data-composition-id="aufnahme" data-composition-src="compositions/aufnahme.html" data-start="0.25" data-duration="6.25" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+
+      <div data-hf-id="hf-ag0a" id="empfang" data-composition-id="empfang" data-composition-src="compositions/empfang.html" data-start="6.55" data-duration="5.45" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 3"></div>
+
+      <div data-hf-id="hf-xjm0" id="dokumente" data-composition-id="dokumente" data-composition-src="compositions/dokumente.html" data-start="12" data-duration="5.15" data-track-index="3" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 4"></div>
+
+      <div data-hf-id="hf-kmud" id="archiv" data-composition-id="archiv" data-composition-src="compositions/archiv.html" data-start="17.15" data-duration="3.25" data-track-index="4" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 5"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

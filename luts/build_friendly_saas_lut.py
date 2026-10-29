@@ -16,9 +16,11 @@ import numpy as np
 GAMMA = 2.4  # BT.1886 display gamma
 LUMA = np.array([0.2126, 0.7152, 0.0722])  # Rec.709 coefficients
 
-# Measured on the raw clip: the grey wall reads RGB(176,168,163) -> warm/rosy cast.
+# Measured on the raw clip Patientenaufnahme-1: the grey wall reads
+# RGB(176,168,163) -> warm/rosy cast. Another clip passes its own wall via --wall.
 WALL_IN = np.array([175.7, 167.9, 163.0]) / 255.0
-# Target wall after white balance: near neutral, a hint of warm paper white.
+# Target wall after white balance and exposure match: near neutral, a hint of
+# warm paper white, at clip 1's level so the tone curve below fits every clip.
 WALL_TARGET = np.array([169.5, 167.9, 165.0]) / 255.0
 
 # Tone curves on the colour "norm" (gamma-encoded), monotone splines.
@@ -81,13 +83,15 @@ def hue_dist(hue, centre):
     return np.abs(((hue - centre) + 180) % 360 - 180)
 
 
-def grade(rgb):
+def grade(rgb, wall_in=WALL_IN, match=0.0):
     """rgb: (..., 3) gamma-encoded Rec.709 in [0,1] -> graded, same encoding."""
     lin = np.clip(rgb, 0, 1) ** GAMMA
 
-    # 1) White balance in linear light (green-anchored, so exposure is unchanged).
-    gains = (WALL_TARGET ** GAMMA) / (WALL_IN ** GAMMA)
-    gains /= gains[1]
+    # 1) White balance in linear light. `match` (0-1) also pulls the clip's
+    #    exposure toward clip 1's wall level; 0 keeps the clip's own exposure.
+    #    For clip 1 the green gain is exactly 1, so `match` has no effect there.
+    gains = (WALL_TARGET ** GAMMA) / (wall_in ** GAMMA)
+    gains /= gains[1] ** (1 - match)
     lin = lin * gains
 
     # 2) Tone curve on a hybrid norm (max + luma), applied as a ratio so hues
@@ -136,12 +140,12 @@ def grade(rgb):
     return np.clip(soft_clip(from_ycc(y, cb, cr), 0.94), 0.0, 1.0)
 
 
-def write_cube(path, size):
+def write_cube(path, size, wall_in=WALL_IN, match=0.0):
     axis = np.linspace(0.0, 1.0, size)
     # .cube order: red varies fastest, then green, then blue.
     b, g, r = np.meshgrid(axis, axis, axis, indexing="ij")
     rgb = np.stack([r, g, b], -1).reshape(-1, 3)
-    out = grade(rgb)
+    out = grade(rgb, wall_in, match)
     with open(path, "w") as f:
         # Minimal header (no comments, default 0-1 domain) so stricter
         # importers like CapCut accept it as well as Resolve/Premiere/FCP.
@@ -154,6 +158,20 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("out", nargs="?", default="friendly-saas-explainer.cube")
     ap.add_argument("--size", type=int, default=33)
+    ap.add_argument(
+        "--wall",
+        type=float,
+        nargs=3,
+        metavar=("R", "G", "B"),
+        help="8-bit RGB of the grey wall in the raw clip (default: Patientenaufnahme-1)",
+    )
+    ap.add_argument(
+        "--match",
+        type=float,
+        default=0.0,
+        help="0-1: how far to pull the clip's exposure toward clip 1 (default 0)",
+    )
     a = ap.parse_args()
-    write_cube(a.out, a.size)
+    wall = np.array(a.wall) / 255.0 if a.wall else WALL_IN
+    write_cube(a.out, a.size, wall, a.match)
     print(f"wrote {a.out} ({a.size}^3)")

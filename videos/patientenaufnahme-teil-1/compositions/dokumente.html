@@ -1,0 +1,250 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Lora";
+      font-weight: 500;
+      src: url("assets/fonts/lora-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 500;
+      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      --c-ink: var(--ink, #1e3542);
+      --c-teal: var(--teal, #217c93);
+      --c-accent: var(--accent, #00bae7);
+    }
+    #dk-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--ground, #f0f4f6);
+    }
+    #dk-card {
+      position: absolute;
+      left: 330px;
+      top: 196px;
+      width: 1260px;
+      height: 688px;
+      background: #fff;
+      border-radius: 34px;
+      box-shadow:
+        0 30px 60px -16px rgba(30, 53, 66, 0.16),
+        0 4px 14px rgba(30, 53, 66, 0.05);
+    }
+    #dk-icon {
+      position: absolute;
+      left: 56px;
+      top: 52px;
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: var(--icon-bg, #ddf2f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dk-stroke {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #dk-title {
+      position: absolute;
+      left: 200px;
+      top: 58px;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 76px;
+      line-height: 96px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    #dk-title .w {
+      display: inline-block;
+    }
+    .dk-row {
+      position: absolute;
+      left: 56px;
+      width: 1148px;
+      height: 118px;
+      border-radius: 24px;
+      background: var(--skeleton, #edf1f3);
+    }
+    .dk-fill {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: var(--c-ink);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-left: 40px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 52px;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .dk-fill svg path,
+    .dk-fill svg rect {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #dk-sign {
+      position: absolute;
+      left: 720px;
+      top: 14px;
+      overflow: visible;
+    }
+    #dk-sign path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .dk-check {
+      position: absolute;
+      left: 1118px;
+      top: 29px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid var(--icon-bg, #ddf2f9);
+      box-shadow: 0 4px 12px rgba(30, 53, 66, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dk-check path {
+      fill: none;
+      stroke: var(--c-accent);
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="dokumente"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"dk_title","type":"string","label":"Titel","default":"Wichtige Dokumente"},
+      {"id":"dk_row1","type":"string","label":"Zeile 1","default":"Behandlungsvertrag"},
+      {"id":"dk_row2","type":"string","label":"Zeile 2","default":"Ausfallgebühr"},
+      {"id":"dk_row3","type":"string","label":"Zeile 3","default":"Weitere Dokumente"}
+    ]'
+  >
+    <div id="dk-ground"></div>
+    <div id="dk-card">
+      <div id="dk-icon">
+        <svg id="dk-icon-svg" width="56" height="56" viewBox="0 0 24 24" class="dk-stroke">
+          <path
+            d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"
+          />
+        </svg>
+      </div>
+      <div id="dk-title" data-var-text="dk_title">Wichtige Dokumente</div>
+
+      <div class="dk-row" style="top: 210px">
+        <div id="dk-fill1" class="dk-fill">
+          <svg width="52" height="52" viewBox="0 0 24 24">
+            <path
+              d="m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2"
+            />
+            <path
+              d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            />
+            <path d="M8 18h1" />
+          </svg>
+          <span data-var-text="dk_row1">Behandlungsvertrag</span>
+          <svg id="dk-sign" width="300" height="90" viewBox="0 0 300 90">
+            <path
+              id="dk-sign-path"
+              pathLength="1"
+              d="M8 62 C 20 20, 34 8, 40 26 C 46 44, 28 72, 22 64 C 16 56, 44 40, 60 46 C 74 52, 66 70, 80 62 C 94 54, 98 34, 110 40 C 122 46, 112 66, 128 60 C 142 54, 150 36, 160 44 C 170 52, 164 66, 180 58 C 196 50, 204 40, 216 48 C 228 56, 240 54, 286 34"
+            />
+          </svg>
+        </div>
+        <div id="dk-check1" class="dk-check">
+          <svg width="30" height="30" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg>
+        </div>
+      </div>
+
+      <div class="dk-row" style="top: 364px">
+        <div id="dk-fill2" class="dk-fill">
+          <svg width="52" height="52" viewBox="0 0 24 24">
+            <path d="M8 2v4" /><path d="M16 2v4" />
+            <rect width="18" height="18" x="3" y="4" rx="2" />
+            <path d="M3 10h18" /><path d="m14 14-4 4" /><path d="m10 14 4 4" />
+          </svg>
+          <span data-var-text="dk_row2">Ausfallgebühr</span>
+        </div>
+        <div id="dk-check2" class="dk-check">
+          <svg width="30" height="30" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg>
+        </div>
+      </div>
+
+      <div class="dk-row" style="top: 518px">
+        <div id="dk-fill3" class="dk-fill">
+          <svg width="52" height="52" viewBox="0 0 24 24">
+            <path d="M20 7h-3a2 2 0 0 1-2-2V2" />
+            <path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z" />
+            <path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8" />
+          </svg>
+          <span data-var-text="dk_row3">Weitere Dokumente</span>
+        </div>
+        <div id="dk-check3" class="dk-check">
+          <svg width="30" height="30" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Local clock: 0 = 12.0 s in the film (hard cut from the speaker).
+      const tl = gsap.timeline({ paused: true });
+      const fill = (sel, at) =>
+        tl.fromTo(
+          sel,
+          { clipPath: "inset(0% 100% 0% 0% round 24px)" },
+          { clipPath: "inset(0% 0% 0% 0% round 24px)", duration: 0.55, ease: "power3.out" },
+          at,
+        );
+      const check = (sel, at) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" }, at);
+
+      // The new frame lands slightly large and settles.
+      tl.fromTo("#dk-card", { scale: 1.04, filter: "blur(6px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 0);
+      tl.fromTo("#dk-icon-svg", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 0.1);
+      tl.fromTo("#dk-title", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, 0.12);
+
+      // "Der unterschriebene Behandlungsvertrag" (12.16 / 12.88)
+      fill("#dk-fill1", 0.16);
+      tl.fromTo("#dk-sign-path", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.75, ease: "power1.inOut" }, 0.9);
+      check("#dk-check1", 1.7);
+
+      // "die Regelungen zur Ausfallgebühr" (14.0 / 14.64)
+      fill("#dk-fill2", 2.0);
+      check("#dk-check2", 3.3);
+
+      // "und andere wichtige Dokumente" (15.76 / 16.48)
+      fill("#dk-fill3", 3.76);
+      check("#dk-check3", 4.6);
+
+      window.__timelines["dokumente"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,274 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Lora";
+      font-weight: 500;
+      src: url("assets/fonts/lora-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 500;
+      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      --c-ink: var(--ink, #1e3542);
+      --c-teal: var(--teal, #217c93);
+      --c-accent: var(--accent, #00bae7);
+    }
+    .em-card {
+      position: absolute;
+      left: 1260px;
+      width: 600px;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow:
+        0 24px 48px -12px rgba(30, 53, 66, 0.18),
+        0 4px 12px rgba(30, 53, 66, 0.06);
+    }
+    #em-a {
+      top: 100px;
+      height: 212px;
+    }
+    #em-b {
+      top: 342px;
+      height: 252px;
+    }
+    .em-icon {
+      position: absolute;
+      left: 36px;
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      background: var(--icon-bg, #ddf2f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .em-stroke {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .em-skel {
+      position: absolute;
+      border-radius: 9px;
+      background: var(--skeleton-bar, #cdd6dc);
+    }
+    .em-title {
+      position: absolute;
+      left: 196px;
+      top: 34px;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 44px;
+      line-height: 56px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    #em-label {
+      position: absolute;
+      left: 196px;
+      top: 96px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 36px;
+      color: var(--muted, #5e7380);
+    }
+    #em-track {
+      position: absolute;
+      left: 196px;
+      top: 150px;
+      width: 364px;
+      height: 26px;
+      border-radius: 13px;
+      background: var(--skeleton, #edf1f3);
+      overflow: hidden;
+    }
+    #em-fill {
+      position: absolute;
+      inset: 0;
+      border-radius: 13px;
+      background: var(--c-teal);
+    }
+    #em-line {
+      position: absolute;
+      left: 214px;
+      top: 167px;
+      width: 332px;
+      height: 3px;
+      border-radius: 2px;
+      background: #cdd6dc;
+    }
+    #em-delay {
+      position: absolute;
+      left: 226px;
+      top: 165px;
+      width: 274px;
+      height: 7px;
+      border-radius: 4px;
+      background: var(--c-accent);
+    }
+    .em-dot {
+      position: absolute;
+      top: 157px;
+      width: 26px;
+      height: 26px;
+      margin-left: -13px;
+      border-radius: 50%;
+    }
+    #em-plan {
+      left: 226px;
+      background: #fff;
+      border: 5px solid var(--c-teal);
+    }
+    #em-start {
+      left: 226px;
+      background: var(--c-ink);
+      border: 5px solid #fff;
+      box-shadow: 0 2px 8px rgba(30, 53, 66, 0.3);
+    }
+    .em-tag {
+      position: absolute;
+      top: 192px;
+      width: 160px;
+      margin-left: -80px;
+      text-align: center;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 34px;
+      color: var(--muted, #5e7380);
+    }
+    #em-late {
+      position: absolute;
+      left: 500px;
+      top: 100px;
+      height: 46px;
+      padding: 0 18px;
+      transform: translateX(-50%);
+      border-radius: 14px;
+      background: var(--c-ink);
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 46px;
+      color: #fff;
+      white-space: nowrap;
+    }
+    #em-late-wrap {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="empfang"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"em_title_a","type":"string","label":"Karte 1 Titel","default":"Empfang"},
+      {"id":"em_label_a","type":"string","label":"Karte 1 Zeile","default":"Wertvolle Zeit"},
+      {"id":"em_title_b","type":"string","label":"Karte 2 Titel","default":"Behandlungsstart"},
+      {"id":"em_late","type":"string","label":"Badge","default":"zu spät"}
+    ]'
+  >
+    <!-- Card A: "Das kostet den Empfang wertvolle Zeit." -->
+    <div id="em-a" class="em-card">
+      <div class="em-icon" style="top: 42px">
+        <svg id="em-clock" width="62" height="62" viewBox="0 0 24 24" class="em-stroke">
+          <circle cx="12" cy="12" r="10" />
+          <line id="em-hour" x1="12" y1="12" x2="12" y2="8" />
+          <line id="em-min" x1="12" y1="12" x2="12" y2="5.5" />
+        </svg>
+      </div>
+      <div id="em-a-skel" class="em-skel" style="left: 196px; top: 54px; width: 200px; height: 18px"></div>
+      <div id="em-a-title" class="em-title" data-var-text="em_title_a">Empfang</div>
+      <div id="em-label-skel" class="em-skel" style="left: 196px; top: 108px; width: 150px; height: 12px"></div>
+      <div id="em-label" data-var-text="em_label_a">Wertvolle Zeit</div>
+      <div id="em-track"><div id="em-fill"></div></div>
+    </div>
+
+    <!-- Card B: "Und nicht selten starten Patienten zu spät in die Behandlung." -->
+    <div id="em-b" class="em-card">
+      <div class="em-icon" style="top: 62px">
+        <svg id="em-cal" width="62" height="62" viewBox="0 0 24 24" class="em-stroke">
+          <path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5" />
+          <path d="M16 2v4" /><path d="M8 2v4" /><path d="M3 10h5" />
+          <path d="M17.5 17.5 16 16.3V14" /><circle cx="16" cy="16" r="6" />
+        </svg>
+      </div>
+      <div id="em-b-skel" class="em-skel" style="left: 196px; top: 54px; width: 300px; height: 18px"></div>
+      <div id="em-b-title" class="em-title" style="font-size: 42px" data-var-text="em_title_b">
+        Behandlungsstart
+      </div>
+      <div id="em-line"></div>
+      <div id="em-delay"></div>
+      <div id="em-plan" class="em-dot"></div>
+      <div id="em-plan-tag" class="em-tag" style="left: 226px">Termin</div>
+      <div id="em-start" class="em-dot"></div>
+      <div id="em-start-tag" class="em-tag" style="left: 500px">Start</div>
+      <div id="em-late-wrap"><div id="em-late" data-var-text="em_late">zu spät</div></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Local clock: 0 = 6.55 s in the film.
+      const tl = gsap.timeline({ paused: true });
+      const cardIn = (sel, at) =>
+        tl.fromTo(
+          sel,
+          { opacity: 0, x: 60, filter: "blur(12px)" },
+          { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" },
+          at,
+        );
+      const swapIn = (skel, text, at) => {
+        tl.to(skel, { opacity: 0, duration: 0.15, ease: "power2.in" }, at - 0.05);
+        tl.fromTo(text, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, at);
+      };
+
+      // "Das kostet den Empfang" (6.64 / 7.36)
+      cardIn("#em-a", 0.09);
+      tl.fromTo("#em-clock", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 0.3);
+      tl.fromTo("#em-min", { rotation: 0 }, { rotation: 1800, svgOrigin: "12 12", duration: 5.1, ease: "none" }, 0.3);
+      tl.fromTo("#em-hour", { rotation: -60 }, { rotation: 90, svgOrigin: "12 12", duration: 5.1, ease: "none" }, 0.3);
+      swapIn("#em-a-skel", "#em-a-title", 0.75);
+
+      // "wertvolle Zeit" (8.0): the time bar runs down.
+      swapIn("#em-label-skel", "#em-label", 1.45);
+      tl.fromTo("#em-fill", { scaleX: 1, transformOrigin: "0% 50%" }, { scaleX: 0.12, duration: 1.1, ease: "power2.inOut" }, 1.5);
+
+      // "Und nicht selten starten Patienten" (8.88 / 9.68)
+      cardIn("#em-b", 2.33);
+      tl.fromTo("#em-cal", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 2.5);
+      swapIn("#em-b-skel", "#em-b-title", 2.6);
+      tl.fromTo(["#em-line", "#em-plan", "#em-plan-tag"], { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.06, ease: "power2.out" }, 2.65);
+      tl.fromTo("#em-start", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 2.95);
+
+      // The real start slides away from the appointment.
+      tl.fromTo("#em-start", { x: 0 }, { x: 274, duration: 1.1, ease: "power2.inOut" }, 3.13);
+      tl.fromTo("#em-delay", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 1.1, ease: "power2.inOut" }, 3.13);
+      tl.fromTo("#em-start-tag", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 4.1);
+
+      // "zu spät" (10.96)
+      tl.fromTo(
+        "#em-late-wrap",
+        { opacity: 0, y: 10, filter: "blur(6px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" },
+        4.38,
+      );
+
+      // Exit before the hard cut at 12.0.
+      tl.to("#em-b", { opacity: 0, x: 40, filter: "blur(8px)", duration: 0.22, ease: "power2.in" }, 5.12);
+      tl.to("#em-a", { opacity: 0, x: 40, filter: "blur(8px)", duration: 0.22, ease: "power2.in" }, 5.17);
+
+      window.__timelines["empfang"] = tl;
+    })();
+  </script>
+</template>

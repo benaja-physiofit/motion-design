@@ -1,0 +1,447 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Lora";
+      font-weight: 500;
+      src: url("assets/fonts/lora-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 500;
+      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      --c-ink: var(--ink, #1e3542);
+      --c-teal: var(--teal, #217c93);
+      --c-accent: var(--accent, #00bae7);
+    }
+    #au-card {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 480px;
+      height: 668px;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow:
+        0 24px 48px -12px rgba(30, 53, 66, 0.18),
+        0 4px 12px rgba(30, 53, 66, 0.06);
+    }
+    #au-badge {
+      position: absolute;
+      left: -22px;
+      top: -22px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(30, 53, 66, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #au-dot {
+      position: absolute;
+      right: -12px;
+      top: -12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      border: 4px solid #fff;
+      box-shadow: 0 3px 8px rgba(30, 53, 66, 0.16);
+    }
+    #au-icon {
+      position: absolute;
+      left: 174px;
+      top: 44px;
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background: var(--icon-bg, #ddf2f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .au-stroke {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #au-title-skel {
+      position: absolute;
+      left: 100px;
+      top: 210px;
+      width: 280px;
+      height: 18px;
+      border-radius: 9px;
+      background: var(--skeleton-bar, #cdd6dc);
+    }
+    #au-title {
+      position: absolute;
+      left: 0;
+      top: 192px;
+      width: 480px;
+      text-align: center;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 52px;
+      color: var(--c-ink);
+    }
+    #au-sheet-skel {
+      position: absolute;
+      left: 40px;
+      top: 268px;
+      width: 400px;
+      height: 248px;
+      border-radius: 16px;
+      background: var(--skeleton, #edf1f3);
+    }
+    #au-paper {
+      position: absolute;
+      left: 40px;
+      top: 268px;
+      width: 400px;
+      height: 248px;
+      border-radius: 14px;
+      background: #fcfdfd;
+      border: 2px solid #e3e9ed;
+      box-shadow: 0 8px 18px -6px rgba(30, 53, 66, 0.16);
+      overflow: hidden;
+    }
+    #au-fold {
+      position: absolute;
+      right: -2px;
+      top: -2px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(225deg, #ffffff 0 50%, #dfe6ea 50% 100%);
+      border-bottom-left-radius: 8px;
+    }
+    .au-row {
+      position: absolute;
+      left: 26px;
+      width: 346px;
+      height: 44px;
+    }
+    .au-label {
+      position: absolute;
+      left: 0;
+      top: 22px;
+      width: 72px;
+      height: 10px;
+      border-radius: 5px;
+      background: #cdd6dc;
+    }
+    .au-line {
+      position: absolute;
+      left: 96px;
+      top: 36px;
+      width: 250px;
+      height: 2px;
+      background: #d8e0e5;
+    }
+    .au-hand {
+      position: absolute;
+      left: 100px;
+      top: 2px;
+      overflow: visible;
+    }
+    .au-hand path {
+      fill: none;
+      stroke: var(--c-ink);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .au-box {
+      position: absolute;
+      top: 14px;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #9fb0ba;
+      border-radius: 6px;
+    }
+    .au-tick {
+      position: absolute;
+      top: 8px;
+      overflow: visible;
+    }
+    .au-tick path {
+      fill: none;
+      stroke: var(--c-ink);
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #au-scan {
+      position: absolute;
+      left: 0;
+      top: -70px;
+      width: 100%;
+      height: 70px;
+      background: linear-gradient(to bottom, rgba(0, 186, 231, 0), rgba(0, 186, 231, 0.2));
+      border-bottom: 4px solid var(--c-accent);
+    }
+    #au-input {
+      position: absolute;
+      left: 60px;
+      top: 440px;
+      width: 360px;
+      height: 64px;
+      border-radius: 14px;
+      background: #fff;
+      border: 2px solid var(--c-teal);
+      box-shadow: 0 10px 22px -8px rgba(30, 53, 66, 0.22);
+      display: flex;
+      align-items: center;
+      padding-left: 22px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    #au-input .ch {
+      display: none;
+    }
+    #au-caret {
+      display: inline-block;
+      width: 3px;
+      height: 34px;
+      margin-left: 2px;
+      background: var(--c-teal);
+    }
+    #au-pill-skel {
+      position: absolute;
+      left: 40px;
+      top: 548px;
+      width: 400px;
+      height: 76px;
+      border-radius: 20px;
+      background: var(--skeleton, #edf1f3);
+    }
+    #au-pill {
+      position: absolute;
+      left: 40px;
+      top: 548px;
+      width: 400px;
+      height: 76px;
+      border-radius: 20px;
+      background: var(--c-ink);
+      overflow: hidden;
+    }
+    #au-stack {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+    .au-state {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-left: 28px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 32px;
+      color: #fff;
+    }
+    .au-state svg path,
+    .au-state svg rect {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="aufnahme"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"au_title","type":"string","label":"Titel","default":"Patientenaufnahme"},
+      {"id":"au_name","type":"string","label":"Getippter Name","default":"Max Muster"}
+    ]'
+  >
+    <div id="au-card">
+      <div id="au-badge">
+        <svg width="32" height="32" viewBox="0 0 24 24" class="au-stroke">
+          <path d="M12 6v4" /><path d="M14 14h-4" /><path d="M14 18h-4" /><path d="M14 8h-4" />
+          <path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2" />
+          <path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18" />
+        </svg>
+      </div>
+      <div id="au-dot"></div>
+
+      <div id="au-icon">
+        <svg id="au-icon-svg" width="64" height="64" viewBox="0 0 24 24" class="au-stroke">
+          <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+          <path d="M12 11h4" /><path d="M12 16h4" /><path d="M8 11h.01" /><path d="M8 16h.01" />
+        </svg>
+      </div>
+
+      <div id="au-title-skel"></div>
+      <div id="au-title" data-var-text="au_title">Patientenaufnahme</div>
+
+      <div id="au-sheet-skel"></div>
+      <div id="au-paper">
+        <div id="au-fold"></div>
+        <div class="au-row" style="top: 22px">
+          <div class="au-label"></div>
+          <div class="au-line"></div>
+          <svg class="au-hand" width="230" height="40" viewBox="0 0 230 40">
+            <path class="au-w au-w1" pathLength="1" d="M6.0 30.0 L9.8 28.9 L13.4 25.8 L16.1 21.5 L17.4 17.2 L17.1 14.1 L15.6 13.0 L13.5 14.1 L11.5 17.2 L10.4 21.5 L10.7 25.8 L12.6 28.9 L15.7 30.0 L17.8 29.5 L19.7 28.2 L21.3 26.5 L22.3 24.8 L22.7 23.5 L22.6 23.0 L22.2 23.5 L21.8 24.8 L21.9 26.5 L22.5 28.2 L23.7 29.5 L27.5 29.5 L29.5 28.2 L31.1 26.5 L32.1 24.8 L32.4 23.5 L32.3 23.0 L31.9 23.5 L31.6 24.8 L31.6 26.5 L32.2 28.2 L33.5 29.5 L37.2 29.5 L39.2 28.2 L40.8 26.5 L41.8 24.8 L42.2 23.5 L42.0 23.0 L41.6 23.5 L41.3 24.8 L41.3 26.5 L41.9 28.2 L43.2 29.5 L48.7 28.9 L52.3 25.8 L55.0 21.5 L56.3 17.2 L56.1 14.1 L54.6 13.0 L52.4 14.1 L50.5 17.2 L49.4 21.5 L49.7 25.8 L51.6 28.9" />
+            <path class="au-w au-w1" pathLength="1" d="M64.7 30.0 L68.5 28.9 L72.1 25.8 L74.8 21.5 L76.1 17.2 L75.8 14.1 L74.3 13.0 L72.2 14.1 L70.2 17.2 L69.1 21.5 L69.4 25.8 L71.3 28.9 L74.4 30.0 L76.5 29.5 L78.4 28.2 L80.0 26.5 L81.0 24.8 L81.4 23.5 L81.3 23.0 L80.9 23.5 L80.5 24.8 L80.5 26.5 L81.2 28.2 L82.4 29.5 L86.2 29.5 L88.2 28.2 L89.8 26.5 L90.8 24.8 L91.1 23.5 L91.0 23.0 L90.6 23.5 L90.3 24.8 L90.3 26.5 L90.9 28.2 L92.1 29.5 L97.7 28.9 L101.3 25.8 L104.0 21.5 L105.3 17.2 L105.0 14.1 L103.5 13.0 L101.4 14.1 L99.4 17.2 L98.3 21.5 L98.7 25.8 L100.5 28.9 L105.7 29.5 L107.6 28.2 L109.2 26.5 L110.2 24.8 L110.6 23.5 L110.5 23.0 L110.1 23.5 L109.7 24.8 L109.8 26.5 L110.4 28.2 L111.6 29.5 L115.4 29.5 L117.4 28.2 L119.0 26.5 L120.0 24.8 L120.4 23.5 L120.2 23.0 L119.8 23.5 L119.5 24.8 L119.5 26.5 L120.1 28.2 L121.4 29.5 L125.2 29.5 L127.1 28.2 L128.7 26.5 L129.7 24.8 L130.1 23.5 L130.0 23.0 L129.6 23.5 L129.2 24.8 L129.2 26.5 L129.9 28.2 L131.1 29.5" />
+          </svg>
+        </div>
+        <div class="au-row" style="top: 72px">
+          <div class="au-label"></div>
+          <div class="au-line"></div>
+          <svg class="au-hand" width="230" height="40" viewBox="0 0 230 40">
+            <path class="au-w au-w2" pathLength="1" d="M6.0 30.0 L8.0 29.5 L10.0 28.2 L11.6 26.5 L12.6 24.8 L13.0 23.5 L12.8 23.0 L12.4 23.5 L12.1 24.8 L12.1 26.5 L12.7 28.2 L14.0 29.5 L15.7 30.0 L19.5 28.9 L23.1 25.8 L25.8 21.5 L27.1 17.2 L26.9 14.1 L25.4 13.0 L23.2 14.1 L21.2 17.2 L20.2 21.5 L20.5 25.8 L22.4 28.9 L27.5 29.5 L29.5 28.2 L31.1 26.5 L32.1 24.8 L32.4 23.5 L32.3 23.0 L31.9 23.5 L31.6 24.8 L31.6 26.5 L32.2 28.2 L33.5 29.5 L37.2 29.5 L39.2 28.2 L40.8 26.5 L41.8 24.8 L42.2 23.5 L42.0 23.0 L41.6 23.5 L41.3 24.8 L41.3 26.5 L41.9 28.2 L43.2 29.5 L47.0 29.5 L48.9 28.2 L50.5 26.5 L51.6 24.8 L51.9 23.5 L51.8 23.0 L51.4 23.5 L51.0 24.8 L51.1 26.5 L51.7 28.2 L52.9 29.5 L58.5 28.9 L62.1 25.8 L64.8 21.5 L66.1 17.2 L65.8 14.1 L64.3 13.0 L62.2 14.1 L60.2 17.2 L59.1 21.5 L59.4 25.8 L61.3 28.9" />
+            <path class="au-w au-w2" pathLength="1" d="M74.4 30.0 L76.5 29.5 L78.4 28.2 L80.0 26.5 L81.0 24.8 L81.4 23.5 L81.3 23.0 L80.9 23.5 L80.5 24.8 L80.5 26.5 L81.2 28.2 L82.4 29.5 L84.2 30.0 L86.2 29.5 L88.2 28.2 L89.8 26.5 L90.8 24.8 L91.1 23.5 L91.0 23.0 L90.6 23.5 L90.3 24.8 L90.3 26.5 L90.9 28.2 L92.1 29.5 L97.7 28.9 L101.3 25.8 L104.0 21.5 L105.3 17.2 L105.0 14.1 L103.5 13.0 L101.4 14.1 L99.4 17.2 L98.3 21.5 L98.7 25.8 L100.5 28.9 L105.7 29.5 L107.6 28.2 L109.2 26.5 L110.2 24.8 L110.6 23.5 L110.5 23.0 L110.1 23.5 L109.7 24.8 L109.8 26.5 L110.4 28.2 L111.6 29.5" />
+            <path class="au-w au-w2" pathLength="1" d="M123.4 30.0 L125.4 29.5 L127.4 28.2 L129.0 26.5 L130.0 24.8 L130.4 23.5 L130.2 23.0 L129.8 23.5 L129.5 24.8 L129.5 26.5 L130.1 28.2 L131.4 29.5 L133.1 30.0 L135.2 29.5 L137.1 28.2 L138.7 26.5 L139.7 24.8 L140.1 23.5 L140.0 23.0 L139.6 23.5 L139.2 24.8 L139.2 26.5 L139.9 28.2 L141.1 29.5 L144.9 29.5 L146.9 28.2 L148.5 26.5 L149.5 24.8 L149.8 23.5 L149.7 23.0 L149.3 23.5 L149.0 24.8 L149.0 26.5 L149.6 28.2 L150.8 29.5" />
+          </svg>
+        </div>
+        <div class="au-row" style="top: 122px">
+          <div class="au-label"></div>
+          <div class="au-line"></div>
+          <svg class="au-hand" width="230" height="40" viewBox="0 0 230 40">
+            <path class="au-w au-w3" pathLength="1" d="M6.0 30.0 L9.8 28.9 L13.4 25.8 L16.1 21.5 L17.4 17.2 L17.1 14.1 L15.6 13.0 L13.5 14.1 L11.5 17.2 L10.4 21.5 L10.7 25.8 L12.6 28.9 L15.7 30.0 L17.8 29.5 L19.7 28.2 L21.3 26.5 L22.3 24.8 L22.7 23.5 L22.6 23.0 L22.2 23.5 L21.8 24.8 L21.9 26.5 L22.5 28.2 L23.7 29.5 L27.5 29.5 L29.5 28.2 L31.1 26.5 L32.1 24.8 L32.4 23.5 L32.3 23.0 L31.9 23.5 L31.6 24.8 L31.6 26.5 L32.2 28.2 L33.5 29.5 L37.2 29.5 L39.2 28.2 L40.8 26.5 L41.8 24.8 L42.2 23.5 L42.0 23.0 L41.6 23.5 L41.3 24.8 L41.3 26.5 L41.9 28.2 L43.2 29.5 L47.0 29.5 L48.9 28.2 L50.5 26.5 L51.6 24.8 L51.9 23.5 L51.8 23.0 L51.4 23.5 L51.0 24.8 L51.1 26.5 L51.7 28.2 L52.9 29.5" />
+            <path class="au-w au-w3" pathLength="1" d="M64.7 30.0 L66.7 29.5 L68.7 28.2 L70.3 26.5 L71.3 24.8 L71.7 23.5 L71.5 23.0 L71.1 23.5 L70.8 24.8 L70.8 26.5 L71.4 28.2 L72.7 29.5 L74.4 30.0 L76.5 29.5 L78.4 28.2 L80.0 26.5 L81.0 24.8 L81.4 23.5 L81.3 23.0 L80.9 23.5 L80.5 24.8 L80.5 26.5 L81.2 28.2 L82.4 29.5 L87.9 28.9 L91.5 25.8 L94.3 21.5 L95.6 17.2 L95.3 14.1 L93.8 13.0 L91.7 14.1 L89.7 17.2 L88.6 21.5 L88.9 25.8 L90.8 28.9 L95.9 29.5 L97.9 28.2 L99.5 26.5 L100.5 24.8 L100.9 23.5 L100.7 23.0 L100.3 23.5 L100.0 24.8 L100.0 26.5 L100.6 28.2 L101.9 29.5 L105.7 29.5 L107.6 28.2 L109.2 26.5 L110.2 24.8 L110.6 23.5 L110.5 23.0 L110.1 23.5 L109.7 24.8 L109.8 26.5 L110.4 28.2 L111.6 29.5 L115.4 29.5 L117.4 28.2 L119.0 26.5 L120.0 24.8 L120.4 23.5 L120.2 23.0 L119.8 23.5 L119.5 24.8 L119.5 26.5 L120.1 28.2 L121.4 29.5" />
+          </svg>
+        </div>
+        <div class="au-row" style="top: 172px">
+          <div class="au-box" style="left: 0"></div>
+          <svg class="au-tick" style="left: 2px" width="30" height="30" viewBox="0 0 30 30">
+            <path id="au-t1" pathLength="1" d="M5 16 L 12 23 L 26 6" />
+          </svg>
+          <div class="au-label" style="left: 38px; top: 21px; width: 96px"></div>
+          <div class="au-box" style="left: 172px"></div>
+          <svg class="au-tick" style="left: 174px" width="30" height="30" viewBox="0 0 30 30">
+            <path id="au-t2" pathLength="1" d="M5 16 L 12 23 L 26 6" />
+          </svg>
+          <div class="au-label" style="left: 210px; top: 21px; width: 110px"></div>
+        </div>
+        <div id="au-scan" data-layout-ignore></div>
+      </div>
+
+      <div id="au-input">
+        <span id="au-typed"
+          ><span class="ch">M</span><span class="ch">a</span><span class="ch">x</span
+          ><span class="ch">&nbsp;</span><span class="ch">M</span><span class="ch">u</span
+          ><span class="ch">s</span><span class="ch">t</span><span class="ch">e</span
+          ><span class="ch">r</span></span
+        ><span id="au-caret"></span>
+      </div>
+
+      <div id="au-pill-skel"></div>
+      <div id="au-pill" data-layout-allow-overflow>
+        <div id="au-stack">
+          <div class="au-state">
+            <svg width="34" height="34" viewBox="0 0 24 24">
+              <path d="M12 20h9" />
+              <path
+                d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"
+              />
+            </svg>
+            <span>Ausgefüllt</span>
+          </div>
+          <div class="au-state">
+            <svg width="34" height="34" viewBox="0 0 24 24">
+              <path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" />
+              <path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+              <path d="M7 12h10" />
+            </svg>
+            <span>Eingescannt</span>
+          </div>
+          <div class="au-state">
+            <svg width="34" height="34" viewBox="0 0 24 24">
+              <path d="M10 8h.01" /><path d="M12 12h.01" /><path d="M14 8h.01" />
+              <path d="M16 12h.01" /><path d="M18 8h.01" /><path d="M6 8h.01" />
+              <path d="M7 16h10" /><path d="M8 12h.01" />
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+            </svg>
+            <span>Abgetippt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Local clock: 0 = 0.25 s in the film. Spoken cues (film time) in comments.
+      const tl = gsap.timeline({ paused: true });
+      const blurIn = { opacity: 1, filter: "blur(0px)", ease: "expo.out" };
+
+      // Card arrives as a skeleton, like the reference cards.
+      tl.fromTo(
+        "#au-card",
+        { opacity: 0, scale: 0.92, y: 24, filter: "blur(12px)" },
+        { ...blurIn, scale: 1, y: 0, duration: 0.6 },
+        0,
+      );
+      tl.fromTo("#au-badge", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "expo.out" }, 0.25);
+      tl.fromTo("#au-dot", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 0.32);
+      tl.fromTo("#au-icon-svg", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 0.3);
+
+      // "Patientenaufnahme" (0.32-1.4)
+      tl.to("#au-title-skel", { opacity: 0, duration: 0.15, ease: "power2.in" }, 0.45);
+      tl.fromTo("#au-title", { opacity: 0, filter: "blur(8px)" }, { ...blurIn, duration: 0.3 }, 0.5);
+
+      // "Papierbögen" (2.24): the paper form lands on its skeleton slot.
+      tl.fromTo(
+        "#au-paper",
+        { opacity: 0, y: 40, rotation: -5, filter: "blur(8px)" },
+        { ...blurIn, y: 0, rotation: -1.2, duration: 0.6 },
+        1.9,
+      );
+      tl.to("#au-sheet-skel", { opacity: 0, duration: 0.2 }, 2.1);
+
+      // "ausgefüllt" (3.2): pen strokes write into the fields, then the ticks.
+      // One stroke per handwritten word, row after row.
+      gsap.utils.toArray("#au-paper .au-w").forEach((w, i) => {
+        tl.fromTo(w, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.17, ease: "power1.inOut" }, 2.88 + i * 0.075);
+      });
+      tl.fromTo("#au-t1", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.16, ease: "power2.out" }, 3.38);
+      tl.fromTo("#au-t2", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.16, ease: "power2.out" }, 3.5);
+
+      // Status pill fills and shows "Ausgefüllt".
+      tl.fromTo(
+        "#au-pill",
+        { clipPath: "inset(0% 100% 0% 0% round 20px)" },
+        { clipPath: "inset(0% 0% 0% 0% round 20px)", duration: 0.55, ease: "power3.out" },
+        2.95,
+      );
+
+      // "eingescannt" (4.0): one scanner pass down the sheet.
+      tl.fromTo("#au-scan", { y: 0, opacity: 1 }, { y: 318, duration: 0.8, ease: "power1.inOut" }, 3.72);
+      tl.to("#au-stack", { y: -76, duration: 0.35, ease: "expo.out" }, 3.8);
+
+      // "mühsam abgetippt" (5.2 / 5.76): a data-entry field rises, the name is typed slowly.
+      tl.fromTo("#au-input", { opacity: 0, y: 24, filter: "blur(8px)" }, { ...blurIn, y: 0, duration: 0.45 }, 4.75);
+      gsap.utils.toArray("#au-typed .ch").forEach((ch, i) => {
+        tl.set(ch, { display: "inline" }, 4.95 + i * 0.07);
+      });
+      tl.fromTo("#au-caret", { opacity: 1 }, { opacity: 0, duration: 0.01, repeat: 5, yoyo: true, repeatDelay: 0.24 }, 5.7);
+      tl.to("#au-stack", { y: -152, duration: 0.35, ease: "expo.out" }, 5.55);
+
+      // Exit, ~45% of the entrance.
+      tl.to("#au-card", { opacity: 0, scale: 0.97, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 6.03);
+
+      window.__timelines["aufnahme"] = tl;
+    })();
+  </script>
+</template>

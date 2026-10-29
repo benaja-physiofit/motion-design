@@ -1,7 +1,14 @@
 # Friendly SaaS Explainer LUT
 
-`friendly-saas-explainer.cube`: 33er 3D-LUT, **Rec.709 rein → Rec.709 raus**.
-Abgestimmt auf den Dreh `Patientenaufnahme` (iPhone HEVC, SDR Rec.709, kein Apple Log).
+33er 3D-LUTs, **Rec.709 rein → Rec.709 raus** (iPhone HEVC, SDR Rec.709, kein Apple Log).
+
+| Datei | Für | Wand im Rohmaterial (RGB) |
+| --- | --- | --- |
+| `friendly-saas-explainer.cube` | `Patientenaufnahme-1.mov` | 176 / 168 / 163 (dunkler, rosa Stich) |
+| `friendly-saas-explainer-patientenaufnahme2.cube` | `Patientenaufnahme2_Teil_1.mov` | 214 / 212 / 208 (heller, fast neutral) |
+
+Beide ergeben denselben Look. Der erste LUT auf dem helleren zweiten Clip macht die Wand fast weiß (≈ 237)
+mit leichtem Grünstich, deshalb hat Clip 2 seine eigene Variante.
 
 ## Look
 
@@ -31,6 +38,13 @@ Der LUT wird mit `build_friendly_saas_lut.py` erzeugt (nur NumPy nötig):
 
 ```bash
 python3 build_friendly_saas_lut.py friendly-saas-explainer.cube --size 33
+```
+
+Variante für einen anderen Clip: die Wand im Rohmaterial messen (8-bit RGB) und übergeben. `--match` (0–1) gleicht
+zusätzlich die Belichtung an Clip 1 an; für Clip 2 passt 0,35:
+
+```bash
+python3 build_friendly_saas_lut.py friendly-saas-explainer-patientenaufnahme2.cube --wall 213.8 211.8 207.7 --match 0.35
 ```
 
 Wichtige Stellschrauben oben im Skript: `WALL_TARGET` (Weißpunkt), `TONE_NEUTRAL` (Helligkeit Hintergrund),

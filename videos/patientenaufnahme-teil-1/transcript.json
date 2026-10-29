@@ -1,0 +1,235 @@
+{
+ "text": "Bei der Patientenaufnahme werden immer noch Papierbögen ausgefüllt, eingescannt oder mühsam abgetippt. Das kostet den Empfang wertvolle Zeit. Und nicht selten starten Patienten zu spät in die Behandlung. Der unterschriebene Behandlungsvertrag, die Regelungen zur Ausfallgebühr und andere wichtige Dokumente müssen jahrelang aufbewahrt werden und griffbereit sein.",
+ "words": [
+  {
+   "text": "Bei",
+   "start": 0.0,
+   "end": 0.15999999821186067
+  },
+  {
+   "text": "der",
+   "start": 0.1599999964237213,
+   "end": 0.3199999928474426
+  },
+  {
+   "text": "Patientenaufnahme",
+   "start": 0.3199999928474426,
+   "end": 1.4399999380111694
+  },
+  {
+   "text": "werden",
+   "start": 1.4399999380111694,
+   "end": 1.7599999904632568
+  },
+  {
+   "text": "immer",
+   "start": 1.7599999904632568,
+   "end": 2.0
+  },
+  {
+   "text": "noch",
+   "start": 2.0,
+   "end": 2.240000009536743
+  },
+  {
+   "text": "Papierbögen",
+   "start": 2.240000009536743,
+   "end": 3.1999998092651367
+  },
+  {
+   "text": "ausgefüllt,",
+   "start": 3.1999998092651367,
+   "end": 4.0
+  },
+  {
+   "text": "eingescannt",
+   "start": 4.0,
+   "end": 4.960000038146973
+  },
+  {
+   "text": "oder",
+   "start": 4.960000038146973,
+   "end": 5.199999809265137
+  },
+  {
+   "text": "mühsam",
+   "start": 5.199999809265137,
+   "end": 5.759999752044678
+  },
+  {
+   "text": "abgetippt.",
+   "start": 5.759999752044678,
+   "end": 6.639999866485596
+  },
+  {
+   "text": "Das",
+   "start": 6.639999866485596,
+   "end": 6.799999713897705
+  },
+  {
+   "text": "kostet",
+   "start": 6.799999713897705,
+   "end": 7.199999809265137
+  },
+  {
+   "text": "den",
+   "start": 7.199999809265137,
+   "end": 7.359999656677246
+  },
+  {
+   "text": "Empfang",
+   "start": 7.359999656677246,
+   "end": 8.0
+  },
+  {
+   "text": "wertvolle",
+   "start": 8.0,
+   "end": 8.559999465942383
+  },
+  {
+   "text": "Zeit.",
+   "start": 8.559999465942383,
+   "end": 8.880000190734863
+  },
+  {
+   "text": "Und",
+   "start": 8.880000114440918,
+   "end": 9.039999961853027
+  },
+  {
+   "text": "nicht",
+   "start": 9.039999961853027,
+   "end": 9.279999732971191
+  },
+  {
+   "text": "selten",
+   "start": 9.279999732971191,
+   "end": 9.679999351501465
+  },
+  {
+   "text": "starten",
+   "start": 9.679999351501465,
+   "end": 10.239999771118164
+  },
+  {
+   "text": "Patienten",
+   "start": 10.239999771118164,
+   "end": 10.800000190734863
+  },
+  {
+   "text": "zu",
+   "start": 10.800000190734863,
+   "end": 10.960000038146973
+  },
+  {
+   "text": "spät",
+   "start": 10.960000038146973,
+   "end": 11.199999809265137
+  },
+  {
+   "text": "in",
+   "start": 11.199999809265137,
+   "end": 11.359999656677246
+  },
+  {
+   "text": "die",
+   "start": 11.359999656677246,
+   "end": 11.439999656677246
+  },
+  {
+   "text": "Behandlung.",
+   "start": 11.4399995803833,
+   "end": 12.0
+  },
+  {
+   "text": "Der",
+   "start": 12.0,
+   "end": 12.15999984741211
+  },
+  {
+   "text": "unterschriebene",
+   "start": 12.15999984741211,
+   "end": 12.880000114440918
+  },
+  {
+   "text": "Behandlungsvertrag,",
+   "start": 12.880000114440918,
+   "end": 13.84000015258789
+  },
+  {
+   "text": "die",
+   "start": 13.84000015258789,
+   "end": 14.0
+  },
+  {
+   "text": "Regelungen",
+   "start": 14.0,
+   "end": 14.479999542236328
+  },
+  {
+   "text": "zur",
+   "start": 14.479999542236328,
+   "end": 14.639999389648438
+  },
+  {
+   "text": "Ausfallgebühr",
+   "start": 14.639999389648438,
+   "end": 15.59999942779541
+  },
+  {
+   "text": "und",
+   "start": 15.59999942779541,
+   "end": 15.75999927520752
+  },
+  {
+   "text": "andere",
+   "start": 15.75999927520752,
+   "end": 16.0
+  },
+  {
+   "text": "wichtige",
+   "start": 16.0,
+   "end": 16.479999542236328
+  },
+  {
+   "text": "Dokumente",
+   "start": 16.479999542236328,
+   "end": 17.19999885559082
+  },
+  {
+   "text": "müssen",
+   "start": 17.19999885559082,
+   "end": 17.520000457763672
+  },
+  {
+   "text": "jahrelang",
+   "start": 17.520000457763672,
+   "end": 18.15999984741211
+  },
+  {
+   "text": "aufbewahrt",
+   "start": 18.15999984741211,
+   "end": 18.879999237060545
+  },
+  {
+   "text": "werden",
+   "start": 18.8799991607666,
+   "end": 19.19999885559082
+  },
+  {
+   "text": "und",
+   "start": 19.19999885559082,
+   "end": 19.439998626708984
+  },
+  {
+   "text": "griffbereit",
+   "start": 19.439998626708984,
+   "end": 20.15999984741211
+  },
+  {
+   "text": "sein.",
+   "start": 20.15999984741211,
+   "end": 20.399999694824217
+  }
+ ]
+}
