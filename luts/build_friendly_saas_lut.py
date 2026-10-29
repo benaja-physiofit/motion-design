@@ -143,10 +143,10 @@ def write_cube(path, size):
     rgb = np.stack([r, g, b], -1).reshape(-1, 3)
     out = grade(rgb)
     with open(path, "w") as f:
+        # Minimal header (no comments, default 0-1 domain) so stricter
+        # importers like CapCut accept it as well as Resolve/Premiere/FCP.
         f.write('TITLE "Friendly SaaS Explainer - Rec709"\n')
-        f.write("# Input/Output: Rec.709 (BT.1886) SDR, full 0-1 data range\n")
         f.write(f"LUT_3D_SIZE {size}\n")
-        f.write("DOMAIN_MIN 0.0 0.0 0.0\nDOMAIN_MAX 1.0 1.0 1.0\n")
         np.savetxt(f, out, fmt="%.6f")
 
 

@@ -19,6 +19,7 @@ Abgestimmt auf den Dreh `Patientenaufnahme` (iPhone HEVC, SDR Rec.709, kein Appl
 | DaVinci Resolve | Color Page → Node → Rechtsklick → LUT, oder `LUT`-Ordner + Node-LUT |
 | Premiere Pro | Lumetri Color → Kreativ → Look → Durchsuchen (alternativ Basiskorrektur → Eingabe-LUT) |
 | Final Cut Pro | Effekt „Eigene LUT“ → LUT wählen, Eingang/Ausgang Rec.709 |
+| CapCut (Desktop) | Anpassung → LUT → Importieren; fürs ganze Video eine Anpassungsebene über die Timeline ziehen und dort den LUT wählen |
 
 - Auf den **unbearbeiteten** Clip legen, ohne andere Korrekturen davor.
 - Auf Clips mit anderem Licht bzw. anderer Kamera-Einstellung wirkt der LUT anders, weil der Weißabgleich fest eingebaut ist.
