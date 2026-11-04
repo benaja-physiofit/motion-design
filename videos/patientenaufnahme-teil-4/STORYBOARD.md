@@ -63,7 +63,7 @@ audience: Physiotherapie-Praxen
 - transition_in: carry (Fenster schrumpft nach links, Smartphone kommt rechts)
 - scene: Smartphone: „Bitte bestätigen“, zwei Checkboxen (kleine, normale Schrift, mittig zum Text) werden angehakt. Kein Button.
 - voiceover: "Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox."
-- reads: Smartphone und Titel (14.5-15.7s); „Rechtssicher & digital“ (15.76-17.2s); Checkboxen (17.6-19.43s)
+- reads: Smartphone und Titel (14.5-17.5s); Checkboxen (17.6-19.43s)
 - sound: nur O-Ton
 
 Annahme: wie Teil 7 komplett Vollbild, Benaja nur zu hören. Feldnamen, Dateiname und Checkbox-Texte sind Beispielinhalte.

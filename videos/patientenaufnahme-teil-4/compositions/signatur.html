@@ -56,7 +56,7 @@
     #sg-title {
       position: absolute;
       left: 36px;
-      top: 206px;
+      top: 276px;
       font-family: "Lora", serif;
       font-weight: 500;
       font-size: 40px;
@@ -66,7 +66,7 @@
     #sg-sub {
       position: absolute;
       left: 36px;
-      top: 262px;
+      top: 332px;
       font-family: "Ubuntu", sans-serif;
       font-weight: 500;
       font-size: 28px;
@@ -74,18 +74,19 @@
     }
     .sg-row {
       position: absolute;
-      left: 24px;
-      width: 424px;
+      left: 16px;
+      width: 440px;
       border-radius: 22px;
       background: #f3f6f8;
       display: flex;
       align-items: center;
-      gap: 18px;
-      padding: 22px 22px;
+      gap: 14px;
+      padding: 22px 16px;
       font-family: "Ubuntu", sans-serif;
       font-weight: 400;
-      font-size: 24px;
-      line-height: 32px;
+      font-size: 22px;
+      line-height: 30px;
+      white-space: nowrap;
       color: var(--c-ink);
     }
     .sg-box {
@@ -113,25 +114,6 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-    #sg-legal {
-      position: absolute;
-      left: 36px;
-      top: 658px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: "Ubuntu", sans-serif;
-      font-weight: 500;
-      font-size: 28px;
-      color: var(--c-teal);
-    }
-    #sg-legal path {
-      fill: none;
-      stroke: var(--c-teal);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
   </style>
 
   <div
@@ -140,9 +122,7 @@
     data-width="1920"
     data-height="1080"
     data-composition-variables='[
-      {"id":"sg_title","type":"string","label":"Titel","default":"Bitte bestätigen"},
-      {"id":"sg_check1","type":"string","label":"Checkbox 1","default":"Ich akzeptiere den Behandlungsvertrag."},
-      {"id":"sg_check2","type":"string","label":"Checkbox 2","default":"Ich habe die Hinweise zu Zuzahlung und Ausfallgebühren gelesen."}
+      {"id":"sg_title","type":"string","label":"Titel","default":"Bitte bestätigen"}
     ]'
   >
     <div id="sg-phone">
@@ -150,20 +130,13 @@
         <div id="sg-notch"></div>
         <div id="sg-title" data-var-text="sg_title">Bitte bestätigen</div>
         <div id="sg-sub">Patientenaufnahme</div>
-        <div id="sg-row1" class="sg-row" style="top: 324px">
+        <div id="sg-row1" class="sg-row" style="top: 394px">
           <div class="sg-box"><div id="sg-c1" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
-          <span data-var-text="sg_check1">Ich akzeptiere den Behandlungsvertrag.</span>
+          <span>Ich akzeptiere den<br />Behandlungsvertrag.</span>
         </div>
-        <div id="sg-row2" class="sg-row" style="top: 446px">
+        <div id="sg-row2" class="sg-row" style="top: 514px">
           <div class="sg-box"><div id="sg-c2" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
-          <span data-var-text="sg_check2">Ich habe die Hinweise zu Zuzahlung und Ausfallgebühren gelesen.</span>
-        </div>
-        <div id="sg-legal">
-          <svg width="32" height="32" viewBox="0 0 24 24">
-            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-            <path d="m9 12 2 2 4-4" />
-          </svg>
-          <span>Rechtssicher &amp; digital</span>
+          <span>Ich habe die Hinweise zu Zuzahlung<br />und Ausfallgebühren gelesen.</span>
         </div>
       </div>
     </div>
@@ -184,8 +157,6 @@
       blurIn("#sg-sub", 0.6);
       tl.fromTo(["#sg-row1", "#sg-row2"], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "expo.out" }, 0.72);
 
-      // "rechtssicher und digital signieren" (15.76 / 16.72)
-      blurIn("#sg-legal", 1.4);
 
       // "Ganz einfach per Checkbox" (17.92 / 18.8): both boxes get ticked.
       tl.to("#sg-c1", { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 3.3);

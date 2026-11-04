@@ -22,8 +22,8 @@ SHOTS:
   3,7–6,3    Balken „Behandlungsvertrag“ füllt sich wie ein Upload (4,4), Haken (5,3).
   6,3–10,6   Hinweis-Balken: „Zuzahlung“ (8,88) · „Ausfallgebühren“ (9,76).
   10,6–14,3  Augen-Abzeichen (12,64 „gesehen“) · Haken-Abzeichen (13,44 „akzeptiert“).
-  14,3–19,43 Fenster schrumpft nach links, rechts das Smartphone: „Rechtssicher“ (15,76), Checkboxen werden
-             angehakt (17,6 / 18,3); kein Button (Wunsch). Checkbox-Texte Ubuntu 400, 24 px, mittig zur Checkbox.
+  14,3–19,43 Fenster schrumpft nach links, rechts das Smartphone: Checkboxen werden
+             angehakt (17,6 / 18,3); kein Button (Wunsch). Checkbox-Texte Ubuntu 400, 22 px, je zwei Zeilen, mittig zur Checkbox; kein „Rechtssicher & digital“ (Wunsch).
 BANNED:  dunkler Grund, Glow, Partikel, Glas, Verläufe außer dem Button, Klick-Ringe, schwebende Loops,
          Logo in der Ecke, erfundene Kennzahlen oder Daten.
 QA:      3,3 · 5,9 · 10,2 · 13,9 · 19,2
