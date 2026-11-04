@@ -1,0 +1,230 @@
+{
+ "text": "Trage Stammdaten wie Name, Adresse oder Geburtsdatum ab. Füge deinen Behandlungsvertrag ein und ergänze wichtige Hinweise, zum Beispiel zur gesetzlichen Zuzahlung oder Ausfallgebühren. Stelle dabe sicher, dass sie auch wirklich gesehen und akzeptiert werden. Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox.",
+ "words": [
+  {
+   "text": "Trage",
+   "start": 0.07999999821186066,
+   "end": 0.47999998927116394
+  },
+  {
+   "text": "Stammdaten",
+   "start": 0.47999998927116394,
+   "end": 1.1999999284744263
+  },
+  {
+   "text": "wie",
+   "start": 1.1999999284744263,
+   "end": 1.5199999809265137
+  },
+  {
+   "text": "Name,",
+   "start": 1.5199999809265137,
+   "end": 2.0
+  },
+  {
+   "text": "Adresse",
+   "start": 2.0,
+   "end": 2.559999942779541
+  },
+  {
+   "text": "oder",
+   "start": 2.559999942779541,
+   "end": 2.7200000286102295
+  },
+  {
+   "text": "Geburtsdatum",
+   "start": 2.7200000286102295,
+   "end": 3.5199999809265137
+  },
+  {
+   "text": "ab.",
+   "start": 3.5199999809265137,
+   "end": 3.759999990463257
+  },
+  {
+   "text": "Füge",
+   "start": 3.759999990463257,
+   "end": 4.159999847412109
+  },
+  {
+   "text": "deinen",
+   "start": 4.159999847412109,
+   "end": 4.400000095367432
+  },
+  {
+   "text": "Behandlungsvertrag",
+   "start": 4.400000095367432,
+   "end": 5.359999656677246
+  },
+  {
+   "text": "ein",
+   "start": 5.359999656677246,
+   "end": 5.599999904632568
+  },
+  {
+   "text": "und",
+   "start": 5.599999904632568,
+   "end": 5.759999752044678
+  },
+  {
+   "text": "ergänze",
+   "start": 5.759999752044678,
+   "end": 6.399999618530273
+  },
+  {
+   "text": "wichtige",
+   "start": 6.399999618530273,
+   "end": 6.799999713897705
+  },
+  {
+   "text": "Hinweise,",
+   "start": 6.799999713897705,
+   "end": 7.440000057220459
+  },
+  {
+   "text": "zum",
+   "start": 7.440000057220459,
+   "end": 7.599999904632568
+  },
+  {
+   "text": "Beispiel",
+   "start": 7.599999904632568,
+   "end": 8.0
+  },
+  {
+   "text": "zur",
+   "start": 8.0,
+   "end": 8.15999984741211
+  },
+  {
+   "text": "gesetzlichen",
+   "start": 8.15999984741211,
+   "end": 8.880000114440918
+  },
+  {
+   "text": "Zuzahlung",
+   "start": 8.880000114440918,
+   "end": 9.59999942779541
+  },
+  {
+   "text": "oder",
+   "start": 9.59999942779541,
+   "end": 9.760000228881836
+  },
+  {
+   "text": "Ausfallgebühren.",
+   "start": 9.760000228881836,
+   "end": 10.719999389648438
+  },
+  {
+   "text": "Stelle",
+   "start": 10.719999313354492,
+   "end": 11.119999885559082
+  },
+  {
+   "text": "dabe",
+   "start": 11.119999885559082,
+   "end": 11.359999656677246
+  },
+  {
+   "text": "sicher,",
+   "start": 11.359999656677246,
+   "end": 11.67999942779541
+  },
+  {
+   "text": "dass",
+   "start": 11.679999351501465,
+   "end": 11.84000015258789
+  },
+  {
+   "text": "sie",
+   "start": 11.84000015258789,
+   "end": 12.079999923706055
+  },
+  {
+   "text": "auch",
+   "start": 12.079999923706055,
+   "end": 12.239999771118164
+  },
+  {
+   "text": "wirklich",
+   "start": 12.239999771118164,
+   "end": 12.639999389648438
+  },
+  {
+   "text": "gesehen",
+   "start": 12.639999389648438,
+   "end": 13.279999732971191
+  },
+  {
+   "text": "und",
+   "start": 13.279999732971191,
+   "end": 13.4399995803833
+  },
+  {
+   "text": "akzeptiert",
+   "start": 13.4399995803833,
+   "end": 14.079999923706055
+  },
+  {
+   "text": "werden.",
+   "start": 14.079999923706055,
+   "end": 14.479999542236328
+  },
+  {
+   "text": "Lass",
+   "start": 14.479999542236328,
+   "end": 14.799999237060547
+  },
+  {
+   "text": "Patienten",
+   "start": 14.799999237060547,
+   "end": 15.4399995803833
+  },
+  {
+   "text": "alles",
+   "start": 15.4399995803833,
+   "end": 15.75999927520752
+  },
+  {
+   "text": "rechtssicher",
+   "start": 15.75999927520752,
+   "end": 16.559999465942383
+  },
+  {
+   "text": "und",
+   "start": 16.559999465942383,
+   "end": 16.719999313354492
+  },
+  {
+   "text": "digital",
+   "start": 16.719999313354492,
+   "end": 17.279998779296875
+  },
+  {
+   "text": "signieren.",
+   "start": 17.279998779296875,
+   "end": 17.920000076293945
+  },
+  {
+   "text": "Ganz",
+   "start": 17.920000076293945,
+   "end": 18.15999984741211
+  },
+  {
+   "text": "einfach",
+   "start": 18.15999984741211,
+   "end": 18.479999542236328
+  },
+  {
+   "text": "per",
+   "start": 18.479999542236328,
+   "end": 18.799999237060547
+  },
+  {
+   "text": "Checkbox.",
+   "start": 18.799999237060547,
+   "end": 19.359998779296873
+  }
+ ]
+}

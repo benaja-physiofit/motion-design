@@ -1,0 +1,218 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Lora";
+      font-weight: 500;
+      src: url("assets/fonts/lora-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 500;
+      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      --c-ink: var(--ink, #1e3542);
+      --c-teal: var(--teal, #217c93);
+      --c-accent: var(--accent, #00bae7);
+    }
+    #sg-phone {
+      position: absolute;
+      left: 1110px;
+      top: 70px;
+      width: 500px;
+      height: 940px;
+      border-radius: 66px;
+      background: var(--c-ink);
+      box-shadow:
+        0 40px 70px -24px rgba(30, 53, 66, 0.45),
+        0 6px 16px rgba(30, 53, 66, 0.12);
+    }
+    #sg-screen {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 472px;
+      height: 912px;
+      border-radius: 54px;
+      background: #fff;
+      overflow: hidden;
+    }
+    #sg-notch {
+      position: absolute;
+      left: 166px;
+      top: 22px;
+      width: 140px;
+      height: 34px;
+      border-radius: 17px;
+      background: var(--c-ink);
+    }
+    #sg-title {
+      position: absolute;
+      left: 36px;
+      top: 96px;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 50px;
+      color: var(--c-ink);
+    }
+    #sg-sub {
+      position: absolute;
+      left: 36px;
+      top: 152px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      color: var(--muted, #5e7380);
+    }
+    .sg-row {
+      position: absolute;
+      left: 24px;
+      width: 424px;
+      border-radius: 22px;
+      background: #f3f6f8;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px 22px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 36px;
+      color: var(--c-ink);
+    }
+    .sg-box {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      flex: none;
+      border-radius: 10px;
+      border: 3px solid #9fb0ba;
+      background: #fff;
+    }
+    .sg-checked {
+      position: absolute;
+      inset: -3px;
+      border-radius: 10px;
+      background: var(--c-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sg-checked path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 3.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #sg-legal {
+      position: absolute;
+      left: 36px;
+      top: 596px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      color: var(--c-teal);
+    }
+    #sg-legal path {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #sg-btn {
+      position: absolute;
+      left: 36px;
+      top: 676px;
+      width: 400px;
+      height: 76px;
+      border-radius: 38px;
+      background: linear-gradient(90deg, #0084ab, #00a3cf);
+      box-shadow: 0 12px 26px -10px rgba(0, 132, 171, 0.6);
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      color: #fff;
+    }
+    .sg-btn-state {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .sg-btn-state path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="signatur"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"sg_title","type":"string","label":"Titel","default":"Bitte bestätigen"},
+      {"id":"sg_check1","type":"string","label":"Checkbox 1","default":"Ich akzeptiere den Behandlungsvertrag."},
+      {"id":"sg_check2","type":"string","label":"Checkbox 2","default":"Ich habe die Hinweise zu Zuzahlung und Ausfallgebühren gelesen."}
+    ]'
+  >
+    <div id="sg-phone">
+      <div id="sg-screen">
+        <div id="sg-notch"></div>
+        <div id="sg-title" data-var-text="sg_title">Bitte bestätigen</div>
+        <div id="sg-sub">Patientenaufnahme</div>
+        <div id="sg-row1" class="sg-row" style="top: 214px">
+          <div class="sg-box"><div id="sg-c1" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
+          <span data-var-text="sg_check1">Ich akzeptiere den Behandlungsvertrag.</span>
+        </div>
+        <div id="sg-row2" class="sg-row" style="top: 350px">
+          <div class="sg-box"><div id="sg-c2" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
+          <span data-var-text="sg_check2">Ich habe die Hinweise zu Zuzahlung und Ausfallgebühren gelesen.</span>
+        </div>
+        <div id="sg-legal">
+          <svg width="32" height="32" viewBox="0 0 24 24">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
+          <span>Rechtssicher &amp; digital</span>
+        </div>
+        <div id="sg-btn">
+          <div id="sg-btn-a" class="sg-btn-state">
+            <svg width="30" height="30" viewBox="0 0 24 24">
+              <path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284" />
+              <path d="M3 21h18" />
+            </svg>
+            <span>Digital signieren</span>
+          </div>
+          <div id="sg-btn-b" class="sg-btn-state">
+            <svg width="30" height="30" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg>
+            <span>Signiert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Storyboard pose (shot 05, end state). Local clock: 0 = 14.3 s in the film.
+      const tl = gsap.timeline({ paused: true });
+      gsap.set("#sg-btn-a", { opacity: 0 });
+      tl.set("#sg-phone", { opacity: 1 }, 0);
+      window.__timelines["signatur"] = tl;
+    })();
+  </script>
+</template>

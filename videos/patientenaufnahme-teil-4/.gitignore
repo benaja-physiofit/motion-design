@@ -1,0 +1,9 @@
+# HyperFrames tool state / caches
+.hyperframes/
+.media/
+node_modules/
+# Footage (36 MB) bleibt lokal; Neuerzeugung siehe README.md
+assets/footage/*.mp4
+# Render scratch (in-progress renders)
+renders/work-*/
+renders/.*

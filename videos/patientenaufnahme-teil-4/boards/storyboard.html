@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Storyboard Teil 4</title>
+    <style>
+      :root {
+        --page: #f4f6f8;
+        --card: #ffffff;
+        --ink: #1e3542;
+        --muted: #5e7380;
+        --line: #e3e9ed;
+        --accent: #217c93;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.45;
+      }
+      main {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 48px 32px 64px;
+      }
+      header h1 {
+        margin: 0 0 6px;
+        font-size: 30px;
+        letter-spacing: -0.01em;
+      }
+      header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .meta span {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 12px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .act {
+        margin: 40px 0 14px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .frame {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px -16px rgba(30, 53, 66, 0.25);
+      }
+      .frame img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-bottom: 1px solid var(--line);
+      }
+      .frame .body {
+        padding: 16px 20px 20px;
+      }
+      .title {
+        font-weight: 650;
+        font-size: 18px;
+      }
+      .time {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 2px;
+      }
+      .words {
+        margin: 10px 0 0;
+        font-size: 15px;
+      }
+      .vo {
+        margin: 10px 0 0;
+        font-size: 14px;
+        color: var(--muted);
+        font-style: italic;
+      }
+      footer {
+        margin-top: 36px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        main {
+          padding: 28px 16px 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Storyboard · Patientenaufnahme Teil 4</h1>
+        <p>Das digitale Aufnahmeformular einrichten: Stammdaten, Behandlungsvertrag, Hinweise mit Pflicht-Bestätigung, Signatur per Checkbox.</p>
+        <div class="meta">
+          <span>1920 × 1080 · 30 fps</span>
+          <span>19,4 s</span>
+          <span>nur O-Ton, keine Musik/SFX</span>
+          <span>komplett Vollbild, Benaja nur zu hören</span>
+          <span>abstrahiert wie Teil 7</span>
+        </div>
+      </header>
+
+      <section class="act">Akt 1: Das Formular einrichten</section>
+      <div class="grid">
+        <div class="frame">
+          <img src="stills/frame-00-at-3.3s.png" alt="" />
+          <div class="body">
+            <div class="title">01: Stammdaten abfragen</div>
+            <div class="time">0,0 bis 3,7 s</div>
+            <p class="words">Vom ersten Bild an das Fenster „Patientenaufnahme“ mit Physiofit-Logo. Im Abschnitt Stammdaten erscheinen nacheinander Name, Adresse und Geburtsdatum, jeweils auf das gesprochene Wort.</p>
+            <p class="vo">„Frage Stammdaten wie Name, Adresse oder Geburtsdatum ab.“</p>
+          </div>
+        </div>
+        <div class="frame">
+          <img src="stills/frame-01-at-5.9s.png" alt="" />
+          <div class="body">
+            <div class="title">02: Behandlungsvertrag einfügen</div>
+            <div class="time">3,7 bis 6,3 s</div>
+            <p class="words">Bei „Behandlungsvertrag“ landet die Datei in der Ablage, der Upload-Balken läuft voll, dann „Hochgeladen“.</p>
+            <p class="vo">„Füge deinen Behandlungsvertrag ein …“</p>
+          </div>
+        </div>
+        <div class="frame">
+          <img src="stills/frame-02-at-10.2s.png" alt="" />
+          <div class="body">
+            <div class="title">03: Wichtige Hinweise ergänzen</div>
+            <div class="time">6,3 bis 10,6 s</div>
+            <p class="words">Im Abschnitt Hinweise kommen zwei Zeilen dazu: „Gesetzliche Zuzahlung“ bei „Zuzahlung“, „Ausfallgebühren“ bei „Ausfallgebühren“. Die Schalter sind noch aus.</p>
+            <p class="vo">„… und ergänze wichtige Hinweise, zum Beispiel zur gesetzlichen Zuzahlung oder Ausfallgebühren.“</p>
+          </div>
+        </div>
+        <div class="frame">
+          <img src="stills/frame-03-at-13.9s.png" alt="" />
+          <div class="body">
+            <div class="title">04: Gesehen und akzeptiert</div>
+            <div class="time">10,6 bis 14,3 s</div>
+            <p class="words">Bei „gesehen“ und „akzeptiert“ springen die Schalter „Bestätigung nötig“ nacheinander auf Cyan: Die Hinweise müssen bestätigt werden.</p>
+            <p class="vo">„Stelle dabei sicher, dass sie auch wirklich gesehen und akzeptiert werden.“</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="act">Akt 2: Die Sicht der Patientinnen und Patienten</section>
+      <div class="grid">
+        <div class="frame">
+          <img src="stills/frame-04-at-19.2s.png" alt="" />
+          <div class="body">
+            <div class="title">05: Digital signieren per Checkbox</div>
+            <div class="time">14,3 bis 19,4 s</div>
+            <p class="words">Das Fenster schrumpft nach links, rechts gleitet das Smartphone herein: die Sicht der Patientin bzw. des Patienten. „Rechtssicher & digital“, dann werden beide Checkboxen angehakt, und der Button wird zu „Signiert“.</p>
+            <p class="vo">„Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox.“</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        Annahme: wie in Teil 7 ist Benaja hier nicht zu sehen. Feldnamen, Dateiname und Checkbox-Texte sind Beispielinhalte.
+      </footer>
+    </main>
+  </body>
+</html>
