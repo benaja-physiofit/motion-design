@@ -22,9 +22,9 @@ SHOTS:
   0,0–0,85   Benaja im Bild, noch ohne Grafik („Du kannst mit unserem …“).
   0,85–4,3   `konfigurator` Harter Schnitt auf Vollbild: „Formular-Konfigurator“ mit Physiofit-Logo. Der Cursor zieht
              Textfeld (1,6) · Auswahl (2,4) · Skala (3,2) in ein leeres Formular („ganz individuelle Formulare“).
-  4,3–7,25   gleiches Bild baut sich um: Titel wird „Check-in“ (5,85), Felder bekommen echte Fragen,
+  4,3–7,55   gleiches Bild baut sich um: Titel wird „Check-in“ (5,6), Felder bekommen echte Fragen,
              Klick auf Speichern → „Gespeichert“ (6,96 „erstellen“).
-  7,25–10,1  `checkin`  Vollbild, ohne Benaja (Wunsch): Der Konfigurator tritt zurück, Karte „Check-in“ (1,3×) links,
+  7,55–10,1  `checkin`  Vollbild, ohne Benaja (Wunsch): Der Konfigurator tritt zurück, Karte „Check-in“ (1,3×) links,
              rechts die Termine mit Check-in, „Heute“ läuft (8,0 „bei jedem Termin“), Wert gewählt (8,72 „Wohlbefinden“).
   10,1–13,56 `feedback` Vollbild: Die Termine machen Platz, rechts „Feedback“ · „Patientenzufriedenheit“ (1,3×, 11,84):
              Sterne füllen sich, Antworten stapeln sich, Zähler zählt mit (12,96 „einsammeln“). Check-in bleibt links.

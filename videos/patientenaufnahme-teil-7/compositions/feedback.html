@@ -108,7 +108,14 @@
       font-size: 30px;
       color: var(--c-ink);
     }
+    #fb-roll {
+      display: flex;
+      flex-direction: column;
+      line-height: 44px;
+      text-align: center;
+    }
     #fb-count {
+      overflow: hidden;
       min-width: 52px;
       height: 44px;
       padding: 0 14px;
@@ -117,7 +124,7 @@
       color: #fff;
       font-size: 28px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
     }
     .fb-answer {
@@ -169,25 +176,25 @@
       <div id="fb-sub" data-var-text="fb_sub">Patientenzufriedenheit</div>
 
       <div id="fb-stars">
-        <svg class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
-        <svg class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
-        <svg class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
-        <svg class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
-        <svg class="fb-star off" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
+        <svg id="fb-s1" class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
+        <svg id="fb-s2" class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
+        <svg id="fb-s3" class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
+        <svg id="fb-s4" class="fb-star" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
+        <svg id="fb-s5" class="fb-star off" width="64" height="64" viewBox="0 0 24 24"><use href="#fb-star-path" /></svg>
       </div>
 
-      <div id="fb-answers-head"><span>Antworten</span><span id="fb-count">3</span></div>
-      <div class="fb-answer" style="top: 350px">
+      <div id="fb-answers-head"><span>Antworten</span><span id="fb-count"><span id="fb-roll" data-layout-ignore><span>1</span><span>2</span><span>3</span></span></span></div>
+      <div id="fb-a1" class="fb-answer" style="top: 350px">
         <svg width="30" height="30" viewBox="0 0 24 24" class="fb-stroke"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
         <svg class="mini" width="110" height="22" viewBox="0 0 120 24"><use href="#fb-star-path" /><use href="#fb-star-path" x="24" /><use href="#fb-star-path" x="48" /><use href="#fb-star-path" x="72" /><use href="#fb-star-path" x="96" /></svg>
         <div class="fb-line" style="width: 220px"></div>
       </div>
-      <div class="fb-answer" style="top: 414px">
+      <div id="fb-a2" class="fb-answer" style="top: 414px">
         <svg width="30" height="30" viewBox="0 0 24 24" class="fb-stroke"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
         <svg class="mini" width="110" height="22" viewBox="0 0 120 24"><use href="#fb-star-path" /><use href="#fb-star-path" x="24" /><use href="#fb-star-path" x="48" /><use href="#fb-star-path" x="72" /></svg>
         <div class="fb-line" style="width: 180px"></div>
       </div>
-      <div class="fb-answer" style="top: 478px">
+      <div id="fb-a3" class="fb-answer" style="top: 478px">
         <svg width="30" height="30" viewBox="0 0 24 24" class="fb-stroke"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
         <svg class="mini" width="110" height="22" viewBox="0 0 120 24"><use href="#fb-star-path" /><use href="#fb-star-path" x="24" /><use href="#fb-star-path" x="48" /><use href="#fb-star-path" x="72" /><use href="#fb-star-path" x="96" /></svg>
         <div class="fb-line" style="width: 250px"></div>
@@ -198,9 +205,30 @@
 
   <script>
     (function () {
-      // Storyboard pose (shot 04, held). Local clock: 0 = 10.1 s in the film.
+      // Local clock: 0 = 10.1 s in the film.
       const tl = gsap.timeline({ paused: true });
-      tl.set("#fb-card", { opacity: 1 }, 0);
+      const blurIn = (sel, at, d = 0.3) =>
+        tl.fromTo(sel, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: d, ease: "expo.out" }, at);
+
+      // "oder allgemeines Feedback" (10.16 / 11.12 film): the card lands where the appointments were.
+      tl.fromTo("#fb-card", { opacity: 0, x: 60, filter: "blur(12px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, 0.08);
+      tl.fromTo("#fb-icon svg", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "expo.out" }, 0.25);
+      blurIn("#fb-title", 0.32);
+      gsap.set(["#fb-s1", "#fb-s2", "#fb-s3", "#fb-s4", "#fb-s5"], { fill: "#ffffff", stroke: "#cdd6dc" });
+      tl.fromTo(["#fb-s1", "#fb-s2", "#fb-s3", "#fb-s4", "#fb-s5"], { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.05, ease: "expo.out" }, 0.55);
+
+      // "zur Patientenzufriedenheit" (11.84 film): the stars fill one by one.
+      blurIn("#fb-sub", 1.7);
+      tl.to(["#fb-s1", "#fb-s2", "#fb-s3", "#fb-s4"], { fill: "#00bae7", stroke: "#00bae7", duration: 0.18, stagger: 0.09, ease: "power2.out" }, 1.82);
+      tl.fromTo(["#fb-s1", "#fb-s2", "#fb-s3", "#fb-s4"], { scale: 1 }, { scale: 1.12, duration: 0.09, stagger: 0.09, yoyo: true, repeat: 1, ease: "power2.out" }, 1.82);
+
+      // "einsammeln" (12.96 film): answers come in, the counter rolls along.
+      blurIn("#fb-answers-head", 2.18);
+      ["#fb-a1", "#fb-a2", "#fb-a3"].forEach((a, i) => {
+        tl.fromTo(a, { opacity: 0, y: -24, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 2.3 + i * 0.16);
+        if (i) tl.to("#fb-roll", { y: -44 * i, duration: 0.3, ease: "expo.out" }, 2.3 + i * 0.16);
+      });
+
       window.__timelines["feedback"] = tl;
     })();
   </script>
