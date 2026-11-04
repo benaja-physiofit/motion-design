@@ -12,7 +12,7 @@ neben Benaja wie die Abschluss-Karten im finalen Video. Ton: nur O-Ton, keine Mu
 ## Frame 1: Hilfe bei der Einrichtung (0-2.85s)
 
 - act: Akt 1: Hilfe anbieten
-- status: built
+- status: animated
 - src: compositions/ende.html
 - duration: 2.85s
 - poster: 2.3
@@ -28,7 +28,7 @@ zweizeiliger Lora-Titel. Der graue Button-Platzhalter kündigt die Aktion an.
 ## Frame 2: Nachricht schreiben (2.85-4.3s)
 
 - act: Akt 1: Hilfe anbieten
-- status: built
+- status: animated
 - src: compositions/ende.html
 - duration: 1.45s
 - poster: 3.9
@@ -44,7 +44,7 @@ zweizeiliger Lora-Titel. Der graue Button-Platzhalter kündigt die Aktion an.
 ## Frame 3: Termin vereinbaren (4.3-6.15s)
 
 - act: Akt 2: Termin und Portal
-- status: built
+- status: animated
 - src: compositions/ende.html
 - duration: 1.85s
 - poster: 5.7
@@ -59,7 +59,7 @@ Spiegelbild der linken Karte, damit beide Wege gleich wichtig wirken.
 ## Frame 4: Über dein Portal (6.15-7.06s)
 
 - act: Akt 2: Termin und Portal
-- status: built
+- status: animated
 - src: compositions/ende.html
 - duration: 0.91s
 - poster: 6.9
@@ -70,4 +70,4 @@ Spiegelbild der linken Karte, damit beide Wege gleich wichtig wirken.
 - sound: nur O-Ton
 
 Die Marke landet hier einmal mit Gewicht, am Ende des Gesamtvideos. Beide Wege laufen sichtbar über dasselbe Portal.
-Offen: Der Clip endet 0,5 s nach „Portal“. Soll das Endbild als Standbild noch 1–2 s stehen bleiben?
+Der Clip endet 0,5 s nach „Portal“; das Endbild steht bis zum letzten Frame (keine Verlängerung).
