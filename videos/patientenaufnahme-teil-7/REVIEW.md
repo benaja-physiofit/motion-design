@@ -2,10 +2,11 @@
 
 ## Kreative Entscheidungen
 
-- Nach dem freigegebenen Storyboard gebaut; Bild 03/04 als Vollbild ohne Benaja (Wunsch der Nutzerin bzw. des Nutzers).
+- Nach dem freigegebenen Storyboard gebaut; Bild 03/04 als Vollbild ohne Benaja, danach auch der Anfang (0–0,85 s)
+  ohne Benaja (beides Wunsch der Nutzerin bzw. des Nutzers). Benaja ist in Teil 7 nur zu hören.
 - Konfigurator nur abstrahiert (Wunsch): Bausteine, Felder und Buttons im Karten-Look, keine echten Screens.
-- Ein durchgehender heller Grund von 0,85 s bis zum Ende: Der Konfigurator tritt zurück, die Check-in-Karte landet, die
-  Termine machen der Feedback-Karte Platz. Nur ein harter Schnitt (Benaja → Konfigurator).
+- Ein durchgehender heller Grund vom ersten bis zum letzten Frame: Der Konfigurator tritt zurück, die Check-in-Karte
+  landet, die Termine machen der Feedback-Karte Platz. Kein Schnitt innerhalb des Teils.
 - Der Check-in kommt 0,3 s später als im Storyboard (7,55 statt 7,25 s), damit die neuen Fragen im Formular lange genug
   lesbar stehen.
 - Der Speichern-Button ist etwas dunkler als in der Referenz (#0084AB → #00A3CF), weil weiß auf dem hellen Cyan den

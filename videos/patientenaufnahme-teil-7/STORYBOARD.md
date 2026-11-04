@@ -12,13 +12,13 @@ audience: Physiotherapie-Praxen
 - status: animated
 - src: compositions/konfigurator.html
 - poster: 3.9
-- transition_in: cut
-- scene: Harter Schnitt auf den Physiofit-Formular-Konfigurator; der Cursor zieht Bausteine ins leere Formular.
+- transition_in: cut (vom vorigen Teil)
+- scene: Vollbild ab dem ersten Frame: der Physiofit-Formular-Konfigurator; der Cursor zieht Bausteine ins leere Formular.
 - voiceover: "Du kannst mit unserem Konfigurator auch ganz individuelle Formulare erstellen."
-- reads: Benaja spricht (0-0.85s); Logo und „Formular-Konfigurator“ (0.85-1.6s); Skala, Auswahl, Textfeld landen im Formular (1.6-3.5s); Unterschrift wird gezogen (3.5-4.3s)
+- reads: Logo und „Formular-Konfigurator“ (0-1.6s); Skala, Auswahl, Textfeld landen im Formular (1.6-3.5s); Unterschrift wird gezogen (3.5-4.3s)
 - sound: nur O-Ton
 
-0–0,85 s nur Benaja, Schnitt auf „Konfigurator“ (0,88 s). Die Drops liegen auf 1,6 / 2,4 („individuelle“) / 3,2 („Formulare“) / 3,9 s.
+Benaja ist in diesem Teil nicht im Bild (Wunsch). Die Drops liegen auf 1,6 / 2,4 („individuelle“) / 3,2 („Formulare“) / 3,9 s.
 
 ## Frame 2: Daraus wird der Check-in (4.3-7.55s)
 

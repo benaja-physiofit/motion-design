@@ -1,7 +1,7 @@
 # Patientenaufnahme – Teil 7: Konfigurator
 
 Animationen zum Clip `Patientenaufnahme_Teil_7.mov` (13,6 s), im Stil von Teil 1 und `finales_video.mp4`.
-Benaja ist nur in den ersten 0,85 s zu sehen, danach ist alles Vollbild (Wunsch). Ohne Musik und Soundeffekte,
+Benaja ist in diesem Teil nicht zu sehen, nur zu hören; alles ist Vollbild (Wunsch). Ohne Musik und Soundeffekte,
 nur der O-Ton. Der Konfigurator ist bewusst abstrahiert dargestellt, nicht als echter Screenshot.
 
 | | |
@@ -17,8 +17,7 @@ nur der O-Ton. Der Konfigurator ist bewusst abstrahiert dargestellt, nicht als e
 
 | Zeit | Gesprochen | Bild |
 |---|---|---|
-| 0–0,85 s | „Du kannst mit unserem …“ | Benaja |
-| 0,85–4,3 s | „… Konfigurator auch ganz individuelle Formulare erstellen.“ | Vollbild „Formular-Konfigurator“ mit Physiofit-Logo: Der Cursor zieht Skala, Auswahl, Textfeld und Unterschrift ins Formular. |
+| 0–4,3 s | „Du kannst mit unserem Konfigurator auch ganz individuelle Formulare erstellen.“ | Vollbild „Formular-Konfigurator“ mit Physiofit-Logo: Der Cursor zieht Skala, Auswahl, Textfeld und Unterschrift ins Formular. |
 | 4,3–7,55 s | „So kannst du zum Beispiel ein Check-in-Formular erstellen, …“ | Das Formular wird zum „Check-in“ mit echten Fragen, Klick auf Speichern → „Gespeichert“. |
 | 7,55–10,1 s | „… um bei jedem Termin das Wohlbefinden abzufragen, …“ | Karte „Check-in“ links, rechts die Termine mit Check-in; die 4 wird gewählt. |
 | 10,1–13,56 s | „… oder allgemeines Feedback zur Patientenzufriedenheit einsammeln.“ | Karte „Feedback · Patientenzufriedenheit“: Sterne füllen sich, Antworten kommen rein. |
@@ -27,7 +26,7 @@ nur der O-Ton. Der Konfigurator ist bewusst abstrahiert dargestellt, nicht als e
 
 - Texte und Farben sind Variablen (Studio → Variablen): Fenster-Titel, Formular-Name, Karten-Titel, Frage, Chip.
 - Timing: jede Szene in `compositions/<szene>.html`; die Kommentare nennen die Filmzeit der Wörter.
-- LUT: `friendly-saas-explainer-patientenaufnahme2.cube` am `#footage`-Video (wirkt nur in den ersten 0,85 s sichtbar).
+- LUT: `friendly-saas-explainer-patientenaufnahme2.cube` am `#footage`-Video (das Video liegt nur noch für den Ton darunter).
 
 ## Footage neu erzeugen
 

@@ -1,7 +1,7 @@
 # SPEC – Patientenaufnahme, Teil 7 (Konfigurator)
 
 GOAL:    Die Praxis sieht: Mit dem Physiofit-Konfigurator baut man eigene Formulare, z. B. Check-in und Feedback.
-         Ab 0,85 s komplett Vollbild; Benaja ist in diesem Teil nur am Anfang zu sehen (Wunsch).
+         Komplett Vollbild; Benaja ist in diesem Teil gar nicht zu sehen, nur zu hören (Wunsch).
 OUTPUT:  HyperFrames, 1920 x 1080, 30 fps. Ohne Musik und Soundeffekte, nur der O-Ton.
 TIME:    13,56 s x 30 = 407 Frames. Takt = O-Ton (`transcript.json`).
 
@@ -19,8 +19,7 @@ MOTION:  wie Teil 1: Ankunft expo.out 0,45–0,6 s mit Blur → 0 · Abgang powe
          Formular baut sich in einem Bild um (keine Schnitte innerhalb des Konfigurators) ·
          Schnitte Vollbild ↔ Sprecher hart, neues Bild landet 104 % → 100 %.
 SHOTS:
-  0,0–0,85   Benaja im Bild, noch ohne Grafik („Du kannst mit unserem …“).
-  0,85–4,3   `konfigurator` Harter Schnitt auf Vollbild: „Formular-Konfigurator“ mit Physiofit-Logo. Der Cursor zieht
+  0,0–4,3    `konfigurator` Vollbild ab Frame 0: „Formular-Konfigurator“ mit Physiofit-Logo, Karte rastet ein. Der Cursor zieht
              Textfeld (1,6) · Auswahl (2,4) · Skala (3,2) in ein leeres Formular („ganz individuelle Formulare“).
   4,3–7,55   gleiches Bild baut sich um: Titel wird „Check-in“ (5,6), Felder bekommen echte Fragen,
              Klick auf Speichern → „Gespeichert“ (6,96 „erstellen“).
