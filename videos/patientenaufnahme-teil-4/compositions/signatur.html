@@ -1,19 +1,9 @@
 <template>
   <style>
     @font-face {
-      font-family: "Lora";
-      font-weight: 500;
-      src: url("assets/fonts/lora-500.woff2") format("woff2");
-    }
-    @font-face {
       font-family: "Ubuntu";
       font-weight: 400;
       src: url("assets/fonts/ubuntu-400.woff2") format("woff2");
-    }
-    @font-face {
-      font-family: "Ubuntu";
-      font-weight: 500;
-      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
     }
     #root {
       position: absolute;
@@ -22,66 +12,36 @@
       --c-teal: var(--teal, #217c93);
       --c-accent: var(--accent, #00bae7);
     }
-    #sg-phone {
+    /* A line from the "Patientenaufnahme" card (now small, left) branches to the two checkboxes. */
+    #sg-lines {
       position: absolute;
-      left: 1110px;
-      top: 70px;
-      width: 500px;
-      height: 940px;
-      border-radius: 66px;
-      background: var(--c-ink);
-      box-shadow:
-        0 40px 70px -24px rgba(30, 53, 66, 0.45),
-        0 6px 16px rgba(30, 53, 66, 0.12);
+      left: 0;
+      top: 0;
+      overflow: visible;
     }
-    #sg-screen {
-      position: absolute;
-      left: 14px;
-      top: 14px;
-      width: 472px;
-      height: 912px;
-      border-radius: 54px;
-      background: #fff;
-      overflow: hidden;
+    #sg-lines path {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
-    #sg-notch {
-      position: absolute;
-      left: 166px;
-      top: 22px;
-      width: 140px;
-      height: 34px;
-      border-radius: 17px;
-      background: var(--c-ink);
-    }
-    #sg-title {
-      position: absolute;
-      left: 36px;
-      top: 276px;
-      font-family: "Lora", serif;
-      font-weight: 500;
-      font-size: 40px;
-      line-height: 50px;
-      color: var(--c-ink);
-    }
-    #sg-sub {
-      position: absolute;
-      left: 36px;
-      top: 332px;
-      font-family: "Ubuntu", sans-serif;
-      font-weight: 500;
-      font-size: 28px;
-      color: var(--muted, #5e7380);
+    #sg-lines circle {
+      fill: var(--c-teal);
     }
     .sg-row {
       position: absolute;
-      left: 16px;
-      width: 440px;
+      left: 1170px;
+      width: 460px;
       border-radius: 22px;
-      background: #f3f6f8;
+      background: #fff;
+      box-shadow:
+        0 24px 48px -12px rgba(30, 53, 66, 0.16),
+        0 4px 12px rgba(30, 53, 66, 0.05);
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 22px 16px;
+      padding: 22px 20px;
       font-family: "Ubuntu", sans-serif;
       font-weight: 400;
       font-size: 22px;
@@ -116,47 +76,46 @@
     }
   </style>
 
-  <div
-    id="root"
-    data-composition-id="signatur"
-    data-width="1920"
-    data-height="1080"
-    data-composition-variables='[
-      {"id":"sg_title","type":"string","label":"Titel","default":"Bitte bestätigen"}
-    ]'
-  >
-    <div id="sg-phone">
-      <div id="sg-screen">
-        <div id="sg-notch"></div>
-        <div id="sg-title" data-var-text="sg_title">Bitte bestätigen</div>
-        <div id="sg-sub">Patientenaufnahme</div>
-        <div id="sg-row1" class="sg-row" style="top: 394px">
-          <div class="sg-box"><div id="sg-c1" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
-          <span>Ich akzeptiere den<br />Behandlungsvertrag.</span>
-        </div>
-        <div id="sg-row2" class="sg-row" style="top: 514px">
-          <div class="sg-box"><div id="sg-c2" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
-          <span>Ich habe die Hinweise zu Zuzahlung<br />und Ausfallgebühren gelesen.</span>
-        </div>
-      </div>
+  <div id="root" data-composition-id="signatur" data-width="1920" data-height="1080">
+    <svg id="sg-lines" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-ignore>
+      <path id="sg-trunk" pathLength="1" d="M 846 545 H 1000" />
+      <path id="sg-up" pathLength="1" d="M 1000 545 V 500 Q 1000 482 1018 482 H 1162" />
+      <path id="sg-down" pathLength="1" d="M 1000 545 V 590 Q 1000 608 1018 608 H 1162" />
+      <circle id="sg-dot0" cx="846" cy="545" r="8" />
+      <circle id="sg-dot1" cx="1162" cy="482" r="8" />
+      <circle id="sg-dot2" cx="1162" cy="608" r="8" />
+    </svg>
+
+    <div id="sg-row1" class="sg-row" style="top: 429px">
+      <div class="sg-box"><div id="sg-c1" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
+      <span>Ich akzeptiere den<br />Behandlungsvertrag.</span>
+    </div>
+    <div id="sg-row2" class="sg-row" style="top: 555px">
+      <div class="sg-box"><div id="sg-c2" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
+      <span>Ich habe die Hinweise zu Zuzahlung<br />und Ausfallgebühren gelesen.</span>
     </div>
   </div>
 
   <script>
     (function () {
-      // Local clock: 0 = 14.3 s in the film.
+      // Local clock: 0 = 14.3 s in the film (the card moves left until 14.9 s).
       const tl = gsap.timeline({ paused: true });
-      const blurIn = (sel, at, d = 0.35) =>
-        tl.fromTo(sel, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: d, ease: "expo.out" }, at);
+      const draw = (sel, at, d) =>
+        tl.fromTo(sel, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, at);
+      const dot = (sel, at) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, at);
 
       gsap.set(["#sg-c1", "#sg-c2"], { opacity: 0, scale: 0.6 });
 
-      // The patient's phone glides in while the window steps aside.
-      tl.fromTo("#sg-phone", { opacity: 0, x: 120, filter: "blur(12px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 0.2);
-      blurIn("#sg-title", 0.5);
-      blurIn("#sg-sub", 0.6);
-      tl.fromTo(["#sg-row1", "#sg-row2"], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "expo.out" }, 0.72);
-
+      // "Lass Patienten alles rechtssicher und digital signieren" (14.48 / 16.72):
+      // the line leaves the card and branches to the two checkboxes.
+      dot("#sg-dot0", 0.55);
+      draw("#sg-trunk", 0.6, 0.3);
+      draw("#sg-up", 0.88, 0.42);
+      draw("#sg-down", 0.88, 0.42);
+      dot("#sg-dot1", 1.25);
+      dot("#sg-dot2", 1.25);
+      tl.fromTo(["#sg-row1", "#sg-row2"], { opacity: 0, x: 30, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.5, stagger: 0.12, ease: "expo.out" }, 1.25);
 
       // "Ganz einfach per Checkbox" (17.92 / 18.8): both boxes get ticked.
       tl.to("#sg-c1", { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 3.3);

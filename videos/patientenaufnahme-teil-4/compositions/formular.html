@@ -294,8 +294,8 @@
       pop("#af-note1 .seen, #af-note2 .seen", 12.6, 0.1);
       pop("#af-note1 .accepted, #af-note2 .accepted", 13.4, 0.1);
 
-      // 14.3: the card steps aside to the left for the patient's phone.
-      tl.to("#af-card", { x: -250, y: 170, scale: 0.56, transformOrigin: "0% 0%", duration: 0.6, ease: "power3.inOut" }, 14.3);
+      // 14.3: the card steps aside to the left; a line leads from it to the two checkboxes.
+      tl.to("#af-card", { x: -180, y: 170, scale: 0.56, transformOrigin: "0% 0%", duration: 0.6, ease: "power3.inOut" }, 14.3);
 
       window.__timelines["formular"] = tl;
     })();

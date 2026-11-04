@@ -56,14 +56,14 @@ audience: Physiotherapie-Praxen
 
 ## Frame 5: Digital signieren per Checkbox (14.3-19.43s)
 
-- act: Akt 2: Die Sicht der Patientinnen und Patienten
+- act: Akt 2: Signieren per Checkbox
 - status: animated
 - src: compositions/signatur.html
 - poster: 19.2
-- transition_in: carry (Fenster schrumpft nach links, Smartphone kommt rechts)
-- scene: Smartphone: „Bitte bestätigen“, zwei Checkboxen (kleine, normale Schrift, mittig zum Text) werden angehakt. Kein Button.
+- transition_in: carry (Karte rückt nach links, eine Linie führt zu den Checkboxen)
+- scene: Linie von der Karte zu zwei Checkbox-Karten rechts (kleine, normale Schrift, je zwei Zeilen); beide werden angehakt. Kein Smartphone, kein Button.
 - voiceover: "Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox."
-- reads: Smartphone und Titel (14.5-17.5s); Checkboxen (17.6-19.43s)
+- reads: Linie und Checkboxen (14.85-17.5s); Checkboxen (17.6-19.43s)
 - sound: nur O-Ton
 
 Annahme: wie Teil 7 komplett Vollbild, Benaja nur zu hören. Feldnamen, Dateiname und Checkbox-Texte sind Beispielinhalte.

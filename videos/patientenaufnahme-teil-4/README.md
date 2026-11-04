@@ -20,7 +20,7 @@ Benaja ist nur zu hören. Ohne Musik und Soundeffekte, nur der O-Ton.
 | 3,7–6,3 s | „Füge deinen Behandlungsvertrag ein …“ | Balken „Behandlungsvertrag“ füllt sich, Haken. |
 | 6,3–10,6 s | „… ergänze wichtige Hinweise, zum Beispiel zur gesetzlichen Zuzahlung oder Ausfallgebühren.“ | Hinweis-Balken „Zuzahlung“ und „Ausfallgebühren“. |
 | 10,6–14,3 s | „Stelle dabei sicher, dass sie auch wirklich gesehen und akzeptiert werden.“ | Augen-Symbol (gesehen), dann Haken (akzeptiert) an beiden Hinweisen. |
-| 14,3–19,43 s | „Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox.“ | Karte rückt nach links, Smartphone: beide Checkboxen werden angehakt (kein Button). |
+| 14,3–19,43 s | „Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox.“ | Karte rückt nach links, eine Linie führt zu zwei Checkboxen, beide werden angehakt. |
 
 ## Bearbeiten
 
