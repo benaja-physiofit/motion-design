@@ -1,0 +1,403 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Lora";
+      font-weight: 500;
+      src: url("assets/fonts/lora-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 500;
+      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      --c-ink: var(--ink, #1e3542);
+      --c-teal: var(--teal, #217c93);
+      --c-accent: var(--accent, #00bae7);
+    }
+    #kf-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--ground, #f0f4f6);
+    }
+    #kf-card {
+      position: absolute;
+      left: 200px;
+      top: 135px;
+      width: 1520px;
+      height: 810px;
+      background: #fff;
+      border-radius: 34px;
+      box-shadow:
+        0 30px 60px -16px rgba(30, 53, 66, 0.16),
+        0 4px 14px rgba(30, 53, 66, 0.05);
+    }
+    #kf-head {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 112px;
+      border-bottom: 2px solid var(--skeleton, #edf1f3);
+    }
+    #kf-logo {
+      position: absolute;
+      left: 56px;
+      top: 36px;
+      height: 40px;
+    }
+    #kf-divider {
+      position: absolute;
+      left: 292px;
+      top: 34px;
+      width: 2px;
+      height: 44px;
+      background: var(--skeleton-bar, #cdd6dc);
+    }
+    #kf-title {
+      position: absolute;
+      left: 322px;
+      top: 26px;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 44px;
+      line-height: 58px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    #kf-save {
+      position: absolute;
+      right: 48px;
+      top: 26px;
+      height: 60px;
+      width: 270px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #00a4cc, #00cffd);
+      box-shadow: 0 10px 24px -8px rgba(0, 164, 204, 0.55);
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      color: #fff;
+    }
+    .kf-save-state {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .kf-save-state svg path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .kf-stroke {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #kf-blocks-label {
+      position: absolute;
+      left: 56px;
+      top: 150px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 36px;
+      color: var(--muted, #5e7380);
+    }
+    .kf-chip {
+      position: absolute;
+      left: 56px;
+      width: 400px;
+      height: 84px;
+      border-radius: 20px;
+      background: #fff;
+      border: 2px solid #e3e9ed;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-left: 14px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      color: var(--c-ink);
+    }
+    .kf-chip-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--icon-bg, #ddf2f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+    #kf-ghost {
+      left: 600px;
+      top: 590px;
+      width: 400px;
+      box-shadow: 0 22px 40px -12px rgba(30, 53, 66, 0.35);
+      border-color: var(--c-teal);
+      transform-origin: 50% 50%;
+    }
+    #kf-canvas {
+      position: absolute;
+      left: 516px;
+      top: 150px;
+      width: 948px;
+      height: 620px;
+      border-radius: 24px;
+      background: #f7f9fa;
+      border: 2px dashed var(--skeleton-bar, #cdd6dc);
+    }
+    .kf-form-title {
+      position: absolute;
+      left: 40px;
+      top: 28px;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 44px;
+      line-height: 56px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    .kf-field {
+      position: absolute;
+      left: 40px;
+      width: 868px;
+      height: 112px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 6px 16px -8px rgba(30, 53, 66, 0.2);
+    }
+    .kf-label {
+      position: absolute;
+      left: 28px;
+      top: 14px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 36px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    .kf-control {
+      position: absolute;
+      left: 28px;
+      top: 58px;
+      height: 44px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .kf-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--skeleton-bar, #cdd6dc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      color: var(--muted, #5e7380);
+    }
+    .kf-opt {
+      height: 44px;
+      padding: 0 22px;
+      border-radius: 22px;
+      border: 2px solid var(--skeleton-bar, #cdd6dc);
+      display: flex;
+      align-items: center;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      color: var(--muted, #5e7380);
+    }
+    .kf-input {
+      width: 600px;
+      height: 44px;
+      border-radius: 12px;
+      border: 2px solid #e3e9ed;
+    }
+    .kf-sign {
+      width: 380px;
+      height: 2px;
+      margin-top: 30px;
+      background: var(--skeleton-bar, #cdd6dc);
+    }
+    .kf-type-tag {
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--c-teal);
+    }
+    #kf-drop {
+      position: absolute;
+      left: 40px;
+      width: 868px;
+      height: 112px;
+      border-radius: 18px;
+      border: 3px dashed var(--c-teal);
+      background: rgba(221, 242, 249, 0.5);
+    }
+    #kf-cursor {
+      position: absolute;
+      left: 940px;
+      top: 650px;
+      width: 40px;
+      height: 48px;
+      filter: drop-shadow(0 4px 6px rgba(30, 53, 66, 0.35));
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="konfigurator"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"kf_title","type":"string","label":"Fenster-Titel","default":"Formular-Konfigurator"},
+      {"id":"kf_form_b","type":"string","label":"Formular-Name","default":"Check-in"}
+    ]'
+  >
+    <div id="kf-ground"></div>
+    <div id="kf-card">
+      <div id="kf-head">
+        <img id="kf-logo" src="assets/brand/Physiofit_Logo_BlueDark.svg" alt="Physiofit" />
+        <div id="kf-divider"></div>
+        <div id="kf-title" data-var-text="kf_title">Formular-Konfigurator</div>
+        <div id="kf-save">
+          <div id="kf-save-a" class="kf-save-state">
+            <svg width="30" height="30" viewBox="0 0 24 24">
+              <path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+              <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7" /><path d="M7 3v4a1 1 0 0 0 1 1h7" />
+            </svg>
+            <span>Speichern</span>
+          </div>
+          <div id="kf-save-b" class="kf-save-state">
+            <svg width="30" height="30" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg>
+            <span>Gespeichert</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="kf-blocks-label">Bausteine</div>
+      <div class="kf-chip" style="top: 200px">
+        <div class="kf-chip-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" class="kf-stroke">
+            <line x1="21" x2="14" y1="4" y2="4" /><line x1="10" x2="3" y1="4" y2="4" />
+            <line x1="21" x2="12" y1="12" y2="12" /><line x1="8" x2="3" y1="12" y2="12" />
+            <line x1="21" x2="16" y1="20" y2="20" /><line x1="12" x2="3" y1="20" y2="20" />
+            <line x1="14" x2="14" y1="2" y2="6" /><line x1="8" x2="8" y1="10" y2="14" />
+            <line x1="16" x2="16" y1="18" y2="22" />
+          </svg>
+        </div>
+        <span>Skala</span>
+      </div>
+      <div class="kf-chip" style="top: 300px">
+        <div class="kf-chip-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" class="kf-stroke">
+            <path d="m3 17 2 2 4-4" /><path d="m3 7 2 2 4-4" /><path d="M13 6h8" />
+            <path d="M13 12h8" /><path d="M13 18h8" />
+          </svg>
+        </div>
+        <span>Auswahl</span>
+      </div>
+      <div class="kf-chip" style="top: 400px">
+        <div class="kf-chip-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" class="kf-stroke">
+            <polyline points="4 7 4 4 20 4 20 7" /><line x1="9" x2="15" y1="20" y2="20" />
+            <line x1="12" x2="12" y1="4" y2="20" />
+          </svg>
+        </div>
+        <span>Textfeld</span>
+      </div>
+      <div class="kf-chip" style="top: 500px">
+        <div class="kf-chip-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" class="kf-stroke">
+            <path
+              d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"
+            />
+            <path d="M3 21h18" />
+          </svg>
+        </div>
+        <span>Unterschrift</span>
+      </div>
+
+      <div id="kf-canvas">
+        <div id="kf-form-a" class="kf-form-title">Neues Formular</div>
+        <div id="kf-form-b" class="kf-form-title" data-var-text="kf_form_b">Check-in</div>
+
+        <div id="kf-f1" class="kf-field" style="top: 112px">
+          <div id="kf-f1-a" class="kf-label">Skala</div>
+          <div id="kf-f1-b" class="kf-label">Wie geht es dir heute?</div>
+          <div class="kf-control">
+            <div class="kf-dot">1</div><div class="kf-dot">2</div><div class="kf-dot">3</div>
+            <div class="kf-dot">4</div><div class="kf-dot">5</div>
+          </div>
+        </div>
+        <div id="kf-f2" class="kf-field" style="top: 236px">
+          <div id="kf-f2-a" class="kf-label">Auswahl</div>
+          <div id="kf-f2-b" class="kf-label">Beschwerden seit dem letzten Termin?</div>
+          <div class="kf-control"><div class="kf-opt">Ja</div><div class="kf-opt">Nein</div></div>
+        </div>
+        <div id="kf-f3" class="kf-field" style="top: 360px">
+          <div id="kf-f3-a" class="kf-label">Textfeld</div>
+          <div id="kf-f3-b" class="kf-label">Möchtest du uns etwas mitteilen?</div>
+          <div class="kf-control"><div class="kf-input"></div></div>
+        </div>
+        <div id="kf-drop" style="top: 484px"></div>
+        <div id="kf-f4" class="kf-field" style="top: 484px">
+          <div class="kf-label">Unterschrift</div>
+          <div class="kf-control"><div class="kf-sign"></div></div>
+        </div>
+      </div>
+
+      <div id="kf-ghost" class="kf-chip">
+        <div class="kf-chip-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" class="kf-stroke">
+            <path
+              d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"
+            />
+            <path d="M3 21h18" />
+          </svg>
+        </div>
+        <span>Unterschrift</span>
+      </div>
+
+      <svg id="kf-cursor" viewBox="0 0 20 24">
+        <path d="M2 1.5 L2 19 L6.6 14.8 L9.6 21.6 L12.6 20.3 L9.7 13.6 L16 13.4 Z" fill="#fff" stroke="#1e3542" stroke-width="1.4" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Storyboard pose. Local clock: 0 = 0.85 s in the film.
+      // State A (shot 01, "ganz individuelle Formulare"): three blocks placed, "Unterschrift" being dragged.
+      // State B (shot 02, "Check-in-Formular erstellen"): renamed, real questions, saved.
+      const tl = gsap.timeline({ paused: true });
+      gsap.set(["#kf-form-b", "#kf-f1-b", "#kf-f2-b", "#kf-f3-b", "#kf-save-b", "#kf-f4"], { opacity: 0 });
+      tl.set(["#kf-form-a", "#kf-f1-a", "#kf-f2-a", "#kf-f3-a", "#kf-save-a"], { opacity: 0 }, 3.45);
+      tl.set(["#kf-form-b", "#kf-f1-b", "#kf-f2-b", "#kf-f3-b", "#kf-save-b", "#kf-f4"], { opacity: 1 }, 3.45);
+      tl.set("#kf-ghost", { opacity: 0 }, 3.45);
+      tl.set("#kf-cursor", { x: 500, y: -578 }, 3.45);
+      gsap.set("#kf-ghost", { rotation: -3 });
+      tl.set("#kf-drop", { opacity: 0 }, 3.45);
+      window.__timelines["konfigurator"] = tl;
+    })();
+  </script>
+</template>

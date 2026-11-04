@@ -1,0 +1,9 @@
+# HyperFrames tool state / caches
+.hyperframes/
+.media/
+node_modules/
+# Footage bleibt lokal (Original-Clip umkodiert, siehe SPEC.md)
+assets/footage/*.mp4
+# Render scratch (in-progress renders)
+renders/work-*/
+renders/.*

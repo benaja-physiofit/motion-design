@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Storyboard Teil 7</title>
+    <style>
+      :root {
+        --page: #f4f6f8;
+        --card: #ffffff;
+        --ink: #1e3542;
+        --muted: #5e7380;
+        --line: #e3e9ed;
+        --accent: #217c93;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.45;
+      }
+      main {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 48px 32px 64px;
+      }
+      header h1 {
+        margin: 0 0 6px;
+        font-size: 30px;
+        letter-spacing: -0.01em;
+      }
+      header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .meta span {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 12px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .act {
+        margin: 40px 0 14px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .frame {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px -16px rgba(30, 53, 66, 0.25);
+      }
+      .frame img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-bottom: 1px solid var(--line);
+      }
+      .frame .body {
+        padding: 16px 20px 20px;
+      }
+      .title {
+        font-weight: 650;
+        font-size: 18px;
+      }
+      .time {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 2px;
+      }
+      .words {
+        margin: 10px 0 0;
+        font-size: 15px;
+      }
+      .vo {
+        margin: 10px 0 0;
+        font-size: 14px;
+        color: var(--muted);
+        font-style: italic;
+      }
+      footer {
+        margin-top: 36px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        main {
+          padding: 28px 16px 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Storyboard · Patientenaufnahme Teil 7</h1>
+        <p>Konfigurator für eigene Formulare: Check-in bei jedem Termin und Feedback zur Patientenzufriedenheit.</p>
+        <div class="meta">
+          <span>1920 × 1080 · 30 fps</span>
+          <span>13,6 s</span>
+          <span>nur O-Ton, keine Musik/SFX</span>
+          <span>Look wie Teil 1 und finales Video</span>
+        </div>
+      </header>
+
+      <section class="act">Akt 1: Der Konfigurator (Vollbild)</section>
+      <div class="grid">
+        <div class="frame">
+          <img src="stills/frame-00-at-3.9s.png" alt="" />
+          <div class="body">
+            <div class="title">01: Formulare zusammenbauen</div>
+            <div class="time">0,0 bis 4,3 s</div>
+            <p class="words">
+              0–0,85 s nur Benaja. Bei „Konfigurator“ harter Schnitt auf den Physiofit-Formular-Konfigurator. Der Cursor
+              zieht Skala, Auswahl und Textfeld nacheinander ins leere Formular, zuletzt die Unterschrift.
+            </p>
+            <p class="vo">„Du kannst mit unserem Konfigurator auch ganz individuelle Formulare erstellen.“</p>
+          </div>
+        </div>
+        <div class="frame">
+          <img src="stills/frame-01-at-6.9s.png" alt="" />
+          <div class="body">
+            <div class="title">02: Daraus wird der Check-in</div>
+            <div class="time">4,3 bis 7,25 s</div>
+            <p class="words">
+              Gleiches Bild, das Formular baut sich um: Der Titel wird „Check-in“, die Felder bekommen echte Fragen. Bei
+              „erstellen“ klickt der Cursor auf Speichern, der Button wird zu „Gespeichert“.
+            </p>
+            <p class="vo">„So kannst du zum Beispiel ein Check-in-Formular erstellen, …“</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="act">Akt 2: Die Beispiele neben Benaja</section>
+      <div class="grid">
+        <div class="frame">
+          <img src="stills/frame-02-at-9.7s.png" alt="" />
+          <div class="body">
+            <div class="title">03: Check-in bei jedem Termin</div>
+            <div class="time">7,25 bis 10,1 s</div>
+            <p class="words">
+              Harter Schnitt zurück zu Benaja. Links baut sich die Karte „Check-in“ auf: Chip „Bei jedem Termin“, dann die
+              Frage „Wie geht es dir heute?“. Bei „Wohlbefinden“ wird die 4 gewählt, „Antwort gespeichert“.
+            </p>
+            <p class="vo">„… um bei jedem Termin das Wohlbefinden abzufragen, …“</p>
+          </div>
+        </div>
+        <div class="frame">
+          <img src="stills/frame-03-at-13.3s.png" alt="" />
+          <div class="body">
+            <div class="title">04: Feedback einsammeln</div>
+            <div class="time">10,1 bis 13,6 s</div>
+            <p class="words">
+              Rechts kommt die Karte „Feedback · Patientenzufriedenheit“ dazu. Die Sterne füllen sich, bei „einsammeln“
+              stapeln sich die Antworten und der Zähler zählt mit. Die Check-in-Karte bleibt links stehen.
+            </p>
+            <p class="vo">„… oder allgemeines Feedback zur Patientenzufriedenheit einsammeln.“</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        Fragen, Bewertungen und Antworten sind Beispielinhalte. Wenn es Screenshots vom echten Konfigurator gibt, wird das
+        Fenster danach nachgebaut.
+      </footer>
+    </main>
+  </body>
+</html>

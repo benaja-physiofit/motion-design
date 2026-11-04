@@ -1,0 +1,100 @@
+{
+ "text": "Wenn du Hilfe bei der einmaligen Einrichtung benötigst, schreib uns eine Nachricht oder vereinbare einen Gesprächstermin über dein Portal.",
+ "words": [
+  {
+   "text": "Wenn",
+   "start": 0.0,
+   "end": 0.1599999964237213
+  },
+  {
+   "text": "du",
+   "start": 0.1599999964237213,
+   "end": 0.3999999761581421
+  },
+  {
+   "text": "Hilfe",
+   "start": 0.3999999761581421,
+   "end": 0.7999999523162842
+  },
+  {
+   "text": "bei",
+   "start": 0.7999999523162842,
+   "end": 0.9599999785423279
+  },
+  {
+   "text": "der",
+   "start": 0.9599999785423279,
+   "end": 1.1200000047683716
+  },
+  {
+   "text": "einmaligen",
+   "start": 1.1200000047683716,
+   "end": 1.7599999904632568
+  },
+  {
+   "text": "Einrichtung",
+   "start": 1.7599999904632568,
+   "end": 2.319999933242798
+  },
+  {
+   "text": "benötigst,",
+   "start": 2.319999933242798,
+   "end": 2.8799999523162843
+  },
+  {
+   "text": "schreib",
+   "start": 2.879999876022339,
+   "end": 3.199999885559082
+  },
+  {
+   "text": "uns",
+   "start": 3.1999998092651367,
+   "end": 3.359999895095825
+  },
+  {
+   "text": "eine",
+   "start": 3.359999895095825,
+   "end": 3.5999999046325684
+  },
+  {
+   "text": "Nachricht",
+   "start": 3.5999999046325684,
+   "end": 4.079999923706055
+  },
+  {
+   "text": "oder",
+   "start": 4.079999923706055,
+   "end": 4.319999694824219
+  },
+  {
+   "text": "vereinbare",
+   "start": 4.319999694824219,
+   "end": 5.199999809265137
+  },
+  {
+   "text": "einen",
+   "start": 5.199999809265137,
+   "end": 5.359999656677246
+  },
+  {
+   "text": "Gesprächstermin",
+   "start": 5.359999656677246,
+   "end": 6.159999847412109
+  },
+  {
+   "text": "über",
+   "start": 6.159999847412109,
+   "end": 6.319999694824219
+  },
+  {
+   "text": "dein",
+   "start": 6.319999694824219,
+   "end": 6.559999942779541
+  },
+  {
+   "text": "Portal.",
+   "start": 6.559999942779541,
+   "end": 7.040000038146973
+  }
+ ]
+}

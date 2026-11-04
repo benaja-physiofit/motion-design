@@ -1,0 +1,238 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Lora";
+      font-weight: 500;
+      src: url("assets/fonts/lora-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 500;
+      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      --c-ink: var(--ink, #1e3542);
+      --c-teal: var(--teal, #217c93);
+      --c-accent: var(--accent, #00bae7);
+    }
+    #ci-card {
+      position: absolute;
+      left: 80px;
+      top: 100px;
+      width: 480px;
+      height: 624px;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow:
+        0 24px 48px -12px rgba(30, 53, 66, 0.18),
+        0 4px 12px rgba(30, 53, 66, 0.06);
+    }
+    #ci-badge {
+      position: absolute;
+      left: -22px;
+      top: -22px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(30, 53, 66, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ci-dot {
+      position: absolute;
+      right: -12px;
+      top: -12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      border: 4px solid #fff;
+      box-shadow: 0 3px 8px rgba(30, 53, 66, 0.16);
+    }
+    .ci-stroke {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #ci-icon {
+      position: absolute;
+      left: 180px;
+      top: 40px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--icon-bg, #ddf2f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ci-title {
+      position: absolute;
+      left: 0;
+      top: 172px;
+      width: 480px;
+      text-align: center;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 44px;
+      line-height: 56px;
+      color: var(--c-ink);
+    }
+    #ci-every {
+      position: absolute;
+      left: 40px;
+      top: 248px;
+      width: 400px;
+      height: 72px;
+      border-radius: 20px;
+      background: var(--skeleton, #edf1f3);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-left: 24px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      color: var(--c-ink);
+    }
+    #ci-question {
+      position: absolute;
+      left: 40px;
+      top: 352px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 38px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    #ci-scale {
+      position: absolute;
+      left: 40px;
+      top: 408px;
+      display: flex;
+      gap: 20px;
+    }
+    .ci-step {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--skeleton-bar, #cdd6dc);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      color: var(--c-ink);
+    }
+    #ci-step4 {
+      border-color: var(--c-ink);
+      background: var(--c-ink);
+      color: #fff;
+    }
+    .ci-end {
+      position: absolute;
+      top: 482px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      color: var(--muted, #5e7380);
+    }
+    #ci-saved {
+      position: absolute;
+      left: 40px;
+      top: 544px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      color: var(--c-teal);
+    }
+    #ci-check {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ci-check path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="checkin"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"ci_title","type":"string","label":"Titel","default":"Check-in"},
+      {"id":"ci_every","type":"string","label":"Chip","default":"Bei jedem Termin"},
+      {"id":"ci_question","type":"string","label":"Frage","default":"Wie geht es dir heute?"}
+    ]'
+  >
+    <div id="ci-card">
+      <div id="ci-badge">
+        <svg width="32" height="32" viewBox="0 0 24 24" class="ci-stroke">
+          <path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" />
+          <path d="M3 10h18" /><path d="m9 16 2 2 4-4" />
+        </svg>
+      </div>
+      <div id="ci-dot"></div>
+      <div id="ci-icon">
+        <svg width="60" height="60" viewBox="0 0 24 24" class="ci-stroke">
+          <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+          <path d="m9 14 2 2 4-4" />
+        </svg>
+      </div>
+      <div id="ci-title" data-var-text="ci_title">Check-in</div>
+      <div id="ci-every">
+        <svg width="36" height="36" viewBox="0 0 24 24" class="ci-stroke">
+          <path d="m17 2 4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+          <path d="m7 22-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" />
+        </svg>
+        <span data-var-text="ci_every">Bei jedem Termin</span>
+      </div>
+      <div id="ci-question" data-var-text="ci_question">Wie geht es dir heute?</div>
+      <div id="ci-scale">
+        <div class="ci-step">1</div>
+        <div class="ci-step">2</div>
+        <div class="ci-step">3</div>
+        <div id="ci-step4" class="ci-step">4</div>
+        <div class="ci-step">5</div>
+      </div>
+      <div class="ci-end" style="left: 40px">schlecht</div>
+      <div class="ci-end" style="right: 40px">sehr gut</div>
+      <div id="ci-saved">
+        <div id="ci-check"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div>
+        <span>Antwort gespeichert</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Storyboard pose (shot 03, held). Local clock: 0 = 7.25 s in the film.
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#ci-card", { opacity: 1 }, 0);
+      window.__timelines["checkin"] = tl;
+    })();
+  </script>
+</template>

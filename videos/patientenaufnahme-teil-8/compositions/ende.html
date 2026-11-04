@@ -1,0 +1,286 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Lora";
+      font-weight: 500;
+      src: url("assets/fonts/lora-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 500;
+      src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
+      font-weight: 700;
+      src: url("assets/fonts/ubuntu-700.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      --c-ink: var(--ink, #1e3542);
+      --c-teal: var(--teal, #217c93);
+      --c-accent: var(--accent, #00bae7);
+    }
+    .en-card {
+      position: absolute;
+      top: 200px;
+      height: 316px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow:
+        0 24px 48px -12px rgba(30, 53, 66, 0.18),
+        0 4px 12px rgba(30, 53, 66, 0.06);
+    }
+    #en-help {
+      left: 74px;
+      width: 562px;
+    }
+    #en-call {
+      left: 1222px;
+      width: 624px;
+    }
+    .en-icon {
+      position: absolute;
+      left: 34px;
+      top: 52px;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: var(--icon-bg, #ddf2f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .en-stroke {
+      fill: none;
+      stroke: var(--c-teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .en-skel {
+      position: absolute;
+      left: 140px;
+      height: 18px;
+      border-radius: 9px;
+      background: var(--skeleton-bar, #cdd6dc);
+    }
+    .en-title {
+      position: absolute;
+      left: 140px;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 46px;
+      line-height: 58px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    .en-btn-skel,
+    .en-btn {
+      position: absolute;
+      left: 34px;
+      top: 188px;
+      height: 92px;
+      border-radius: 46px;
+    }
+    .en-btn-skel {
+      background: var(--skeleton, #edf1f3);
+    }
+    .en-btn {
+      background: linear-gradient(90deg, #009fc8, #00cffd);
+      box-shadow: 0 14px 28px -10px rgba(0, 186, 231, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .en-btn svg path,
+    .en-btn svg rect {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .en-tap {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      margin: -32px 0 0 -32px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.25);
+    }
+    #en-lines {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    #en-lines path {
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .en-node {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      margin: -11px 0 0 -11px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 6px rgba(30, 53, 66, 0.25);
+      z-index: 3;
+    }
+    .en-hub {
+      position: absolute;
+      top: 30px;
+      height: 88px;
+      border-radius: 44px;
+      background: #fff;
+      box-shadow:
+        0 18px 36px -12px rgba(30, 53, 66, 0.22),
+        0 3px 10px rgba(30, 53, 66, 0.06);
+      display: flex;
+      align-items: center;
+      padding: 0 34px;
+      gap: 24px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 32px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    .en-logo {
+      width: 197px;
+      height: 38px;
+      background: url("assets/brand/Physiofit_Logo_BlueDark.svg") center / contain no-repeat;
+    }
+    .en-div {
+      width: 2px;
+      height: 40px;
+      background: #dde5ea;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="ende"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"en_help_1","type":"string","label":"Karte links, Zeile 1","default":"Hilfe bei der"},
+      {"id":"en_help_2","type":"string","label":"Karte links, Zeile 2","default":"Einrichtung?"},
+      {"id":"en_btn_msg","type":"string","label":"Button links","default":"Nachricht schreiben"},
+      {"id":"en_call","type":"string","label":"Karte rechts","default":"Gesprächstermin"},
+      {"id":"en_btn_call","type":"string","label":"Button rechts","default":"Termin vereinbaren"},
+      {"id":"en_portal","type":"string","label":"Portal-Label","default":"Dein Portal"}
+    ]'
+  >
+    <!-- Connectors from the portal hub to both cards (drawn under the hub). -->
+    <svg id="en-lines" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <path id="en-line-l" d="M960 74 H375 Q355 74 355 94 V200" stroke="#217C93" />
+      <path id="en-line-r" d="M960 74 H1514 Q1534 74 1534 94 V200" stroke="#217C93" />
+    </svg>
+    <div id="en-node-l" class="en-node" style="left: 355px; top: 200px; background: #217c93"></div>
+    <div id="en-node-r" class="en-node" style="left: 1534px; top: 200px; background: #217c93"></div>
+
+    <!-- Card left: "Wenn du Hilfe bei der einmaligen Einrichtung benötigst, schreib uns eine Nachricht" -->
+    <div id="en-help" class="en-card">
+      <div class="en-icon">
+        <svg width="44" height="44" viewBox="0 0 24 24" class="en-stroke">
+          <circle cx="12" cy="12" r="10" /><path d="m4.93 4.93 4.24 4.24" />
+          <path d="m14.83 9.17 4.24-4.24" /><path d="m14.83 14.83 4.24 4.24" />
+          <path d="m9.17 14.83-4.24 4.24" /><circle cx="12" cy="12" r="4" />
+        </svg>
+      </div>
+      <div id="en-help-skel1" class="en-skel" style="top: 66px; width: 230px"></div>
+      <div id="en-help-skel2" class="en-skel" style="top: 106px; width: 170px"></div>
+      <div id="en-help-title" class="en-title" style="top: 36px">
+        <div data-var-text="en_help_1">Hilfe bei der</div>
+        <div data-var-text="en_help_2">Einrichtung?</div>
+      </div>
+      <div class="en-btn-skel" style="width: 494px"></div>
+      <div id="en-btn-msg" class="en-btn" style="width: 494px">
+        <svg width="38" height="38" viewBox="0 0 24 24">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <span data-var-text="en_btn_msg">Nachricht schreiben</span>
+        <div id="en-tap-msg" class="en-tap" style="left: 48px; top: 46px"></div>
+      </div>
+    </div>
+
+    <!-- Card right: "oder vereinbare einen Gesprächstermin" -->
+    <div id="en-call" class="en-card">
+      <div class="en-icon">
+        <svg width="44" height="44" viewBox="0 0 24 24" class="en-stroke">
+          <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" />
+          <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
+        </svg>
+      </div>
+      <div id="en-call-skel" class="en-skel" style="top: 86px; width: 300px"></div>
+      <div id="en-call-title" class="en-title" style="top: 65px" data-var-text="en_call">Gesprächstermin</div>
+      <div class="en-btn-skel" style="width: 556px"></div>
+      <div id="en-btn-call" class="en-btn" style="width: 556px">
+        <svg width="38" height="38" viewBox="0 0 24 24">
+          <path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" />
+          <path d="M3 10h18" />
+        </svg>
+        <span data-var-text="en_btn_call">Termin vereinbaren</span>
+        <div id="en-tap-call" class="en-tap" style="left: 84px; top: 46px"></div>
+      </div>
+    </div>
+
+    <!-- Portal hub: the Physiofit mark first, "Dein Portal" joins on "über dein Portal". -->
+    <div id="en-hub-logo" class="en-hub" style="left: 829px">
+      <div class="en-logo" role="img" aria-label="Physiofit"></div>
+    </div>
+    <div id="en-hub-full" class="en-hub" style="left: 714px">
+      <div class="en-logo" role="img" aria-label="Physiofit"></div>
+      <div class="en-div"></div>
+      <span data-var-text="en_portal">Dein Portal</span>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Storyboard pose: each frame's key state is set at its start, no motion yet.
+      // Spoken cues (film time): Einrichtung 1.76 · schreib 2.88 · Nachricht 3.60 ·
+      // vereinbare 4.32 · Gesprächstermin 5.36 · Portal 6.56
+      const tl = gsap.timeline({ paused: true });
+      const show = (sel, at) => tl.set(sel, { opacity: 1 }, at);
+
+      // Frame 1 (0.0): left card with its question; button still a skeleton.
+      gsap.set(
+        [
+          "#en-help-skel1", "#en-help-skel2", "#en-btn-msg", "#en-tap-msg",
+          "#en-call", "#en-line-l", "#en-line-r", "#en-node-l", "#en-node-r",
+          "#en-hub-logo", "#en-hub-full",
+        ],
+        { opacity: 0 },
+      );
+
+      // Frame 2 (2.85): "schreib uns eine Nachricht" — button fills and is tapped,
+      // the Physiofit hub ("uns") links to the card.
+      show(["#en-btn-msg", "#en-tap-msg", "#en-hub-logo", "#en-line-l", "#en-node-l"], 2.85);
+
+      // Frame 3 (4.3): "vereinbare einen Gesprächstermin" — right card, its button tapped.
+      tl.set(["#en-tap-msg", "#en-call-skel"], { opacity: 0 }, 4.3);
+      show(["#en-call", "#en-btn-call", "#en-tap-call", "#en-line-r", "#en-node-r"], 4.3);
+
+      // Frame 4 (6.15): "über dein Portal" — hub opens to "Dein Portal", both links light up.
+      tl.set(["#en-tap-call", "#en-hub-logo"], { opacity: 0 }, 6.15);
+      show("#en-hub-full", 6.15);
+      tl.set(["#en-line-l", "#en-line-r"], { attr: { stroke: "#00BAE7" } }, 6.15);
+      tl.set(["#en-node-l", "#en-node-r"], { backgroundColor: "#00BAE7" }, 6.15);
+
+      window.__timelines["ende"] = tl;
+    })();
+  </script>
+</template>
