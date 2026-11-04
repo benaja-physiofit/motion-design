@@ -34,24 +34,24 @@ audience: Physiotherapie-Praxen
 
 ## Frame 3: Check-in bei jedem Termin (7.25-10.1s)
 
-- act: Akt 2: Die Beispiele neben Benaja
+- act: Akt 2: Die Beispiele (Vollbild, ohne Benaja)
 - status: built
 - src: compositions/checkin.html
 - poster: 9.7
-- transition_in: cut
-- scene: Zurück zu Benaja, links die Karte „Check-in“ mit „Bei jedem Termin“ und der Frage „Wie geht es dir heute?“.
+- transition_in: none (gleicher Grund; der Konfigurator tritt zurück, die Karte landet)
+- scene: Vollbild ohne Benaja: links die Karte „Check-in“, rechts die Termine, jeder mit Check-in, „Heute“ läuft.
 - voiceover: "… um bei jedem Termin das Wohlbefinden abzufragen, …"
-- reads: Karte „Check-in“ (7.25-8.0s); „Bei jedem Termin“ (8.0-8.7s); Frage und gewählte 4 (8.72-9.5s); „Antwort gespeichert“ (9.52-10.1s)
+- reads: Karte „Check-in“ (7.25-8.0s); „Bei jedem Termin“ und die Termin-Liste (8.0-8.7s); Frage und gewählte 4 (8.72-9.5s); „Antwort gespeichert“ (9.52-10.1s)
 - sound: nur O-Ton
 
 ## Frame 4: Feedback einsammeln (10.1-13.56s)
 
-- act: Akt 2: Die Beispiele neben Benaja
+- act: Akt 2: Die Beispiele (Vollbild, ohne Benaja)
 - status: built
 - src: compositions/feedback.html
 - poster: 13.3
-- transition_in: none (Karte kommt rechts dazu)
-- scene: Rechts die Karte „Feedback · Patientenzufriedenheit“, Sterne füllen sich, Antworten stapeln sich mit Zähler.
+- transition_in: none (die Termine machen Platz)
+- scene: Vollbild: rechts landet „Feedback · Patientenzufriedenheit“, Sterne füllen sich, Antworten stapeln sich mit Zähler.
 - voiceover: "… oder allgemeines Feedback zur Patientenzufriedenheit einsammeln."
 - reads: Karte „Feedback“ (10.1-11.1s); „Patientenzufriedenheit“ und Sterne (11.84-12.9s); Antworten 1 → 3 (12.96-13.56s)
 - sound: nur O-Ton

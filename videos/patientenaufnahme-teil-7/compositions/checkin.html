@@ -17,10 +17,25 @@
       --c-teal: var(--teal, #217c93);
       --c-accent: var(--accent, #00bae7);
     }
+    #ci-ground {
+      position: absolute;
+      inset: 0;
+      background: var(--ground, #f0f4f6);
+    }
+    /* Full-screen layout: the card keeps its 480 px design and is scaled 1.3x by its stage. */
+    #ci-stage {
+      position: absolute;
+      left: 220px;
+      top: 134px;
+      width: 480px;
+      height: 624px;
+      transform: scale(1.3);
+      transform-origin: 0 0;
+    }
     #ci-card {
       position: absolute;
-      left: 80px;
-      top: 100px;
+      left: 0;
+      top: 0;
       width: 480px;
       height: 624px;
       background: #fff;
@@ -167,6 +182,83 @@
       align-items: center;
       justify-content: center;
     }
+    #ci-dates {
+      position: absolute;
+      left: 930px;
+      top: 287px;
+      width: 770px;
+    }
+    .ci-date {
+      position: relative;
+      height: 150px;
+      margin-bottom: 28px;
+      border-radius: 30px;
+      background: #fff;
+      box-shadow:
+        0 24px 48px -12px rgba(30, 53, 66, 0.14),
+        0 4px 12px rgba(30, 53, 66, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 36px;
+    }
+    .ci-date.now {
+      outline: 4px solid var(--c-accent);
+      outline-offset: -4px;
+    }
+    .ci-date-icon {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: var(--icon-bg, #ddf2f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+    .ci-date-name {
+      flex: 1;
+      font-family: "Lora", serif;
+      font-weight: 500;
+      font-size: 44px;
+      color: var(--c-ink);
+    }
+    .ci-date-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      color: var(--c-teal);
+    }
+    .ci-date-status .tick {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ci-date-status .tick path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .ci-now-pill {
+      height: 52px;
+      padding: 0 22px;
+      border-radius: 16px;
+      background: var(--c-ink);
+      color: #fff;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 52px;
+    }
     #ci-check path {
       fill: none;
       stroke: #fff;
@@ -187,6 +279,8 @@
       {"id":"ci_question","type":"string","label":"Frage","default":"Wie geht es dir heute?"}
     ]'
   >
+    <div id="ci-ground"></div>
+    <div id="ci-stage">
     <div id="ci-card">
       <div id="ci-badge">
         <svg width="32" height="32" viewBox="0 0 24 24" class="ci-stroke">
@@ -225,13 +319,35 @@
         <span>Antwort gespeichert</span>
       </div>
     </div>
+    </div>
+
+    <!-- "bei jedem Termin": every appointment gets its check-in -->
+    <div id="ci-dates">
+      <div class="ci-date">
+        <div class="ci-date-icon"><svg width="48" height="48" viewBox="0 0 24 24" class="ci-stroke"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" /></svg></div>
+        <div class="ci-date-name">Termin 1</div>
+        <div class="ci-date-status"><div class="tick"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div><span>Check-in</span></div>
+      </div>
+      <div class="ci-date">
+        <div class="ci-date-icon"><svg width="48" height="48" viewBox="0 0 24 24" class="ci-stroke"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" /></svg></div>
+        <div class="ci-date-name">Termin 2</div>
+        <div class="ci-date-status"><div class="tick"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div><span>Check-in</span></div>
+      </div>
+      <div class="ci-date now">
+        <div class="ci-date-icon"><svg width="48" height="48" viewBox="0 0 24 24" class="ci-stroke"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m9 16 2 2 4-4" /></svg></div>
+        <div class="ci-date-name">Heute</div>
+        <div class="ci-now-pill">Check-in läuft</div>
+      </div>
+    </div>
   </div>
 
   <script>
     (function () {
-      // Storyboard pose (shot 03, held). Local clock: 0 = 7.25 s in the film.
+      // Storyboard pose. Local clock: 0 = 7.25 s in the film.
+      // Shot 03: check-in card + appointments. Shot 04 (from 10.1 s): the appointments make room for feedback.
       const tl = gsap.timeline({ paused: true });
       tl.set("#ci-card", { opacity: 1 }, 0);
+      tl.set("#ci-dates", { opacity: 0 }, 2.85);
       window.__timelines["checkin"] = tl;
     })();
   </script>

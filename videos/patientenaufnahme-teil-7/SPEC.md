@@ -1,6 +1,7 @@
 # SPEC – Patientenaufnahme, Teil 7 (Konfigurator)
 
 GOAL:    Die Praxis sieht: Mit dem Physiofit-Konfigurator baut man eigene Formulare, z. B. Check-in und Feedback.
+         Ab 0,85 s komplett Vollbild; Benaja ist in diesem Teil nur am Anfang zu sehen (Wunsch).
 OUTPUT:  HyperFrames, 1920 x 1080, 30 fps. Ohne Musik und Soundeffekte, nur der O-Ton.
 TIME:    13,56 s x 30 = 407 Frames. Takt = O-Ton (`transcript.json`).
 
@@ -23,10 +24,10 @@ SHOTS:
              Textfeld (1,6) · Auswahl (2,4) · Skala (3,2) in ein leeres Formular („ganz individuelle Formulare“).
   4,3–7,25   gleiches Bild baut sich um: Titel wird „Check-in“ (5,85), Felder bekommen echte Fragen,
              Klick auf Speichern → „Gespeichert“ (6,96 „erstellen“).
-  7,25–10,1  `checkin`  Harter Schnitt zurück: Karte links „Check-in“, Chip „Bei jedem Termin“ (8,0),
-             Frage „Wie geht es dir heute?“, Wert wird gewählt (8,72 „Wohlbefinden“).
-  10,1–13,56 `feedback` Karte rechts „Feedback“ · „Patientenzufriedenheit“ (11,84): 5 Sterne füllen sich,
-             Antworten stapeln sich, Zähler zählt mit (12,96 „einsammeln“). Check-in-Karte bleibt links.
+  7,25–10,1  `checkin`  Vollbild, ohne Benaja (Wunsch): Der Konfigurator tritt zurück, Karte „Check-in“ (1,3×) links,
+             rechts die Termine mit Check-in, „Heute“ läuft (8,0 „bei jedem Termin“), Wert gewählt (8,72 „Wohlbefinden“).
+  10,1–13,56 `feedback` Vollbild: Die Termine machen Platz, rechts „Feedback“ · „Patientenzufriedenheit“ (1,3×, 11,84):
+             Sterne füllen sich, Antworten stapeln sich, Zähler zählt mit (12,96 „einsammeln“). Check-in bleibt links.
 BANNED:  dunkler Grund, Glow, Partikel, Glas, Verläufe außer dem Button-Verlauf der Referenz, Klick-Ringe,
          schwebende Loops, Logo in der Ecke, erfundene Kennzahlen (Durchschnittsnoten, Prozent).
 QA:      0,5 · 3,9 · 6,9 · 9,7 · 13,3
