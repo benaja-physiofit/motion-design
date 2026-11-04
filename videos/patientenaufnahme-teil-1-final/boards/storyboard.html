@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Storyboard Teil 1 Ende</title>
+    <style>
+      :root {
+        --page: #f4f6f8;
+        --card: #ffffff;
+        --ink: #1e3542;
+        --muted: #5e7380;
+        --line: #e3e9ed;
+        --accent: #217c93;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.45;
+      }
+      main {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 48px 32px 64px;
+      }
+      header h1 {
+        margin: 0 0 6px;
+        font-size: 30px;
+        letter-spacing: -0.01em;
+      }
+      header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .meta span {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 12px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .act {
+        margin: 40px 0 14px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .frame {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px -16px rgba(30, 53, 66, 0.25);
+      }
+      .frame img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-bottom: 1px solid var(--line);
+      }
+      .frame .body {
+        padding: 16px 20px 20px;
+      }
+      .title {
+        font-weight: 650;
+        font-size: 18px;
+      }
+      .time {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 2px;
+      }
+      .words {
+        margin: 10px 0 0;
+        font-size: 15px;
+      }
+      .vo {
+        margin: 10px 0 0;
+        font-size: 14px;
+        color: var(--muted);
+        font-style: italic;
+      }
+      footer {
+        margin-top: 36px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        main {
+          padding: 28px 16px 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Storyboard · Teil 1, neues Ende</h1>
+        <p>Ab „müssen jahrelang aufbewahrt werden“: Nach Jahren das richtige Dokument zu finden ist mühsam.</p>
+        <div class="meta">
+          <span>1920 × 1080 · 60 fps</span>
+          <span>17,2 bis 20,4 s</span>
+          <span>bis 17,2 s dein Video unverändert</span>
+          <span>kein Ton (wie dein Video)</span>
+        </div>
+      </header>
+
+      <section class="act">Neues Ende</section>
+      <div class="grid">
+        <div class="frame">
+          <img src="stills/frame-00-at-0.45s.png" alt="" />
+          <div class="body">
+            <div class="title">01: Alles auf einen Stapel</div>
+            <div class="time">17,2 bis 17,8 s</div>
+            <p class="words">Direkt aus deinem Bild bei 17,2 s: Die drei Karten Behandlungsvertrag, Ausfallgebühr und Andere Dokumente schrumpfen und landen übereinander.</p>
+            <p class="vo">„… müssen jahrelang …“</p>
+          </div>
+        </div>
+        <div class="frame">
+          <img src="stills/frame-01-at-1.75s.png" alt="" />
+          <div class="body">
+            <div class="title">02: Jahre vergehen</div>
+            <div class="time">17,6 bis 19,0 s</div>
+            <p class="words">Links läuft die Jahreszahl von 2019 bis 2026. Immer mehr Blätter fallen auf den Stapel und begraben die drei Karten.</p>
+            <p class="vo">„… aufbewahrt werden …“</p>
+          </div>
+        </div>
+        <div class="frame">
+          <img src="stills/frame-02-at-3.15s.png" alt="" />
+          <div class="body">
+            <div class="title">03: Die mühsame Suche</div>
+            <div class="time">19,1 bis 20,4 s</div>
+            <p class="words">Eine Lupe sucht im Stapel. Blatt für Blatt wird herausgezogen, jedes ist das falsche (rotes ✕). Die Suche läuft noch, als der Clip endet.</p>
+            <p class="vo">„… und griffbereit sein.“</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>Die Jahreszahlen sind nur ein Bild für „jahrelang“, keine Angabe zur Aufbewahrungsfrist.</footer>
+    </main>
+  </body>
+</html>
