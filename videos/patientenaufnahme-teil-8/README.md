@@ -9,7 +9,7 @@ Soundeffekte, nur der O-Ton. Das Footage ist mit `friendly-saas-explainer-patien
 |---|---|
 | Format | 1920×1080, 30 fps, 7,07 s, H.264 + AAC |
 | Render | `renders/patientenaufnahme-teil-8.mp4` |
-| Storyboard (freigegeben) | `boards/storyboard.html`, `boards/storyboard.png`, `STORYBOARD.md` |
+| Storyboard | `STORYBOARD.md` (aktuell); `boards/` zeigt den freigegebenen Stand vor dem Feedback |
 | Plan mit allen Maßen | `SPEC.md` |
 | Review-Notizen | `REVIEW.md` |
 | Transkript mit Wortzeiten | `transcript.json` |
@@ -18,14 +18,14 @@ Soundeffekte, nur der O-Ton. Das Footage ist mit `friendly-saas-explainer-patien
 
 | Zeit | Gesprochen | Bild |
 |---|---|---|
-| 0,0–2,85 s | „Wenn du Hilfe bei der einmaligen Einrichtung benötigst,“ | Karte links landet: Rettungsring, „Hilfe bei der Einrichtung?“, Button noch als Platzhalter. |
-| 2,85–4,3 s | „schreib uns eine Nachricht“ | Button „Nachricht schreiben“ füllt sich und wird angetippt. Oben mittig erscheint die Physiofit-Pille, eine Linie verbindet sie mit der Karte. |
-| 4,3–6,0 s | „oder vereinbare einen Gesprächstermin“ | Karte rechts „Gesprächstermin“ mit Button „Termin vereinbaren“, zweite Linie zur Pille. |
-| 6,0–7,07 s | „über dein Portal.“ | Die Pille öffnet sich zu „Physiofit \| Dein Portal“, beide Linien werden Cyan. Endbild. |
+| 0,0–2,85 s | „Wenn du Hilfe bei der einmaligen Einrichtung benötigst,“ | Nur Benaja. |
+| 2,85–4,32 s | „schreib uns eine Nachricht“ | Karte links mit dem Button „Nachricht schreiben“ landet und wird angetippt. |
+| 4,32–6,0 s | „oder vereinbare einen Gesprächstermin“ | Karte rechts mit dem Button „Termin vereinbaren“ gleitet herein und wird angetippt. |
+| 6,0–7,07 s | „über dein Portal.“ | Beide Buttons stehen. Endbild. |
 
 ## Bearbeiten
 
-- Texte und Farben sind Variablen (Studio → Variablen): beide Kartentitel, Button-Texte, „Dein Portal“, Navy/Petrol/Cyan.
+- Die beiden Button-Texte sind Variablen (Studio → Variablen).
 - Timing: `compositions/ende.html`; die Kommentare nennen die Zeiten der gesprochenen Wörter.
 
 ## Footage neu erzeugen
