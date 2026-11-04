@@ -1,6 +1,6 @@
 # Patientenaufnahme – Teil 4: Aufnahmeformular einrichten
 
-Animationen zum Clip `Patientenaufnahme_Teil_4.mov` (19,4 s), im abstrahierten Stil von Teil 7. Komplett Vollbild,
+Animationen zum Clip `Patientenaufnahme_Teil_4.mov` (19,4 s), abstrahiert in der Karten-Sprache von Teil 1. Komplett Vollbild,
 Benaja ist nur zu hören. Ohne Musik und Soundeffekte, nur der O-Ton.
 
 | | |
@@ -16,15 +16,15 @@ Benaja ist nur zu hören. Ohne Musik und Soundeffekte, nur der O-Ton.
 
 | Zeit | Gesprochen | Bild |
 |---|---|---|
-| 0–3,7 s | „Frage Stammdaten wie Name, Adresse oder Geburtsdatum ab.“ | Fenster „Patientenaufnahme“ mit Physiofit-Logo; in der Box „Stammdaten“ erscheinen Name, Adresse, Geburtsdatum. |
-| 3,7–6,3 s | „Füge deinen Behandlungsvertrag ein …“ | Datei landet, Upload läuft voll, „Hochgeladen“. |
-| 6,3–10,6 s | „… ergänze wichtige Hinweise, zum Beispiel zur gesetzlichen Zuzahlung oder Ausfallgebühren.“ | Hinweise „Gesetzliche Zuzahlung“ und „Ausfallgebühren“. |
-| 10,6–14,3 s | „Stelle dabei sicher, dass sie auch wirklich gesehen und akzeptiert werden.“ | Schalter „Bestätigung nötig“ gehen an. |
-| 14,3–19,43 s | „Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox.“ | Fenster rückt nach links, Smartphone: beide Checkboxen angehakt, „Digital signieren“ angetippt. |
+| 0–3,7 s | „Frage Stammdaten wie Name, Adresse oder Geburtsdatum ab.“ | Karte „Patientenaufnahme“: Balken „Stammdaten“, darunter Name, Adresse, Geburtsdatum. |
+| 3,7–6,3 s | „Füge deinen Behandlungsvertrag ein …“ | Balken „Behandlungsvertrag“ füllt sich, Haken. |
+| 6,3–10,6 s | „… ergänze wichtige Hinweise, zum Beispiel zur gesetzlichen Zuzahlung oder Ausfallgebühren.“ | Hinweis-Balken „Zuzahlung“ und „Ausfallgebühren“. |
+| 10,6–14,3 s | „Stelle dabei sicher, dass sie auch wirklich gesehen und akzeptiert werden.“ | Augen-Symbol (gesehen), dann Haken (akzeptiert) an beiden Hinweisen. |
+| 14,3–19,43 s | „Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox.“ | Karte rückt nach links, Smartphone: beide Checkboxen werden angehakt (kein Button). |
 
 ## Bearbeiten
 
-- Texte sind Variablen (Studio → Variablen): Formular-Titel, Dateiname, Hinweise, Checkbox-Texte.
+- Texte sind Variablen (Studio → Variablen): Titel, Balken, Hinweise, Checkbox-Texte.
 - Timing: `compositions/formular.html` (Filmzeit) und `compositions/signatur.html` (ab 14,3 s); die Kommentare nennen die Wörter.
 
 ## Footage neu erzeugen

@@ -2,8 +2,11 @@
 
 ## Kreative Entscheidungen
 
-- Nach dem freigegebenen Storyboard gebaut, mit den zwei Wünschen aus der Freigabe: „Stammdaten“ als eine Box mit
-  Name, Adresse, Geburtsdatum darunter; Checkbox-Texte kleiner und nicht fett, kein „Signiert“ am Button.
+- Nach dem freigegebenen Storyboard gebaut, mit den Wünschen aus der Freigabe: „Stammdaten“ mit Name, Adresse,
+  Geburtsdatum darunter; Checkbox-Texte kleiner und nicht fett.
+- Nach dem ersten Render (Wunsch): Akt 1 deutlich abstrakter, ohne Fenster, Logo, Dateinamen und Schalter, in der
+  Karten-Sprache aus Teil 1; „Gesehen“ als Augen-, „Akzeptiert“ als Haken-Abzeichen. Auf dem Smartphone kein Button mehr,
+  die Checkboxen sitzen mittig zum Text.
 - Komplett Vollbild wie Teil 7, Benaja nur zu hören (aus Teil 7 übernommen, im Storyboard als Annahme markiert).
 - Ein Bild, das sich aufbaut: keine Schnitte; zum Schluss rückt das Fenster nach links und das Smartphone kommt dazu.
 - Feldnamen, Dateiname, Hinweise und Checkbox-Texte sind Beispielinhalte.
@@ -16,8 +19,7 @@
 
 ## Schwächste Stelle
 
-- 6,3–8,8 s und 9,8–12,6 s: wenig Bewegung zwischen den Hinweisen und den Schaltern (Platzhalter wird aktiv,
-  Beschriftungen werden dunkler), damit die gesprochenen Wörter die Treffer setzen.
+- 5,7–8,8 s und 10,2–12,6 s: dort bewegt sich nichts; die Treffer liegen bewusst auf den gesprochenen Wörtern.
 
 ## Bewusst behaltene Warnungen
 
