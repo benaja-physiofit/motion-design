@@ -25,9 +25,9 @@
     #af-card {
       position: absolute;
       left: 260px;
-      top: 100px;
+      top: 88px;
       width: 1400px;
-      height: 820px;
+      height: 846px;
       background: #fff;
       border-radius: 34px;
       box-shadow:
@@ -120,6 +120,45 @@
       height: 12px;
       border-radius: 6px;
       background: var(--skeleton-bar, #cdd6dc);
+    }
+    .af-group {
+      position: absolute;
+      left: 56px;
+      width: 1288px;
+      height: 186px;
+      border-radius: 20px;
+      background: #fff;
+      border: 2px solid #e3e9ed;
+    }
+    .af-group-head {
+      position: absolute;
+      left: 24px;
+      top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .af-sub {
+      position: absolute;
+      top: 94px;
+      width: 392px;
+      height: 70px;
+      border-radius: 14px;
+      background: #f3f6f8;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 20px;
+    }
+    .af-subname {
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      color: var(--c-ink);
+      white-space: nowrap;
+    }
+    .af-sub .af-line {
+      height: 10px;
     }
     .af-drop {
       position: absolute;
@@ -240,43 +279,47 @@
         <div id="af-title" data-var-text="af_title">Patientenaufnahme</div>
       </div>
 
-      <!-- 1 · Stammdaten -->
-      <div class="af-sec" style="top: 140px">Stammdaten</div>
-      <div id="af-name" class="af-box" style="left: 56px; top: 186px; width: 408px">
-        <div class="af-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" class="af-stroke"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
+      <!-- 1 · Stammdaten: one box, the fields underneath its title -->
+      <div id="af-master" class="af-group" style="top: 136px">
+        <div class="af-group-head">
+          <div class="af-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" class="af-stroke">
+              <rect width="18" height="18" x="3" y="3" rx="2" /><circle cx="9" cy="10" r="2.5" /><path d="M5.5 17a3.5 3.5 0 0 1 7 0" />
+              <path d="M15 9h3" /><path d="M15 13h3" />
+            </svg>
+          </div>
+          <span class="af-name">Stammdaten</span>
         </div>
-        <div class="af-col"><span class="af-name">Name</span><div class="af-line" style="width: 220px"></div></div>
-      </div>
-      <div id="af-addr" class="af-box" style="left: 496px; top: 186px; width: 408px">
-        <div class="af-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" class="af-stroke">
+        <div id="af-name" class="af-sub" style="left: 24px">
+          <svg width="28" height="28" viewBox="0 0 24 24" class="af-stroke"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></svg>
+          <div class="af-col"><span class="af-subname">Name</span><div class="af-line" style="width: 200px"></div></div>
+        </div>
+        <div id="af-addr" class="af-sub" style="left: 440px">
+          <svg width="28" height="28" viewBox="0 0 24 24" class="af-stroke">
             <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
             <circle cx="12" cy="10" r="3" />
           </svg>
+          <div class="af-col"><span class="af-subname">Adresse</span><div class="af-line" style="width: 220px"></div></div>
         </div>
-        <div class="af-col"><span class="af-name">Adresse</span><div class="af-line" style="width: 240px"></div></div>
-      </div>
-      <div id="af-birth" class="af-box" style="left: 936px; top: 186px; width: 408px">
-        <div class="af-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" class="af-stroke">
+        <div id="af-birth" class="af-sub" style="left: 856px">
+          <svg width="28" height="28" viewBox="0 0 24 24" class="af-stroke">
             <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" /><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1" />
             <path d="M2 21h20" /><path d="M7 8v3" /><path d="M12 8v3" /><path d="M17 8v3" />
             <path d="M7 4h.01" /><path d="M12 4h.01" /><path d="M17 4h.01" />
           </svg>
+          <div class="af-col"><span class="af-subname">Geburtsdatum</span><div class="af-line" style="width: 180px"></div></div>
         </div>
-        <div class="af-col"><span class="af-name">Geburtsdatum</span><div class="af-line" style="width: 180px"></div></div>
       </div>
 
       <!-- 2 · Behandlungsvertrag -->
-      <div class="af-sec" style="top: 322px">Behandlungsvertrag</div>
-      <div id="af-drop1" class="af-drop" style="top: 368px">
+      <div class="af-sec" style="top: 348px">Behandlungsvertrag</div>
+      <div id="af-drop1" class="af-drop" style="top: 394px">
         <svg width="32" height="32" viewBox="0 0 24 24">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" x2="12" y1="3" y2="15" />
         </svg>
         <span>Dokument hier ablegen</span>
       </div>
-      <div id="af-file" class="af-box" style="left: 56px; top: 368px; width: 1288px">
+      <div id="af-file" class="af-box" style="left: 56px; top: 394px; width: 1288px">
         <div class="af-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" class="af-stroke">
             <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -292,12 +335,12 @@
       </div>
 
       <!-- 3 · Hinweise -->
-      <div class="af-sec" style="top: 504px">Hinweise</div>
-      <div id="af-drop2" class="af-drop" style="top: 550px; height: 222px">
+      <div class="af-sec" style="top: 530px">Hinweise</div>
+      <div id="af-drop2" class="af-drop" style="top: 576px; height: 222px">
         <svg width="32" height="32" viewBox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19" /><line x1="5" x2="19" y1="12" y2="12" /></svg>
         <span>Hinweis hinzufügen</span>
       </div>
-      <div id="af-note1" class="af-box" style="left: 56px; top: 550px; width: 1288px">
+      <div id="af-note1" class="af-box" style="left: 56px; top: 576px; width: 1288px">
         <div class="af-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" class="af-stroke">
             <path d="M4 10h12" /><path d="M4 14h9" /><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2" />
@@ -309,7 +352,7 @@
           <div class="af-switch"><div id="af-on1" class="af-switch-on"></div><div id="af-knob1" class="af-knob"></div></div>
         </div>
       </div>
-      <div id="af-note2" class="af-box" style="left: 56px; top: 668px; width: 1288px">
+      <div id="af-note2" class="af-box" style="left: 56px; top: 694px; width: 1288px">
         <div class="af-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" class="af-stroke">
             <path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" />
@@ -327,18 +370,43 @@
 
   <script>
     (function () {
-      // Storyboard pose. Local clock = film clock.
-      // 01 (0-3.7): Stammdaten · 02 (3.7-6.3): contract uploaded · 03 (6.3-10.6): notes · 04 (10.6-14.3): switches on
-      // 05 (14.3-): the window shrinks to the left for the patient view.
+      // Local clock = film clock (Benaja is only heard in this part).
       const tl = gsap.timeline({ paused: true });
-      gsap.set(["#af-file", "#af-note1", "#af-note2", "#af-on1", "#af-on2"], { opacity: 0 });
-      tl.set("#af-drop1", { opacity: 0 }, 3.7);
-      tl.set("#af-file", { opacity: 1 }, 3.7);
-      tl.set("#af-drop2", { opacity: 0 }, 6.3);
-      tl.set(["#af-note1", "#af-note2"], { opacity: 1 }, 6.3);
-      tl.set(["#af-on1", "#af-on2"], { opacity: 1 }, 10.6);
-      tl.set(["#af-knob1", "#af-knob2"], { x: 36 }, 10.6);
-      tl.set("#af-card", { x: -150, y: 210, scale: 0.56, transformOrigin: "0% 0%" }, 14.3);
+      const land = (sel, at, from = { y: -20 }) =>
+        tl.fromTo(sel, { opacity: 0, filter: "blur(8px)", ...from }, { opacity: 1, filter: "blur(0px)", x: 0, y: 0, duration: 0.45, ease: "expo.out" }, at);
+
+      gsap.set(["#af-file", "#af-note1", "#af-note2", "#af-on1", "#af-on2", "#af-uploaded"], { opacity: 0 });
+
+      // The first frame is sharp (thumbnail) and settles from slightly large.
+      tl.fromTo("#af-card", { scale: 1.03 }, { scale: 1, duration: 0.4, ease: "expo.out" }, 0);
+
+      // "Name, Adresse oder Geburtsdatum" (1.52 / 2.0 / 2.72)
+      land("#af-name", 1.48, { y: 12 });
+      land("#af-addr", 1.96, { y: 12 });
+      land("#af-birth", 2.68, { y: 12 });
+
+      // "Füge deinen Behandlungsvertrag ein" (4.4): the file drops in, the upload runs, done.
+      tl.to("#af-drop1", { opacity: 0, duration: 0.2, ease: "power2.in" }, 4.36);
+      land("#af-file", 4.38, { y: -28 });
+      tl.fromTo("#af-progress", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.8, ease: "none" }, 4.6);
+      land("#af-uploaded", 5.42, { x: 16, y: 0 });
+
+      // "ergänze wichtige Hinweise" (6.8): the empty slot becomes active; the notes land on their words.
+      tl.to("#af-drop2", { borderColor: "#217c93", color: "#217c93", duration: 0.3, ease: "power2.out" }, 6.75);
+      tl.to("#af-drop2", { opacity: 0, duration: 0.2, ease: "power2.in" }, 8.82);
+      land("#af-note1", 8.84);
+      land("#af-note2", 9.72);
+
+      // "sicher" (11.36): the confirmation labels come forward; "gesehen" / "akzeptiert" (12.64 / 13.44) switch them on.
+      tl.to(".af-need span", { color: "#1e3542", duration: 0.3, stagger: 0.08, ease: "power2.out" }, 11.3);
+      [["#af-on1", "#af-knob1", 12.6], ["#af-on2", "#af-knob2", 13.4]].forEach(([on, knob, at]) => {
+        tl.to(on, { opacity: 1, duration: 0.25, ease: "power3.out" }, at);
+        tl.to(knob, { x: 36, duration: 0.25, ease: "power3.out" }, at);
+      });
+
+      // 14.3: the window steps aside to the left for the patient's phone.
+      tl.to("#af-card", { x: -150, y: 215, scale: 0.56, transformOrigin: "0% 0%", duration: 0.6, ease: "power3.inOut" }, 14.3);
+
       window.__timelines["formular"] = tl;
     })();
   </script>

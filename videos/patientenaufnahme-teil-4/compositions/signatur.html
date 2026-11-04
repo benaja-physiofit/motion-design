@@ -7,6 +7,11 @@
     }
     @font-face {
       font-family: "Ubuntu";
+      font-weight: 400;
+      src: url("assets/fonts/ubuntu-400.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Ubuntu";
       font-weight: 500;
       src: url("assets/fonts/ubuntu-500.woff2") format("woff2");
     }
@@ -78,9 +83,9 @@
       gap: 18px;
       padding: 22px 22px;
       font-family: "Ubuntu", sans-serif;
-      font-weight: 500;
-      font-size: 28px;
-      line-height: 36px;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
       color: var(--c-ink);
     }
     .sg-box {
@@ -111,7 +116,7 @@
     #sg-legal {
       position: absolute;
       left: 36px;
-      top: 596px;
+      top: 548px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -130,7 +135,7 @@
     #sg-btn {
       position: absolute;
       left: 36px;
-      top: 676px;
+      top: 628px;
       width: 400px;
       height: 76px;
       border-radius: 38px;
@@ -178,7 +183,7 @@
           <div class="sg-box"><div id="sg-c1" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
           <span data-var-text="sg_check1">Ich akzeptiere den Behandlungsvertrag.</span>
         </div>
-        <div id="sg-row2" class="sg-row" style="top: 350px">
+        <div id="sg-row2" class="sg-row" style="top: 336px">
           <div class="sg-box"><div id="sg-c2" class="sg-checked"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg></div></div>
           <span data-var-text="sg_check2">Ich habe die Hinweise zu Zuzahlung und Ausfallgebühren gelesen.</span>
         </div>
@@ -197,10 +202,6 @@
             </svg>
             <span>Digital signieren</span>
           </div>
-          <div id="sg-btn-b" class="sg-btn-state">
-            <svg width="30" height="30" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg>
-            <span>Signiert</span>
-          </div>
         </div>
       </div>
     </div>
@@ -208,10 +209,29 @@
 
   <script>
     (function () {
-      // Storyboard pose (shot 05, end state). Local clock: 0 = 14.3 s in the film.
+      // Local clock: 0 = 14.3 s in the film.
       const tl = gsap.timeline({ paused: true });
-      gsap.set("#sg-btn-a", { opacity: 0 });
-      tl.set("#sg-phone", { opacity: 1 }, 0);
+      const blurIn = (sel, at, d = 0.35) =>
+        tl.fromTo(sel, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: d, ease: "expo.out" }, at);
+
+      gsap.set(["#sg-c1", "#sg-c2"], { opacity: 0, scale: 0.6 });
+
+      // The patient's phone glides in while the window steps aside.
+      tl.fromTo("#sg-phone", { opacity: 0, x: 120, filter: "blur(12px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 0.2);
+      blurIn("#sg-title", 0.5);
+      blurIn("#sg-sub", 0.6);
+      tl.fromTo(["#sg-row1", "#sg-row2"], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "expo.out" }, 0.72);
+
+      // "rechtssicher und digital signieren" (15.76 / 16.72)
+      blurIn("#sg-legal", 1.4);
+      blurIn("#sg-btn", 2.35);
+
+      // "Ganz einfach per Checkbox" (17.92 / 18.8): both boxes get ticked, then the button is tapped.
+      tl.to("#sg-c1", { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 3.3);
+      tl.to("#sg-c2", { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 4.0);
+      tl.to("#sg-btn", { scale: 0.96, duration: 0.08, ease: "power2.in" }, 4.65);
+      tl.to("#sg-btn", { scale: 1, duration: 0.3, ease: "expo.out" }, 4.73);
+
       window.__timelines["signatur"] = tl;
     })();
   </script>

@@ -9,11 +9,11 @@ audience: Physiotherapie-Praxen
 ## Frame 1: Stammdaten abfragen (0-3.7s)
 
 - act: Akt 1: Das Formular einrichten
-- status: built
+- status: animated
 - src: compositions/formular.html
 - poster: 3.3
 - transition_in: none (Start des Teils)
-- scene: Fenster „Patientenaufnahme“ mit Physiofit-Logo; Name, Adresse, Geburtsdatum erscheinen.
+- scene: Fenster „Patientenaufnahme“ mit Physiofit-Logo; in der Box „Stammdaten“ erscheinen Name, Adresse, Geburtsdatum.
 - voiceover: "Frage Stammdaten wie Name, Adresse oder Geburtsdatum ab."
 - reads: Fenster und Titel (0-1.5s); Name (1.52-2.0s); Adresse (2.0-2.72s); Geburtsdatum (2.72-3.7s)
 - sound: nur O-Ton
@@ -21,7 +21,7 @@ audience: Physiotherapie-Praxen
 ## Frame 2: Behandlungsvertrag einfügen (3.7-6.3s)
 
 - act: Akt 1: Das Formular einrichten
-- status: built
+- status: animated
 - src: compositions/formular.html
 - poster: 5.9
 - transition_in: none (gleiches Bild)
@@ -33,7 +33,7 @@ audience: Physiotherapie-Praxen
 ## Frame 3: Wichtige Hinweise ergänzen (6.3-10.6s)
 
 - act: Akt 1: Das Formular einrichten
-- status: built
+- status: animated
 - src: compositions/formular.html
 - poster: 10.2
 - transition_in: none (gleiches Bild)
@@ -45,7 +45,7 @@ audience: Physiotherapie-Praxen
 ## Frame 4: Gesehen und akzeptiert (10.6-14.3s)
 
 - act: Akt 1: Das Formular einrichten
-- status: built
+- status: animated
 - src: compositions/formular.html
 - poster: 13.9
 - transition_in: none (gleiches Bild)
@@ -57,13 +57,13 @@ audience: Physiotherapie-Praxen
 ## Frame 5: Digital signieren per Checkbox (14.3-19.43s)
 
 - act: Akt 2: Die Sicht der Patientinnen und Patienten
-- status: built
+- status: animated
 - src: compositions/signatur.html
 - poster: 19.2
 - transition_in: carry (Fenster schrumpft nach links, Smartphone kommt rechts)
-- scene: Smartphone: „Bitte bestätigen“, zwei Checkboxen werden angehakt, Button wird „Signiert“.
+- scene: Smartphone: „Bitte bestätigen“, zwei Checkboxen (kleine, normale Schrift) werden angehakt, „Digital signieren“ wird angetippt.
 - voiceover: "Lass Patienten alles rechtssicher und digital signieren. Ganz einfach per Checkbox."
-- reads: Smartphone und Titel (14.5-15.7s); „Rechtssicher & digital“ (15.76-17.2s); Checkboxen (17.3-18.8s); „Signiert“ (18.8-19.43s)
+- reads: Smartphone und Titel (14.5-15.7s); „Rechtssicher & digital“ (15.76-17.2s); Checkboxen (17.3-18.8s); „Digital signieren“ angetippt (18.9-19.43s)
 - sound: nur O-Ton
 
 Annahme: wie Teil 7 komplett Vollbild, Benaja nur zu hören. Feldnamen, Dateiname und Checkbox-Texte sind Beispielinhalte.

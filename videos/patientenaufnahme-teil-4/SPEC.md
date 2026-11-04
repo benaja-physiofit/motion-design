@@ -10,7 +10,7 @@ LOOK:    wie Teil 1, Teil 7 und `finales_video.mp4`: Grund #F0F4F6 · Karten #FF
          Navy #1E3542 · Petrol #217C93 · Icon-Kreis #DDF2F9 · Cyan #00BAE7 (Haken, Schalter an, Fortschritt) ·
          Button-Verlauf #0084AB → #00A3CF (kontrastsicher) · Lora 500 Titel · Ubuntu 500 UI ≥ 28 px · Lucide-Icons.
          Physiofit-Logo einmal im Kopf des Formular-Fensters. Abstrahiert, keine echten Screens.
-OBJECTS: Formular-Fenster „Patientenaufnahme“ mit drei Abschnitten (Stammdaten · Behandlungsvertrag · Hinweise) ·
+OBJECTS: Formular-Fenster „Patientenaufnahme“: Box „Stammdaten“ (Name · Adresse · Geburtsdatum darunter) · Behandlungsvertrag · Hinweise ·
          Datei-Zeile mit Upload-Balken · Hinweis-Zeilen mit Schalter „Bestätigung nötig“ ·
          Smartphone (Patientensicht) mit zwei Checkboxen und Button „Digital signieren“
 MOTION:  wie Teil 7: Ankunft expo.out 0,4–0,55 s mit Blur → 0 · Abgang power2.in 0,2 s · Upload linear ·
@@ -22,7 +22,7 @@ SHOTS:
   6,3–10,6   Hinweise: „Gesetzliche Zuzahlung“ (8,88) · „Ausfallgebühren“ (9,76).
   10,6–14,3  Schalter „Bestätigung nötig“ gehen an (12,64 „gesehen“ · 13,44 „akzeptiert“).
   14,3–19,43 Fenster schrumpft nach links, rechts das Smartphone: „Rechtssicher“ (15,76), Checkboxen werden
-             angehakt (17,3 / 18,4), Button wird „Signiert“ (18,8 „Checkbox“).
+             angehakt (17,6 / 18,3), „Digital signieren“ wird angetippt (18,95). Checkbox-Texte Ubuntu 400, 24 px (Wunsch: kleiner, nicht fett).
 BANNED:  dunkler Grund, Glow, Partikel, Glas, Verläufe außer dem Button, Klick-Ringe, schwebende Loops,
          Logo in der Ecke, erfundene Kennzahlen oder Daten.
 QA:      3,3 · 5,9 · 10,2 · 13,9 · 19,2
